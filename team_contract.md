@@ -1,4 +1,4 @@
-**Team Contract**
+# **Team Contract** #
 | Team Member  | Contact Information |
 | ------------- | ------------- |
 | Betsy  | 8608824627  |
