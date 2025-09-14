@@ -25,3 +25,6 @@
   - Secondly, give another reminder,
   - Third, bring attention to Professor Buzard
   - Default grade reduction of 10%
+
+**Signatures**
+Betsy Anzaldua
