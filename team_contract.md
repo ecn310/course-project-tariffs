@@ -28,3 +28,4 @@
 
 **Signatures**
 Betsy Anzaldua
+Lucia de Pedro
