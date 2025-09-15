@@ -24,10 +24,11 @@
   - First, we reach out to the person about issue
   - Secondly, give another reminder,
   - Third, bring attention to Professor Buzard
-  - Punishment: Grade reduction of 10%
+  - If there is a continuous record of incomplete work then the overall punishment would be a Grade reduction of 10%
 
 **Backup**
-- We will all keep track of our own work in the case that a member can't finish their work
+-  If someone becomes sick, has a family emergency, or an unforeseen event makes them unable to complete their part of the work, we will have precise details on GitHub and update it as the semester goes on, which would make it easier for someone to step in
+-  The team will choose someone to step in if needed 
 
 **Signatures**
 - Betsy Anzaldua
