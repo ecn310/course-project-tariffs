@@ -30,7 +30,7 @@
 - We will all keep track of our own work in the case that a member can't finish their work
 
 **Signatures**
-Betsy Anzaldua
-Lucia de Pedro
-Giovanni Davila
-Kiana Rocha 
+- Betsy Anzaldua
+- Lucia de Pedro
+- Giovanni Davila
+- Kiana Rocha 
