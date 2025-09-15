@@ -27,7 +27,7 @@
   - If there is a continuous record of incomplete work then the overall punishment would be a Grade reduction of 10%
 
 **Backup**
--  If someone becomes sick, has a family emergency, or an unforeseen event makes them unable to complete their part of the work, we will have precise details on GitHub and update it as the semester goes on, which would make it easier for someone to step in
+-  If someone becomes sick, has a family emergency, or an unforeseen event makes them unable to complete their part of the work, we will have precise details on GitHub and update it as the semester goes on, which would make it easier for someone to step in.  Additionally, during meetings we will have progress checks to catch on early if somebody is beginning to fall behind.
 -  The team will choose someone to step in if needed 
 
 **Signatures**
