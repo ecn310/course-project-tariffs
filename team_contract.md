@@ -31,8 +31,8 @@
 | Task Assignments | Team Member |
 | ------------- | ------------- |
 | Editing/Formalizing Drafts | Betsy (Backup: Lucia)  |
-| Drafting Literature Review | Giovanni (Backup: ?)  |
-| Primary Research & Browsing | ? (Backup: Giovanni)|
+| Drafting Literature Review | Giovanni (Backup: Kiana)  |
+| Primary Research & Browsing | Kiana (Backup: Giovanni)|
 | Updating Correct Format (i.e citations, github logs, etc.)|Lucia (Backup: Betsy)|
 
 -  If someone becomes sick, has a family emergency, or an unforeseen event makes them unable to complete their part of the work,one teammate will be assigned the additional role above upon discussion. We will have precise details on GitHub and update it as the semester goes on, which would make it easier for someone to step in. Additionally, during meetings we will have progress checks to catch on early if somebody is beginning to fall behind.
