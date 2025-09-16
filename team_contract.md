@@ -10,7 +10,7 @@
 **Goals: What are our team goals for this project? What do we want to accomplish? What skills do we want to develop or refine?**
 - We aim to evenly divide clear roles between the team
 - Communicate questions/tasks over text/in meetings
-- Meet 8:30pm every Monday/Wednesday (may change as project develops) Both In person meetings & Zoom 
+- Meet 5pm every Tuesday/Sunday (may change as project develops) Both In person meetings & Zoom 
 - In person meetings: estbalishing roles/tasks, share what we've been working on 
 - Online meetings: checking in on progress/questions
 
