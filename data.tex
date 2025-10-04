@@ -27,60 +27,113 @@ bookmarksopen=true,hyperfootnotes=false]{hyperref}
 
 
 \begin{document}
-\title{Insert group name here}
+\title{Tariffs}
 % add a fourth name if you have four team members; fill in at least first names below
-\author{Name 1\thanks{Syracuse University, Economics Department. Email: } \and Name 2\thanks{abc} \and Name 3\thanks{abc}}
+\author{Kiana\thanks{Syracuse University, Economics Department. Email: } \and Betsy\thanks{abc} \and Giovanni\thanks{abc}\and Lucia\thanks{abc}}
 \date{\vskip-.1in \today}
 \maketitle
 
 \vskip.3in
 
-\section{Research Question} \label{sec:question}
+\section {Question}  \label{sec:question}
 
-State the current version of your research question.
 
+
+{How do taxes on goods and services relate to tariffs in developed countries? How does the relationship depend on a developed country’s GDP and its trade policies?
 \section{Data Overview} \label{sec:literature}
 
-Write a short description of each  data set. Use subsections as demonstrated below if you have more than one data set. Replace this paragraph with a very short overview of your data, e.g. "We plan to use firm-level data from Compustat."
+Utilize firm-level data from WITS (World Integrated Trade Solution).
 
-\subsection{Data Set 1 [replace with a descriptive title of your dataset]}
+\subsection{Data Set 1: Trade relationship between taxes on consumption and international taxes (tariffs) of developed countries}
 \begin{itemize}
-  \item What is the source of the data?
-  \item How was it generated? Some possibilities: Did someone do a survey? Do people submit their own information? Did an organization compile it from public reports? 
-  \item What is the coverage of the data?
+  \item What is the source of the data?: WITS 
+  \item How was it generated? Public reports compiled by the following organizations: WITS' TRAINS Tariff Measures and Preference Beneficiaries, UNCTAD, UN Comtrade and WTO IDB.
+  \item What is the coverage of the data?: Developed Countries 
     \begin{itemize}
-        \item What years?
-        \item What kind of observations (countries? individual survey respondents? etc)
-        \item Scope (e.g., if countries, only developed countries?)
+        \item What years?: 2001-2020
+        \item What kind of observations: Developed countries with relatively high GDP per Capita
+        \item Scope: 20 Developed countries- Ireland, United Arab Emirates, Netherlands, Austria, Sweden, Belgium, Germany, United States, Hong Kong, Singapore, South Korea, Turkey, Japan, Australia, Israel, Canada, United Kingdom, Norway, and Switzerland
+        
     \end{itemize}
-  \item Number of variables
-    \begin{itemize}
-        \item Types of variables,  (is this dataset giving mainly economic indicators for a country? Is it reporting details about 911 calls?
+  \item Number of variables: 3 \begin{itemize}
+        \item Types of variables: Economic Variables- GDP, Consumption Tax Rate, International Tax Rate 
     \end{itemize}
-  \item How many observations total? (e.g., 20 countries with 10 variables each, for a total of 100 observations)
+  \item How many observations total? 12 countries and 8 European Union member-countries with 3 variables each, for a total of 60 observations.
 \end{itemize}
-
-\subsection{Data Set 2 (insert a descriptive title)}
-
-If you have more than one dataset, answer all the same questions as in the previous subsection in a new subsection for each dataset. \\
-
-\noindent If you only have one dataset, delete this subsection. \\
-
-\noindent If you have two datasets, answer all the same questions as in the previous subsection for the second dataset.
 
 \section{Data Acquisition}
 \label{sec:theory}
+\subsection{WITS Country TimeSeries Exports of Goods and Services as Percent of GDP of Ireland, United Arab Emirates, Netherlands, Austria, Sweden, Belgium, Germany, United States, Hong Kong, Singapore, South Korea, Turkey, Japan, Australia, Israel, Canada, United Kingdom, Norway, and Switzerland from 2001-2020}
+\begin{table}[!ht]
+    \centering
+    \begin{tabular}{|l|l|l|}
+    \hline
+        Country Name & Indicator Name & Years \\ \hline
+        Australia & Exports of goods and services (\% of GDP) & 2001-2020 \\ \hline
+        Austria & Exports of goods and services (\% of GDP) & 2001-2020 \\ \hline
+        Belgium & Exports of goods and services (\% of GDP) & 2001-2020 \\ \hline
+        Canada & Exports of goods and services (\% of GDP) & 2001-2020 \\ \hline
+        France & Exports of goods and services (\% of GDP) & 2001-2020 \\ \hline
+        Germany & Exports of goods and services (\% of GDP) & 2001-2020 \\ \hline
+        Hong Kong, China & Exports of goods and services (\% of GDP) & 2001-2020 \\ \hline
+        Ireland & Exports of goods and services (\% of GDP) & 2001-2020 \\ \hline
+        Israel & Exports of goods and services (\% of GDP) & 2001-2020 \\ \hline
+        Japan & Exports of goods and services (\% of GDP) & 2001-2020 \\ \hline
+        Korea, Rep. & Exports of goods and services (\% of GDP) & 2001-2020 \\ \hline
+        Netherlands & Exports of goods and services (\% of GDP) & 2001-2020 \\ \hline
+        Norway & Exports of goods and services (\% of GDP) & 2001-2020 \\ \hline
+        Singapore & Exports of goods and services (\% of GDP) & 2001-2020 \\ \hline
+        Sweden & Exports of goods and services (\% of GDP) & 2001-2020 \\ \hline
+        Switzerland & Exports of goods and services (\% of GDP) & 2001-2020 \\ \hline
+        Turkey & Exports of goods and services (\% of GDP) & 2001-2020 \\ \hline
+        United Arab Emirates & Exports of goods and services (\% of GDP) & 2001-2020 \\ \hline
+        United Kingdom & Exports of goods and services (\% of GDP) & 2001-2020 \\ \hline
+        United States & Exports of goods and services (\% of GDP) & 2001-2020 \\ \hline
+    \end{tabular}
+\end{table}
+ Access to Excel document and country time series table: Local Excel File
+\subsection{WITS Country TimeSeries Imports of Goods and Services as Percent of GDP of Ireland, United Arab Emirates, Netherlands, Austria, Sweden, Belgium, Germany, United States, Hong Kong, Singapore, South Korea, Turkey, Japan, Australia, Israel, Canada, United Kingdom, Norway, and Switzerland from 2001-2020}
 
-Explain how someone can acquire each dataset (you may need to use subsections again).
+\begin{table}[!ht]
+    \centering
+    \begin{tabular}{|l|l|l|}
+    \hline
+        Country Name & Indicator Name & Years \\ \hline
+        Australia & Imports of goods and services (\% of GDP) & 2001-2020 \\ \hline
+        Austria & Imports of goods and services (\% of GDP) & 2001-2020 \\ \hline
+        Belgium & Imports of goods and services (\% of GDP) & 2001-2020 \\ \hline
+        Canada & Imports of goods and services (\% of GDP) & 2001-2020 \\ \hline
+        France & Imports of goods and services (\% of GDP) & 2001-2020 \\ \hline
+        Germany & Imports of goods and services (\% of GDP) & 2001-2020 \\ \hline
+        Hong Kong, China & Imports of goods and services (\% of GDP) & 2001-2020 \\ \hline
+        Ireland & Imports of goods and services (\% of GDP) & 2001-2020 \\ \hline
+        Israel & Imports of goods and services (\% of GDP) & 2001-2020 \\ \hline
+        Japan & Imports of goods and services (\% of GDP) & 2001-2020 \\ \hline
+        Korea, Rep. & Imports of goods and services (\% of GDP) & 2001-2020 \\ \hline
+        Netherlands & Imports of goods and services (\% of GDP) & 2001-2020 \\ \hline
+        Norway & Imports of goods and services (\% of GDP) & 2001-2020 \\ \hline
+        Singapore & Imports of goods and services (\% of GDP) & 2001-2020 \\ \hline
+        Sweden & Imports of goods and services (\% of GDP) & 2001-2020 \\ \hline
+        Switzerland & Imports of goods and services (\% of GDP) & 2001-2020 \\ \hline
+        Turkey & Imports of goods and services (\% of GDP) & 2001-2020 \\ \hline
+        United Arab Emirates & Imports of goods and services (\% of GDP) & 2001-2020 \\ \hline
+        United Kingdom & Imports of goods and services (\% of GDP) & 2001-2020 \\ \hline
+        United States & Imports of goods and services (\% of GDP) & 2001-2020 \\ \hline
+    \end{tabular}
+\end{table}
+
+  Access to Excel document and country time series table: Local Excel File
 \begin{itemize}
-    \item This should be in EXCRUCIATING detail: every click someone has to execute to get the dataset as you have it
+  \item Export of Value Added Summary Data: Access online database and select country / year for data: https://wits.worldbank.org/analyticaldata
+/evad/country/hkg/Year/2014/Summary - Copy / paste the URL to view the top five exporting sectors of all twenty countries when considering forward links or backward links as a share of total domestic value added that is exported, and the top five export-intensive sectors as a share of gross exports for years included. The sector's value added is embedded as inputs in other sectors' exports and the value added embedded in the sector's exports from all other sectors-
 \end{itemize}
-
-\noindent Where have YOU stored the data? Include link(s).
 \begin{itemize}
-    \item If in a different location, where is your code and documentation?
+  \item Trade Summary Data: Access online database and select country / year for data: 
+https://wits.worldbank.org/
+CountryProfile
+/en/Country/HKG/Year/2001/Summarytext
+-Copy/paste the url to view all twenty countries’ trade summary including Overall Exports and Imports, top 5 Export and Import partners, Top 5 Products Exports imports at HS 6 digit level, Exports and imports of products by stages of processing as percent of total export or import, Tariffs imposed, Key Development Indicators, Trade Indicators-
 \end{itemize}
-
 
 \section{Data Manipulation}
 \label{sec:data}
@@ -104,7 +157,23 @@ How you will link different data sets together (if you'll need to)
 \section{Key Variables}
 \label{sec:result}
 
-List of key variables you may use for testing your hypothesis, separately for each dataset
+\begin{itemize}
+    \item Exports of goods and services (\% of GDP)
+    \item Imports of goods and services (\% of GDP)
+    \item Gross Domestic Product (GDP)
+    \item Gross National Income (GNI)
+    \item Trade balance
+    \item Top 5 Export and Import Partners
+    \item Top 5 Products Exports and Imports (HS 6-digit level)
+    \item Exports and Imports by stage of processing (e.g., raw materials, intermediates, finished goods)
+    \item Tariffs imposed
+    \item Key Development Indicators
+    \item Export of Domestic Value Added by sector
+    \item Value added used in other countries’ exports
+    \item Foreign value added in domestic exports
+    \item Top 5 Export-Intensive Sectors as a share of gross exports
+\end{itemize}
+
 
 
 
