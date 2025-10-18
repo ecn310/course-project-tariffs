@@ -39,7 +39,7 @@ bookmarksopen=true,hyperfootnotes=false]{hyperref}
 
 
 
-{How do taxes on goods and services relate to tariffs in developed countries? How does the relationship depend on a developed country’s GDP and its trade policies?
+{How do taxes on goods and services relate to tariffs in developed countries? How does the relationship depend on a developed country’s GDP and its trade policies?}
 \section{Data Overview}  \label{sec:literature}
 
     Firm-level data from \href{https://wits.worldbank.org}{WITS}
@@ -48,43 +48,51 @@ bookmarksopen=true,hyperfootnotes=false]{hyperref}
 \subsection{Data Set 1: Trade relationship between taxes on consumption and international taxes (tariffs) of developed countries}
 \begin{itemize}
   \item Public reports compiled by the following organizations: WITS' TRAINS Tariff Measures and Preference Beneficiaries, UNCTAD, UN Comtrade and WTO IDB
-  \item Developed countries with relatively high GDP per Capita from 2001-2020
-  \item 20 countries: Ireland, United Arab Emirates, Netherlands, Austria, Sweden, Belgium, Germany, United States, Hong Kong, Singapore, South Korea, Turkey, Japan, Australia, Israel, Canada, United Kingdom, Norway, and Switzerland.
-  \item 3 Economic Variables: GDP, Consumption Tax Rate, and International Tax Rate 
-  \item Total of 400 observations
+  \item Focusing on 8 Developed countries with relatively high GDP per Capita from 2001-2020
+  \item 8 countries: Australia, Canada, France, Israel, South Korea, Norway, Switzerland, and the United States.
+  \item 4 Economic Variables: GDP, Consumption Tax Rate, International Tax Rate, and Trade Balance
+  \item Total of 160 observations
 \end{itemize}
 
 \section{Data Acquisition}
 \label{sec:theory}
-\subsection{WITS Country TimeSeries Exports of Goods and Services as Percent of GDP of Ireland, United Arab Emirates, Netherlands, Austria, Sweden, Belgium, Germany, United States, Hong Kong, Singapore, South Korea, Turkey, Japan, Australia, Israel, Canada, United Kingdom, Norway, and Switzerland from 2001-2020}
+\subsection{WITS Country TimeSeries Data for Australia, Canada, France, Israel, South Korea, Norway, Switzerland, and the United States from 2001-2020}
+
+
+ Access Data- Click "Download the CSV" (6 tables are included with 8 rows each)
+
+
+\href{https://drive.usercontent.google.com/download?id=1zl7f54-BOS8g29kokD69E_YhXAzMV-7P&export=download&authuser=0}{Download the CSV} 
+
 
 \begin{itemize}
-   \item Access to CSV document: WITS Exports Country-Timeseries Table- \href{run:./WITS-Country-Timeseries-5 2.csv}{Download the CSV} 
+   \item Table 1: Exports of Goods and Services as Percent of GDP
 \end{itemize}
 
-\subsection{WITS Country TimeSeries Imports of Goods and Services as Percent of GDP of Ireland, United Arab Emirates, Netherlands, Austria, Sweden, Belgium, Germany, United States, Hong Kong, Singapore, South Korea, Turkey, Japan, Australia, Israel, Canada, United Kingdom, Norway, and Switzerland from 2001-2020}
-
 \begin{itemize}
-    \item Access to CSV document: WITS Imports Country-Timeseries Table- \href{run:./WITS-Country-Timeseries-6 2.csv}{Download the CSV}
+    \item Table 2: Imports of Goods and Services as Percent of GDP
 \end{itemize}
 
-\subsection{Trade Summary Data of of Ireland, United Arab Emirates, Netherlands, Austria, Sweden, Belgium, Germany, United States, Hong Kong, Singapore, South Korea, Turkey, Japan, Australia, Israel, Canada, United Kingdom, Norway, and Switzerland from 2001-2020} 
 \begin{itemize}
-    \item Access online database: Select country/year for data-
-\href{https://wits.worldbank.org/CountryProfile/en/Country/USA/Year/LTST/Summary}{Database}
+    \item Table 3: Trade Balance as Percent of GDP
+\end{itemize}
+
+\begin{itemize}
+    \item Table 4: GDP in current USD
+\end{itemize}
+
+\begin{itemize}
+    \item Table 5: Consumption Taxes in current LCU
+\end{itemize}
+
+\begin{itemize}
+    \item Table 6: International Taxes in current LCU
 \end{itemize}
 
 \section{Data Manipulation}
 \label{sec:data}
 
-    The next steps will be to calculate each nation’s trade balance as a percentage of GDP over 2001-2020 and compare the exports and imports datasets from each country. The relationships between economic indicators and GDP will also be analyzed with export dependence and import ratios of trade data. Moving forward, a connection regarding the tariff policies and levels of tax rates from developed countries will be established.
-    
-\section{Linking Datasets}
-\label{sec:discussion}
-
-\begin{itemize}
-    \item Exports of goods and services (\% of GDP) will be merged with imports of goods and services (\% of GDP) across 2001-2020. Each nations' variables will link their country's level of \textit{trade balance}.
-\end{itemize} 
+    The next steps will be to analyze each nation’s trade balance as a percentage of GDP over 2001-2020 (comparing the exports and imports datasets from each country) to link its relationship with GDP and consumption and international tax rates. Moving forward, correlation regarding tariff policies and levels of tax rates from developed countries will be evaluated.
 
 \section{Key Variables}
 \label{sec:result}
@@ -92,15 +100,10 @@ bookmarksopen=true,hyperfootnotes=false]{hyperref}
 \begin{itemize}
     \item Exports of goods and services (\% of GDP)
     \item Imports of goods and services (\% of GDP)
-    \item Gross Domestic Product (GDP)
-    \item Gross National Income (GNI)
-    \item Trade balance
-    \item Exports and Imports by stage of processing (e.g., raw materials, intermediates, finished goods)
-    \item Tariffs imposed
-    \item Key Development Indicators
-    \item Export of Domestic Value Added by sector
-    \item Value added used in other countries’ exports
-    \item Foreign value added in domestic exports
+    \item GDP (Gross Domestic Product in current LCU)
+    \item Trade Balance (\% of GDP)
+    \item Consumption Tax Rate (in current LCU)
+    \item International Tax Rate (in current LCU)
 \end{itemize}
 
 
