@@ -1,5 +1,6 @@
 * File for opening our data 
-use "C:\Users\ldepedro\OneDrive - Syracuse University\AAA JUNIOR year\ECN 310\course-project-tariffs\WITS-Country-Timeseries-Data.csv"
+*Import our data
+import delimited "C:\Users\ldepedro\OneDrive - Syracuse University\AAA JUNIOR year\ECN 310\course-project-tariffs\Data files\WITS-Country-Timeseries-Data.csv", varnames(1)
 
 *to see our data more clearly, it will describe and summarize the data for you
 d, s
