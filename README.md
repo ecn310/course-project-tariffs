@@ -2,7 +2,12 @@
 
 This MDF is used as a place to store and keep track of important information. In particular, this page provides links to where everything is kept.
 
-[**Issues to keep track of everything**](https://github.com/ecn310/course-project-tariffs/issues)
+**Issues/Discussions that keep track of our work**
+- [Daily log](https://github.com/ecn310/course-project-tariffs/issues/2)
+- [Paper summaries log](https://github.com/ecn310/course-project-tariffs/issues/5)
+- [Data acquisition task](https://github.com/ecn310/course-project-tariffs/issues/7)
+- [Hypothesis Formulation log](https://github.com/ecn310/course-project-tariffs/issues/10)
+- [Documentation Plan](https://github.com/ecn310/course-project-tariffs/issues/13)
 
 **General Project Files**
 - [Team Contract](https://github.com/ecn310/course-project-tariffs/blob/main/team_contract.md) 
