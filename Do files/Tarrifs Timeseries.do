@@ -1,6 +1,8 @@
-*Download Tariffs Timeseries.dta to view
+*Do file to open our data and summarize it
+*First run this to change directory
 cd "C:\Users\giova\OneDrive - Syracuse University\Documents\GitHub\course-project-tariffs\Data files"
-use "C:\Users\giova\OneDrive - Syracuse University\Documents\GitHub\course-project-tariffs\Data files\TariffsTimeseries.dta"
+* run this command to import the csv data to stata
+import delimited "C:\Users\giova\OneDrive - Syracuse University\Documents\GitHub\course-project-tariffs\Data files\WITS-Country-Timeseries-Data.csv", varnames(1)
 describe
 list countryname indicatorname
 browse
