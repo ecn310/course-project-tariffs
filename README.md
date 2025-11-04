@@ -22,5 +22,4 @@ This MDF is used as a place to store and keep track of important information. In
 - [TariffsTimeseries](https://github.com/ecn310/course-project-tariffs/blob/main/Data%20files/TariffsTimeseries.dta)
 
 **Do Files**
-- [open&summarize.do ](https://github.com/ecn310/course-project-tariffs/blob/main/Do%20files/Open%26summarize.do)
 - [TariffsTimeseries](https://github.com/ecn310/course-project-tariffs/blob/main/Do%20files/Tarrifs%20Timeseries.do)
