@@ -50,23 +50,40 @@ bookmarksopen=true,hyperfootnotes=false]{hyperref}
   \item Public reports compiled by the following organizations: WITS' TRAINS Tariff Measures and Preference Beneficiaries, UNCTAD, UN Comtrade and WTO IDB
   \item Focusing on 8 Developed countries with relatively high GDP per Capita from 2001-2020
   \item 8 countries: Australia, France, Israel, Romania, South Korea, Norway, Switzerland, and the United States.
-  \item 4 Economic Variables: GDP, Consumption Tax Rate, International Tax Rate, and Trade Balance
+  \item 6 Economic Variables: Trade Balance, GDP, Consumption Tax Rate, International Tax Rate, eImport Duties, and Import Values
   \item Total of 160 observations
 \end{itemize}
 
 \section{Data Acquisition}
 \label{sec:theory}
+
+    The Country Timeseries datasets were downloaded as excel files from the WITS website. The Trade Summary interface available on the database was accessed by clicking “View All” for “Trade Summary”. Upon loading, the Trade Indicators (variables listed above) were accessed by scrolling to the end of the webpage and clicking “more” to view “Development Indicators”. The indicators selected were Exports of goods and services (\% of GDP), Imports of goods and services (\% of GDP), GDP (current USD), Taxes on goods and services (current LCU), Taxes on international trade (current LCU), Customs and other import duties (\% of tax revenue), and Imports of Goods and Services (Bop current USD). The “Year Range” selected for each indicator was 2001-2020; the “Country / Region” selected were Australia, France, Israel, Korea, Rep. (South Korea), Norway, Romania, Switzerland, and the United States.
+    
+Note: 
+
+\begin{itemize}
+
+\item The indicators were accessed for countries and downloaded as individual excel files for each correspondingly: 65 excel files were combined onto one excel file listing the data from 2001-2020. The excel file was named “WITS-Country-Timeseries-Data” and converted to a csv file.
+
+\item A column was added and labeled “Table” to divide each indicator analyzed under 8 tables: Each table contains every country’s data from 2001-2020 for its indicator named as the column.
+
+\item The table named Trade Balance contains the trade balance of each country as a percentage of gross domestic product. The data for this table was not downloaded from the database. [The countries’ trade balance were calculated by subtracting the data of the Imports table listing imports of goods and services as a percentage of gross domestic product from the data of the Exports table listing exports of goods and services as a percentage of gross domestic product: both the Imports and Exports data were downloaded directly from the database and listed as such tables.]
+
+\end{itemize}
+
 \subsection{WITS Country TimeSeries Data for Australia, Canada, France, Israel, Romania, South Korea, Norway, Switzerland, and the United States from 2001-2020}
 
 
  Access Data- Click "Download the CSV" (6 tables are included with 8 rows each)
 
-
-\href{https://drive.google.com/file/d/1zl7f54-BOS8g29kokD69E_YhXAzMV-7P/view?usp=sharing}
+\href{https://drive.google.com/file/d/1fg4jsdZHCs_XkNZpjxN1PbeDvz19CE5t/view?usp=sharing}
 {Download the CSV} 
 
 
  Access Data Through Github- Click "Access Github Table"
+
+\href{https://github.com/ecn310/course-project-tariffs/blob/main/Data%20files/WITS-Country-Timeseries-Data.csv}
+{Access Github Table}
 
 \begin{itemize}
    \item Table 1: Exports of Goods and Services as Percent of GDP
@@ -95,11 +112,12 @@ bookmarksopen=true,hyperfootnotes=false]{hyperref}
 \section{Data Manipulation}
 \label{sec:data}
 
-    The next steps will be to analyze each nation’s trade balance as a percentage of GDP over 2001-2020 (comparing the exports and imports datasets from each country) to link its relationship with GDP and consumption and international tax rates. Moving forward, correlation regarding tariff policies and levels of tax rates from developed countries will be evaluated.
+    The next steps will be to analyze each nation’s consumption tax revenue as a percentage of GDP over 2001-2020 (comparing the consumption tax revenue datasets from each country) to link its relationship with GDP as a rate of consumption. Moving forward, correlation regarding international tax revenue from developed countries will be evaluated and their rate of import duties will be compared with each's value of import index.
 
 \section{Key Variables}
 \label{sec:result}
 
+    Variable Type: Ratio-Scale (Continous Variables)
 \begin{itemize}
     \item Exports of goods and services (\% of GDP)
     \item Imports of goods and services (\% of GDP)
@@ -107,6 +125,8 @@ bookmarksopen=true,hyperfootnotes=false]{hyperref}
     \item Trade Balance (\% of GDP)
     \item Consumption Tax Rate (in current LCU)
     \item International Tax Rate (in current LCU)
+    \item Import Duties (\% of Tax Revenue)
+    \item Import Values (in current US$)
 \end{itemize}
 
 
