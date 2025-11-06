@@ -10,11 +10,11 @@ This MDF is used as a place to store and keep track of important information. In
 - [Documentation Plan](https://github.com/ecn310/course-project-tariffs/issues/13): tasks related to documentation
 
 **General Project Files**
-- [Team Contract](https://github.com/ecn310/course-project-tariffs/blob/main/team_contract.md): 
+- This is where our [Team Contract](https://github.com/ecn310/course-project-tariffs/blob/main/team_contract.md) is.
 
 **Prep Work for Research Project**
-- [Research Hypothesis Workshop](https://github.com/ecn310/course-project-tariffs/discussions/11)
-- [Literature Review Assignment](https://docs.google.com/document/d/1MNSkc9cLULqxWNYJ6wF_V2wmZJxr7En_rVoZMV69O14/edit?tab=t.0)
+- [Research Hypothesis Workshop](https://github.com/ecn310/course-project-tariffs/discussions/11): where our reasearch hypothesis is.
+- [Literature Review Assignment](https://docs.google.com/document/d/1MNSkc9cLULqxWNYJ6wF_V2wmZJxr7En_rVoZMV69O14/edit?tab=t.0): where our paper summaries are.
 
 **Overleaf**
 - [data.tex](https://github.com/ecn310/course-project-tariffs/blob/main/Overleaf/data.tex)
