@@ -104,8 +104,6 @@ rename AI yr020
 reshape long yr0, i(CountryName IndicatorName) j(year)
 rename yr0 value
 replace year = year + 2000
-reshape wide value, i(IndicatorName year) j(CountryName) string
-rename value 
 
 *reshaping individual indicators as variables 
 encode IndicatorName, gen(IndicatorID)
