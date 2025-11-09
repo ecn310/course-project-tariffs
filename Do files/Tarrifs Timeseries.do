@@ -3,43 +3,43 @@
 *First run this to change directory, where all of the raw data is
 cd "C:\Users\giova\OneDrive - Syracuse University\Documents\GitHub\course-project-tariffs\Data files"
 *run this command to import the first excel data to stata
-import delimited "C:\Users\giova\OneDrive - Syracuse University\Documents\GitHub\course-project-tariffs\Data files\excelfile1.xlsx", varnames(1)
+import excel "C:\Users\giova\OneDrive - Syracuse University\Documents\GitHub\course-project-tariffs\Data files\excelfile1.xlsx", sheet("Country-Timeseries") firstrow clear
 *to save the first data excel file as a dta
 save "C:\Users\giova\OneDrive - Syracuse University\Documents\GitHub\course-project-tariffs\Data files\TariffsTimeseries1.dta"
 clear
 
 *import excel file 2
-import delimited "C:\Users\giova\OneDrive - Syracuse University\Documents\GitHub\course-project-tariffs\Data files\excelfile2.xlsx", varnames(1)
+import excel "C:\Users\giova\OneDrive - Syracuse University\Documents\GitHub\course-project-tariffs\Data files\excelfile2.xlsx", sheet("Country-Timeseries") firstrow clear
 *save as dta
 save "C:\Users\giova\OneDrive - Syracuse University\Documents\GitHub\course-project-tariffs\Data files\TariffsTimeseries2.dta"
 clear
 
 *import excel file 3
-import delimited "C:\Users\giova\OneDrive - Syracuse University\Documents\GitHub\course-project-tariffs\Data files\excelfile3", varnames(1)
+import excel "C:\Users\giova\OneDrive - Syracuse University\Documents\GitHub\course-project-tariffs\Data files\excelfile3.xlsx", sheet("Country-Timeseries") firstrow clear
 *save as dta
 save "C:\Users\giova\OneDrive - Syracuse University\Documents\GitHub\course-project-tariffs\Data files\TariffsTimeseries3.dta"
 clear
 
 *import excel file 4
-import delimited "C:\Users\giova\OneDrive - Syracuse University\Documents\GitHub\course-project-tariffs\Data files\excelfile4", varnames(1)
+import excel "C:\Users\giova\OneDrive - Syracuse University\Documents\GitHub\course-project-tariffs\Data files\excelfile4.xlsx", sheet("Country-Timeseries") firstrow clear
 *save as dta
 save "C:\Users\giova\OneDrive - Syracuse University\Documents\GitHub\course-project-tariffs\Data files\TariffsTimeseries4.dta"
 clear
 
 *import excel file 5
-import delimited "C:\Users\giova\OneDrive - Syracuse University\Documents\GitHub\course-project-tariffs\Data files\excelfile5", varnames(1)
+import excel "C:\Users\giova\OneDrive - Syracuse University\Documents\GitHub\course-project-tariffs\Data files\excelfile5.xlsx", sheet("Country-Timeseries") firstrow clear
 *save as dta
 save "C:\Users\giova\OneDrive - Syracuse University\Documents\GitHub\course-project-tariffs\Data files\TariffsTimeseries5.dta"
 clear
 
 *import excel file 6
-import delimited "C:\Users\giova\OneDrive - Syracuse University\Documents\GitHub\course-project-tariffs\Data files\excelfile6", varnames(1)
+import excel "C:\Users\giova\OneDrive - Syracuse University\Documents\GitHub\course-project-tariffs\Data files\excelfile6.xlsx", sheet("Country-Timeseries") firstrow clear
 *save as dta
 save "C:\Users\giova\OneDrive - Syracuse University\Documents\GitHub\course-project-tariffs\Data files\TariffsTimeseries6.dta"
 clear
 
 *import excel file 7
-import delimited "C:\Users\giova\OneDrive - Syracuse University\Documents\GitHub\course-project-tariffs\Data files\exelfile7", varnames(1)
+import excel "C:\Users\giova\OneDrive - Syracuse University\Documents\GitHub\course-project-tariffs\Data files\excelfile7.xlsx", sheet("Country-Timeseries") firstrow clear
 *save as dta
 save "C:\Users\giova\OneDrive - Syracuse University\Documents\GitHub\course-project-tariffs\Data files\TariffsTimeseries7.dta"
 clear
