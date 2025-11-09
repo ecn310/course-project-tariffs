@@ -76,7 +76,7 @@ drop AJ
 drop AK
 
 *get rid of the countries we dont need 
-*keep if CountryName == "United States" | CountryName == "Australia" | CountryName == "France" | CountryName == "Israel" | CountryName == "Korea, Rep." | CountryName == "Norway" | CountryName == "Romania" | CountryName == "Switzerland"
+keep if CountryName == "United States" | CountryName == "Australia" | CountryName == "France" | CountryName == "Israel" | CountryName == "Korea, Rep." | CountryName == "Norway" | CountryName == "Romania" | CountryName == "Switzerland"
 
 * Remaning letter variables to years (yr)
 rename P yr01
