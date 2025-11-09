@@ -8,6 +8,7 @@ This MDF is used as a place to store and keep track of important information. In
 - [Data related task](https://github.com/ecn310/course-project-tariffs/issues/7): tasks related to accessing and working with data
 - [Hypothesis Formulation log](https://github.com/ecn310/course-project-tariffs/issues/10): tasks related to our hypothesis
 - [Documentation Plan](https://github.com/ecn310/course-project-tariffs/issues/13): tasks related to documentation
+- [Prelimineary results presentation](https://github.com/ecn310/course-project-tariffs/issues/14)
 
 **General Project Files**
 - This is where our [Team Contract](https://github.com/ecn310/course-project-tariffs/blob/main/team_contract.md) is.
