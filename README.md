@@ -23,7 +23,7 @@ This MDF is used as a place to store and keep track of important information. In
 - [tariffs report](https://github.com/ecn310/course-project-tariffs/blob/main/Overleaf/tariffs_report.tex): This is going to be our final report
 
 **Raw Data**
-- [Customs and other import duties (% of tax revenue)]([https://github.com/ecn310/course-project-tariffs/blob/main/Data%20files/WITS-Country-Timeseries-Data.csv](https://github.com/ecn310/course-project-tariffs/blob/main/Data%20files/excelfile1.xlsx))
+- [Customs and other import duties (% of tax revenue)](https://github.com/ecn310/course-project-tariffs/blob/main/Data%20files/excelfile1.xlsx)
 - [Exports of goods and services (% of GDP)](https://github.com/ecn310/course-project-tariffs/blob/main/Data%20files/excelfile2.xlsx)
 - [GDP (constant 2010 US$)](https://github.com/ecn310/course-project-tariffs/blob/main/Data%20files/excelfile3.xlsx)
 - [Imports of goods and services (% of GDP)](https://github.com/ecn310/course-project-tariffs/blob/main/Data%20files/excelfile4.xlsx)
