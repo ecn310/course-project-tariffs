@@ -111,14 +111,13 @@ drop IndicatorName
 reshape wide value, i(year CountryName) j(IndicatorID)
 
 *renaming value variables
-rename value1 Australia
-rename value2 France
-rename value3 Israel
-rename value4 Korea, Rep.
-rename value5 Norway
-rename value6 Romania
-rename value7 Switzerland
-rename value8 USA
+rename value1 TariffPTaxRev
+rename value2 ExportPGDP
+rename value3 RealGDP
+rename value4 ImportPGDP
+rename value5 ImportValue
+rename value6 DomesticTaxRev
+rename value7 InternationalTaxRev
 
 describe
 browse
