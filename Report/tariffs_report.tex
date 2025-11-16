@@ -87,7 +87,56 @@ Make subsections if your data comes from more than one source and this section b
 \section{Results}
 \label{sec:result}
 
-Explain what analyses you did, provide evidence (like in the descriptive stats exercise, but refined and clear) and then explain what your results mean.
+\begin{table}[htbp]
+\centering
+\caption{Summary Statistics: Import-to-GDP Ratio by Country}
+\label{tab:import_gdp_summary}
+\begin{tabular}{lrrrrrr}
+Country & Obs & Mean & Std. Dev. & Min & Max \\
+United States & 20 & 14.11 & 2.13 & 9.91 & 16.30 \\
+France & 20 & 31.01 & 6.08 & 17.92 & 37.17 \\
+Australia & 20 & 18.59 & 5.06 & 8.92 & 26.54 \\
+Switzerland & 20 & 47.84 & 13.22 & 24.34 & 65.41 \\
+Norway & 20 & 30.50 & 7.35 & 15.71 & 39.62 \\
+Romania & 20 & 38.93 & 12.17 & 14.99 & 52.05 \\
+Korea, Rep. & 20 & 36.22 & 8.90 & 20.30 & 50.61 \\
+Israel & 20 & 29.49 & 3.66 & 23.17 & 35.87 \\
+\end{tabular}
+\begin{tablenotes}
+\small
+\item \textit{Note:} Import-to-GDP ratio expressed as percentage. Data covers period 2001-2020.
+\end{tablenotes}
+\end{table}
+
+
+\begin{document}
+
+\begin{figure}[h]
+    \centering
+    \begin{subfigure}{\textwidth}
+        \includegraphics[width=\textwidth]{Overleaf/scatterplot_high_importgpdratio.pdf}
+        \caption{Tariffs vs Domestic Taxes in High Import-to-GDP Ratio Developed Countries}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}{\textwidth}
+        \includegraphics[width=\textwidth]{Overleaf/scatterplot_high_zoom_importgdpratio.pdf}
+        \caption{Tariffs vs Domestic Taxes in High Import-to-GDP Ratio Countries (Zoomed View)}
+    \end{subfigure}
+    \label{fig:high_import_comparison}
+    \vspace{0.2cm}
+    \small
+    \textit{Note:} Figure (1) shows the full data range, while Figure (2) provides a zoomed view of the lower range.
+\end{figure}
+\begin{figure}[h]
+    \centering
+    \begin{subfigure}{\textwidth}
+        \includegraphics[width=\textwidth]{Overleaf/scatterplot_low_importgpdratio.pdf}
+        \caption{Tariffs vs Domestic Taxes in Low Import-to-GDP Ratio Developed Countries}
+    \end{subfigure}
+\end{figure}
+\end{document}
+Explain what analyses you did, 
+provide evidence (like in the descriptive stats exercise, but refined and clear) and then explain what your results mean.
 
 
 

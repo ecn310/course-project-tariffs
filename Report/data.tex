@@ -35,7 +35,7 @@ bookmarksopen=true,hyperfootnotes=false]{hyperref}
 
 \vskip.3in
 
-\section {Question}  \label{sec:question}
+\section {Research Question}\label{sec:question}
 
 
 
@@ -57,76 +57,58 @@ bookmarksopen=true,hyperfootnotes=false]{hyperref}
 \section{Data Acquisition}
 \label{sec:theory}
 
-    The Country Timeseries datasets were downloaded as excel files from the WITS website. The Trade Summary interface available on the database was accessed by clicking “View All” for “Trade Summary”. Upon loading, the Trade Indicators (variables listed above) were accessed by scrolling to the end of the webpage and clicking “more” to view “Development Indicators”. The indicators selected were Exports of goods and services (\% of GDP), Imports of goods and services (\% of GDP), GDP (current USD), Taxes on goods and services (current LCU), Taxes on international trade (current LCU), Customs and other import duties (\% of tax revenue), and Imports of Goods and Services (Bop current USD). The “Year Range” selected for each indicator was 2001-2020; the “Country / Region” selected were Australia, France, Israel, Korea, Rep. (South Korea), Norway, Romania, Switzerland, and the United States.
-    
-Note: 
+    The Country Timeseries datasets were downloaded as excel files from the WITS website. The International Trade Indicators interface available on the database was accessed. Upon loading, the Trade Indicators (variables listed above) were accessed individually through the website's integrated "Search For Indicator" search bar. The selected indicators were Exports of goods and services (\% of GDP), Imports of goods and services (\% of GDP), GDP (constant 2010 USD), Taxes on goods and services (current LCU), Taxes on international trade (current LCU), Customs and other import duties (\% of tax revenue) and Imports of Goods and Services (BoP current USD).
+     
 
 \begin{itemize}
 
-\item The indicators were accessed for countries and downloaded as individual excel files for each correspondingly: 65 excel files were combined onto one excel file listing the data from 2001-2020. The excel file was named “WITS-Country-Timeseries-Data” and converted to a csv file.
+\item The international trade indicators were downloaded as individual excel files for each correspondingly: 7 excel files were downloaded and saved listing the complete WITS indicator observations recorded for 193 countries across 1988-2022.
 
-\item A column was added and labeled “Table” to divide each indicator analyzed under 8 tables: Each table contains every country’s data from 2001-2020 for its indicator named as the column.
-
-\item The table named Trade Balance contains the trade balance of each country as a percentage of gross domestic product. The data for this table was not downloaded from the database. [The countries’ trade balance were calculated by subtracting the data of the Imports table listing imports of goods and services as a percentage of gross domestic product from the data of the Exports table listing exports of goods and services as a percentage of gross domestic product: both the Imports and Exports data were downloaded directly from the database and listed as such tables.]
+\item The 7 excel files were each imported into Stata and saved individually as a dta file. All data files were merged using Stata's append command and combined into one dataset.
 
 \end{itemize}
 
 \subsection{WITS Country TimeSeries Data for Australia, Canada, France, Israel, Romania, South Korea, Norway, Switzerland, and the United States from 2001-2020}
 
+ Access Data Through Github- Click "Access Github Data File"
 
- Access Data- Click "Download the CSV" (6 tables are included with 8 rows each)
-
-\href{https://drive.google.com/file/d/1fg4jsdZHCs_XkNZpjxN1PbeDvz19CE5t/view?usp=sharing}
-{Download the CSV} 
-
-
- Access Data Through Github- Click "Access Github Table"
-
-\href{https://github.com/ecn310/course-project-tariffs/blob/main/Data%20files/WITS-Country-Timeseries-Data.csv}
-{Access Github Table}
-
-\begin{itemize}
-   \item Table 1: Exports of Goods and Services as Percent of GDP
-\end{itemize}
-
-\begin{itemize}
-    \item Table 2: Imports of Goods and Services as Percent of GDP
-\end{itemize}
-
-\begin{itemize}
-    \item Table 3: Trade Balance as Percent of GDP
-\end{itemize}
-
-\begin{itemize}
-    \item Table 4: GDP in current USD
-\end{itemize}
-
-\begin{itemize}
-    \item Table 5: Consumption Taxes in current LCU
-\end{itemize}
-
-\begin{itemize}
-    \item Table 6: International Taxes in current LCU
-\end{itemize}
+\href{https://github.com/ecn310/course-project-tariffs/blob/main/Data%20files/TariffsTimeseriesDataFile.dta}
+{Access Github Data File}
 
 \section{Data Manipulation}
 \label{sec:data}
+    
+\begin{itemize}
 
-    The next steps will be to analyze each nation’s consumption tax revenue as a percentage of GDP over 2001-2020 (comparing the consumption tax revenue datasets from each country) to link its relationship with GDP as a rate of consumption. Moving forward, correlation regarding international tax revenue from developed countries will be evaluated and their rate of import duties will be compared with each's value of import index.
+\item Removing the years not included in 2001-2020: The variables "C, D, E, F, G, H, I, J, K, L, M, N, O, AJ, AK" were removed using Stata's drop command.
+
+\item Removing the additional countries included: The "CountryName" observations were manipulated to only keep the countries of "Australia, France, Israel, Korea, Rep., Norway, Romania, Switzerland, and the United States" using Stata's keep if command.
+
+\item Renaming letter variables: The variables "P, Q, R, S, T, U, V, W, X, Y, Z, AA, AB, AC, AD, AE, AF, AG, AH, AI" were manipulated to be labeled as "yr01, yr02, yr03, yr04, yr05, yr06, yr07, yr08, yr09, yr010, yr 011, yr012, yr013, yr014, yr015, yr016, yr017, yr018, yr019, yr020" using Stata's rename command.
+
+\item Transforming "year" into a singular variable observing the years 2001-2020: The variables observing years were reshaped "long yr0" and "yr0" was renamed "value" before using Stata's replace command to replace "year" values with "year + 200".
+
+\item Reshaping individual countries as variables: The variable "CountryName" was encoded using Stata's encode and generate command to generate a variable labeled "CountryID". The "CountryName" variable was dropped and Stata's reshape wide command was used to reshape "year" and "IndicatorName" as i and "CountryID" as j.
+
+\item Renaming value variables: The variables "value1, value2, value3, value4, value5, value6, value7, value8" were manipulated to be labeled as "Australia, France, Israel, Korea, Rep., Norway, Romania, Switzerland, USA".
+
+\end{itemize}
 
 \section{Key Variables}
 \label{sec:result}
 
     Variable Type: Ratio-Scale (Continous Variables)
+    
+    Summary Stats: Scatter-Plot and Histogram
+    
 \begin{itemize}
     \item Exports of goods and services (\% of GDP)
     \item Imports of goods and services (\% of GDP)
     \item GDP (Gross Domestic Product in current LCU)
-    \item Trade Balance (\% of GDP)
     \item Consumption Tax Rate (in current LCU)
     \item International Tax Rate (in current LCU)
     \item Import Duties (\% of Tax Revenue)
-    \item Import Values (in current US$)
+    \item Imports of goods and services (BoP, in current USD)
 \end{itemize}
 
 
