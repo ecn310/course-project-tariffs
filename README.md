@@ -10,6 +10,7 @@ This MDF is used as a place to store and keep track of important information. In
 - [Documentation Plan](https://github.com/ecn310/course-project-tariffs/issues/13): tasks related to documentation
 - [Prelimineary results presentation](https://github.com/ecn310/course-project-tariffs/issues/14)
 - [TariffsTimeseries Data Output Do Files](https://github.com/ecn310/course-project-tariffs/issues/16)
+- [Full project presentation](https://github.com/ecn310/course-project-tariffs/issues/17)
 
 **General Project Files**
 - This is where our [Team Contract](https://github.com/ecn310/course-project-tariffs/blob/main/team_contract.md) is.
