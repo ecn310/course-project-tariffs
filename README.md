@@ -9,6 +9,7 @@ This MDF is used as a place to store and keep track of important information. In
 - [Hypothesis Formulation log](https://github.com/ecn310/course-project-tariffs/issues/10): tasks related to our hypothesis
 - [Documentation Plan](https://github.com/ecn310/course-project-tariffs/issues/13): tasks related to documentation
 - [Prelimineary results presentation](https://github.com/ecn310/course-project-tariffs/issues/14)
+- [TariffsTimeseries Data Output Do Files](https://github.com/ecn310/course-project-tariffs/issues/16)
 
 **General Project Files**
 - This is where our [Team Contract](https://github.com/ecn310/course-project-tariffs/blob/main/team_contract.md) is.
@@ -32,4 +33,5 @@ This MDF is used as a place to store and keep track of important information. In
 - [Taxes on international trade (current LCU)](https://github.com/ecn310/course-project-tariffs/blob/main/Data%20files/InternationalTaxRev.xlsx)
 
 **Do Files**
-- [TariffsTimeseries](https://github.com/ecn310/course-project-tariffs/blob/main/Do%20files/Tarrifs%20Timeseries.do): do file to import the excels into Stata, merge them and save it as an dta file and explore the data.
+- [Merging the raw data do file](https://github.com/ecn310/course-project-tariffs/blob/main/Do%20files/Tarrifs%20Timeseries.do): do file to import the excels into Stata, merge them and save it as an dta file and explore the data.
+- [Ccatter plot do file](https://github.com/ecn310/course-project-tariffs/blob/main/Do%20files/scatterplotdofile.do)
