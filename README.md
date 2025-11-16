@@ -3,23 +3,33 @@
 This MDF is used as a place to store and keep track of important information. In particular, this page provides links to where everything is kept.
 
 **Issues/Discussions that keep track of our work**
-- [Daily log](https://github.com/ecn310/course-project-tariffs/issues/2)
-- [Paper summaries log](https://github.com/ecn310/course-project-tariffs/issues/5)
-- [Data acquisition task](https://github.com/ecn310/course-project-tariffs/issues/7)
-- [Hypothesis Formulation log](https://github.com/ecn310/course-project-tariffs/issues/10)
-- [Documentation Plan](https://github.com/ecn310/course-project-tariffs/issues/13)
+- [Daily log](https://github.com/ecn310/course-project-tariffs/issues/2): used to track activity
+- [Paper summaries log](https://github.com/ecn310/course-project-tariffs/issues/5): tasks related to reading research articles and writing literature review
+- [Data related task](https://github.com/ecn310/course-project-tariffs/issues/7): tasks related to accessing and working with data
+- [Hypothesis Formulation log](https://github.com/ecn310/course-project-tariffs/issues/10): tasks related to our hypothesis
+- [Documentation Plan](https://github.com/ecn310/course-project-tariffs/issues/13): tasks related to documentation
+- [Prelimineary results presentation](https://github.com/ecn310/course-project-tariffs/issues/14)
 
 **General Project Files**
-- [Team Contract](https://github.com/ecn310/course-project-tariffs/blob/main/team_contract.md) 
+- This is where our [Team Contract](https://github.com/ecn310/course-project-tariffs/blob/main/team_contract.md) is.
 
 **Prep Work for Research Project**
-- [Research Hypothesis Workshop](https://github.com/ecn310/course-project-tariffs/discussions/11)
-- [Literature Review Assignment](https://docs.google.com/document/d/1MNSkc9cLULqxWNYJ6wF_V2wmZJxr7En_rVoZMV69O14/edit?tab=t.0)
-- [Overleaf](https://www.overleaf.com/project/68dc0617b158627a3d95b307)
+- [Research Hypothesis Workshop](https://github.com/ecn310/course-project-tariffs/discussions/11): where our reasearch hypothesis is.
+- [Literature Review Assignment](https://docs.google.com/document/d/1MNSkc9cLULqxWNYJ6wF_V2wmZJxr7En_rVoZMV69O14/edit?tab=t.0): where our paper summaries are.
+
+**Report**
+- [data.tex](https://github.com/ecn310/course-project-tariffs/blob/main/Overleaf/data.tex)
+- [project template.tex](https://github.com/ecn310/course-project-tariffs/blob/main/Overleaf/project_template.tex)
+- [tariffs report](https://github.com/ecn310/course-project-tariffs/blob/main/Overleaf/tariffs_report.tex): This is going to be our final report
 
 **Raw Data**
-- [WITS data in a cvs format](https://github.com/ecn310/course-project-tariffs/blob/main/Data%20files/WITS-Country-Timeseries-Data.csv)
-- [TariffsTimeseries](https://github.com/ecn310/course-project-tariffs/blob/main/Data%20files/TariffsTimeseries.dta)
+- [Customs and other import duties (% of tax revenue)](https://github.com/ecn310/course-project-tariffs/blob/main/Data%20files/TariffPTaxRev.xlsx)
+- [Exports of goods and services (% of GDP)](https://github.com/ecn310/course-project-tariffs/blob/main/Data%20files/ExportPGDP.xlsx)
+- [GDP (constant 2010 US$)](https://github.com/ecn310/course-project-tariffs/blob/main/Data%20files/RealGDP.xlsx)
+- [Imports of goods and services (% of GDP)](https://github.com/ecn310/course-project-tariffs/blob/main/Data%20files/ImportPGDP.xlsx)
+- [Imports of goods and services (BoP, current US$)](https://github.com/ecn310/course-project-tariffs/blob/main/Data%20files/ImportValue.xlsx)
+- [Taxes on goods and services (current LCU)](https://github.com/ecn310/course-project-tariffs/blob/main/Data%20files/DomesticTaxRev.xlsx)
+- [Taxes on international trade (current LCU)](https://github.com/ecn310/course-project-tariffs/blob/main/Data%20files/InternationalTaxRev.xlsx)
 
 **Do Files**
-- [TariffsTimeseries](https://github.com/ecn310/course-project-tariffs/blob/main/Do%20files/Tarrifs%20Timeseries.do)
+- [TariffsTimeseries](https://github.com/ecn310/course-project-tariffs/blob/main/Do%20files/Tarrifs%20Timeseries.do): do file to import the excels into Stata, merge them and save it as an dta file and explore the data.
