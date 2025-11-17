@@ -74,65 +74,65 @@ Optional--may include in intro if it's short.
 \section{Data}
 \label{sec:data}
 
-Describe your data. Where you got it from, how it was generated, what variables you'll use, any major steps you had to take (like merging two data sources together).
+Consists of Firm-level data from \href{https://wits.worldbank.org/country-indicator.aspx?lang=en}{WITS}
+(World Integrated Trade Solution)} examined from public reports published by the WITS' TRAINS Tariff Measures and Preference Beneficiaries, UNCTAD, UN Comtrade and the WTO IDB. International Trade Indicators from the WITS were selected to focus on eight Developed countries with relatively high GDP per Capita from 2001-2020: Australia, France, Israel, Romania, South Korea, Norway, Switzerland, and the United States, for a total of one hundred sixty observations.
 
-In a published paper, a lot of this detail will be in a data appendix. For the purposes of this report, you can include it all here unless it's really complicated, in which case you can put the details in your data appendix (this may be the longest section of your report).
+ The International Trade Indicators interface available on the database was accessed. Upon loading, the Trade Indicators (variables listed above) were accessed individually through the website's integrated "Search For Indicator" search bar. The selected indicators were Exports of goods and services (\% of GDP), Imports of goods and services (\% of GDP), GDP (constant 2010 USD), Taxes on goods and services (current LCU), Taxes on international trade (current LCU), Customs and other import duties (\% of tax revenue) and Imports of Goods and Services (BoP current USD). The Country Timeseries datasets were downloaded as excel files by click the gray download button with an arrow pointing downwards in the top right corner of the online table from the WITS website.
 
-At the very least, your data appendix should explain where your processed data, code and documentation is stored; you must reference that appendix from this section so the reader knows where to look at to get more details.
+The international trade indicators were downloaded and stored on Github as individual excel files for each correspondingly: Seven excel files were downloaded and saved listing the complete WITS indicator observations recorded for 193 countries across 1988-2022. The seven excel files were each imported into Stata and saved individually as a dta file. All data files were merged using Stata's append command and combined into one dataset.
 
-\subsection{Insert high-level reference to your first data set}
+Reproducibility Do-File available on Github- Click "Access Github Do-File"
 
-Make subsections if your data comes from more than one source and this section becomes longer than three or so paragraphs. If your data is very straightforward and you only have one data source, you may not need any subsections.
+
+\href{https://github.com/ecn310/course-project-tariffs/blob/main/Do%20files/Tarrifs%20Timeseries.do}
+{Access Github Do-File}
 
 \section{Results}
 \label{sec:result}
-
 \begin{table}[htbp]
 \centering
-\caption{Summary Statistics: Import-to-GDP Ratio by Country}
+\caption{Summary Statistics- Import-to-GDP Ratio by Country}
 \label{tab:import_gdp_summary}
 \begin{tabular}{lrrrrrr}
 Country & Obs & Mean & Std. Dev. & Min & Max \\
-United States & 20 & 14.11 & 2.13 & 9.91 & 16.30 \\
-France & 20 & 31.01 & 6.08 & 17.92 & 37.17 \\
-Australia & 20 & 18.59 & 5.06 & 8.92 & 26.54 \\
 Switzerland & 20 & 47.84 & 13.22 & 24.34 & 65.41 \\
-Norway & 20 & 30.50 & 7.35 & 15.71 & 39.62 \\
 Romania & 20 & 38.93 & 12.17 & 14.99 & 52.05 \\
 Korea, Rep. & 20 & 36.22 & 8.90 & 20.30 & 50.61 \\
+France & 20 & 31.01 & 6.08 & 17.92 & 37.17 \\
+Norway & 20 & 30.50 & 7.35 & 15.71 & 39.62 \\
 Israel & 20 & 29.49 & 3.66 & 23.17 & 35.87 \\
+Australia & 20 & 18.59 & 5.06 & 8.92 & 26.54 \\
+United States & 20 & 14.11 & 2.13 & 9.91 & 16.30 \\
 \end{tabular}
 \begin{tablenotes}
 \small
 \item \textit{Note:} Import-to-GDP ratio expressed as percentage. Data covers period 2001-2020.
+
+Table 1 demonstrates the substantial variation in import dependency across the eight countries, which is essential for testing our hypothesis that the relationship between tariffs and domestic taxes differs between high and low import dependency countries.
+Table 1 lists the summary statistics for the variable ImportGDPRatio generated from dividing ImportValue variable observations by RealGDP variable observations, multiplied by 100. Table 1 ranks countries by mean ImportGDPRatio observed: The four countries listed with the highest mean ImportGDPRatio include Switzerland, Romania, South Korea, and France, while the four countries listed with the lowest mean ImportGDPRatio include Norway, Israel, Australia, and the United States.
 \end{tablenotes}
 \end{table}
-
-
 \begin{document}
 
-\begin{figure}[h]
+\begin{{figure}}[h]
     \centering
     \begin{subfigure}{\textwidth}
-        \includegraphics[width=\textwidth]{Overleaf/scatterplot_high_importgpdratio.pdf}
+        \includegraphics[width=0.7\textwidth]{Report/scatterplot_high_importgpdratio.pdf}
         \caption{Tariffs vs Domestic Taxes in High Import-to-GDP Ratio Developed Countries}
+Figure \ref{fig:high_import_scatter} includes a scatterplot that examines the variables DomesticTaxP and TariffPTaxRev: WITS international trade indicator data observing the total revenue from domestic taxes as a percent of tax revenue and revenue from tariffs as a percent of total tax revenue. The scatterplot shows a cluster exhibiting a strong negative relationship between the two variables examined. A cluster included the twenty evaluations for the country of South Korea which observed very high Domestic Tax percent very high in comparison to three countries with similar High Import-to-GDP Ratio. The specific cluster listed various Domestic Tax percent observations of over sixty percent and some Tariff Revenue percent observations of over six percent.
     \end{subfigure}
     \hfill
     \begin{subfigure}{\textwidth}
-        \includegraphics[width=\textwidth]{Overleaf/scatterplot_high_zoom_importgdpratio.pdf}
+        \includegraphics[width=0.7\textwidth]{Report/scatterplot_high_zoom_importgdpratio.pdf}
         \caption{Tariffs vs Domestic Taxes in High Import-to-GDP Ratio Countries (Zoomed View)}
+Figure \ref{fig:high_zoom_import} includes a scatterplot that examines the variables DomesticTaxP and TariffPTaxRev for the three countries with High Import-to-GDP Ratio previously clustered in Figure 1: Switzerland, Romania, and France. The scatterplot shows the three countries exhibiting a negative relationship between the two variables examined albeit weaker.
     \end{subfigure}
-    \label{fig:high_import_comparison}
-    \vspace{0.2cm}
-    \small
-    \textit{Note:} Figure (1) shows the full data range, while Figure (2) provides a zoomed view of the lower range.
 \end{figure}
 \begin{figure}[h]
     \centering
-    \begin{subfigure}{\textwidth}
-        \includegraphics[width=\textwidth]{Overleaf/scatterplot_low_importgpdratio.pdf}
+        \includegraphics[width=\textwidth]{Report/scatterplot_low_importgpdratio.pdf}
         \caption{Tariffs vs Domestic Taxes in Low Import-to-GDP Ratio Developed Countries}
-    \end{subfigure}
+Figure \ref{fig:low_importgdpratio} includes a scatterplot that examines the variables DomesticTaxP and TariffPTaxRev for four countries with Low Import-to-GDP Ratio: Norway, Israel, Australia, and the United States. The scatterplot shows the four countries exhibiting a weak negative relationship between the two variables examined. In comparison with the four High Import-to-GDP Ratio countries observed, the negative relationship appears to be weaker in Low Import-to-GDP Ratio countries.
 \end{figure}
 \end{document}
 Explain what analyses you did, 
