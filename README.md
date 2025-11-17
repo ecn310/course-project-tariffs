@@ -23,6 +23,7 @@ This MDF is used as a place to store and keep track of important information. In
 - [data.tex](https://github.com/ecn310/course-project-tariffs/blob/main/Overleaf/data.tex)
 - [project template.tex](https://github.com/ecn310/course-project-tariffs/blob/main/Overleaf/project_template.tex)
 - [tariffs report](https://github.com/ecn310/course-project-tariffs/blob/main/Overleaf/tariffs_report.tex): This is going to be our final report
+- [Reproducibility Package](https://github.com/ecn310/course-project-tariffs/blob/main/Report/README.md)
 
 **Raw Data**
 - [Customs and other import duties (% of tax revenue)](https://github.com/ecn310/course-project-tariffs/blob/main/Data%20files/TariffPTaxRev.xlsx)
