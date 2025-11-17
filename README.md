@@ -35,4 +35,4 @@ This MDF is used as a place to store and keep track of important information. In
 
 **Do Files**
 - [Merging the raw data do file](https://github.com/ecn310/course-project-tariffs/blob/main/Do%20files/Tarrifs%20Timeseries.do): do file to import the excels into Stata, merge them and save it as an dta file and explore the data.
-- [Ccatter plot do file](https://github.com/ecn310/course-project-tariffs/blob/main/Do%20files/scatterplotdofile.do)
+- [Scatter plot do file](https://github.com/ecn310/course-project-tariffs/blob/main/Do%20files/scatterplotdofile.do)
