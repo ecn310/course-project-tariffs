@@ -1,5 +1,6 @@
 *Do file to merge our raw data, and explore it
-
+* Install outreg2 
+ssc install outreg2
 *First run this to change directory, where all of the raw data is
 cd "C:\Users\giova\OneDrive - Syracuse University\Documents\GitHub\course-project-tariffs\Data files"
 *run this command to import the first excel data to stata
@@ -121,7 +122,7 @@ rename value7 InternationalTaxRev
 summarize TariffPTaxRev ExportPGDP RealGDP ImportPGDP ImportValue DomesticTaxRev InternationalTaxRev 
 
 * save summary table* 
-outreg2 using "summary_stats.tex" , sum(log) replace tex title ("summary Statistics") label 
+outreg2 using "summary_stats.tex" , sum(log) replace tex title ("summary Statistics") 
 
 describe
 browse
