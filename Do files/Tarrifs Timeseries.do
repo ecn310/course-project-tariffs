@@ -120,6 +120,9 @@ rename value7 InternationalTaxRev
 
 summarize TariffPTaxRev ExportPGDP RealGDP ImportPGDP ImportValue DomesticTaxRev InternationalTaxRev 
 
+* save summary table* 
+outreg2 using "summary_stats.tex" , sum(log) replace tex title ("summary Statistics") label 
+
 describe
 browse
 scatter RealGDP ImportValue 
