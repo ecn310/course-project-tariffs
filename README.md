@@ -24,6 +24,14 @@ This MDF is used as a place to store and keep track of important information. In
 - [project template.tex](https://github.com/ecn310/course-project-tariffs/blob/main/Overleaf/project_template.tex)
 - [tariffs report](https://github.com/ecn310/course-project-tariffs/blob/main/Overleaf/tariffs_report.tex): This is going to be our final report
 - [Reproducibility Package](https://github.com/ecn310/course-project-tariffs/blob/main/Report/README.md)
+- Output folder
+     - [High Import scatter pdf](https://github.com/ecn310/course-project-tariffs/blob/main/Report/Output/high_import_scatter.pdf)
+     - [Low Import Scatter](https://github.com/ecn310/course-project-tariffs/blob/main/Report/Output/low_import_scatter.pdf)
+     - [Scatterplot High Import GDP ratio](https://github.com/ecn310/course-project-tariffs/blob/main/Report/Output/scatterplot_high_importgpdratio.pdf)
+     - [Scatterplot High zoom import GDP ratio](https://github.com/ecn310/course-project-tariffs/blob/main/Report/Output/scatterplot_high_zoom_importgdpratio.pdf)
+     - [Scatterplot low import GDP ratio](https://github.com/ecn310/course-project-tariffs/blob/main/Report/Output/scatterplot_low_importgpdratio.pdf)
+     - [Summary Stats 1](https://github.com/ecn310/course-project-tariffs/blob/main/Report/Output/summary_stats.tex)
+     - [Summary Stats 2](https://github.com/ecn310/course-project-tariffs/blob/main/Report/Output/summary_stats.txt)
 
 **Raw Data**
 - [Customs and other import duties (% of tax revenue)](https://github.com/ecn310/course-project-tariffs/blob/main/Data%20files/TariffPTaxRev.xlsx)
