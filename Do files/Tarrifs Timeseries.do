@@ -3,6 +3,20 @@
 ssc install outreg2
 *First run this to change directory, where all of the raw data is
 cd "C:\Users\giova\OneDrive - Syracuse University\Documents\GitHub\course-project-tariffs\Data files"
+*import ICD-GRD data 
+use "UNUWIDERGRD_2023_Central" , clear 
+*keep the 8 countries
+keep if inlist(country, "Australia" , "France" , "Israel" , "Norway" , "Romania" , "Switzerland" , "United States") | inlist(country, "Korea, Republic of") 
+*keeping years 2001-2020
+keep if year >= 2001 & year <= 2020 
+* keep relevant variables 
+keep country year tax_trade tax_income tax_indirect tax_property tax_gs_general tax_gs_excises tax_other 
+*create domestic & international tax variables 
+gen DomesticTaxGDP = tax_income + tax_indirect
+label variable DomesticTaxGDP "Domestic Tax Revenue (% GDP)"
+gen InternationalTaxGDP = tax_trade
+label variable InternationalTaxGDP "International Tax Revenue (% GDP)" 
+
 *run this command to import the first excel data to stata
 import excel "TariffPTaxRev.xlsx", sheet("Country-Timeseries") firstrow clear
 *to save the first data excel file as a dta
