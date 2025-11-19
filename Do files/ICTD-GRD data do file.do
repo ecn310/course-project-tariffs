@@ -78,6 +78,37 @@ outreg2 using "ImportGDP_by_country.tex", replace tex label
 restore
 
 *Correlations 
+* correlation between tariffs and domestic taxes 
+pwcorr TariffGDP DomesticTaxGDP ImportGDPRatio, sig star(0.05)
+
 * create high/low Import- GDP ratio groups from table 
-*High: Switzerland, Romania, Korea, France 
-*Low: Norway, Israel, Australia, United States 
+*High: Switzerland, Romania, Korea, France (mean > 31%)
+*Low: Norway, Israel, Australia, United States (mean < 31%)
+gen high_import = 0 
+replace high_import = 1 if inlist(CountryName, "Switzerland" , "Romania" , "Korea, Rep" , "France")
+label define import_lbl 0 "Low Import/GDP" 1 "High Import/GDP"
+label values high_import import_lbl
+* high import countries 
+display " "
+display "=========================================="
+display "HIGH IMPORT-GDP COUNTRIES"
+display "(Switzerland, Romania, Korea, France)"
+display "=========================================="
+pwcorr TariffGDP DomesticTaxGDP if high_import == 1, sig star(0.05)
+
+*low import countries 
+display " "
+display "=========================================="
+display "LOW IMPORT-GDP COUNTRIES"
+display "(Norway, Israel, Australia, United States)"
+display "=========================================="
+pwcorr TariffGDP DomesticTaxGDP if high_import == 0, sig star(0.05)
+
+*scatter plots 
+* High Import-GDP countries (Switzerland, Romania, Korea, France)
+scatter TariffGDP DomesticTaxGDP if CountryName == "Switzerland", mcolor(orange) msize(small) || scatter TariffGDP DomesticTaxGDP if CountryName == "Romania", mcolor(blue) msize(small) || scatter TariffGDP DomesticTaxGDP if CountryName == "Korea, Rep.", mcolor(red) msize(small) || scatter TariffGDP DomesticTaxGDP if CountryName == "France", mcolor(purple) msize(small) legend(order(1 "Switzerland" 2 "Romania" 3 "Korea" 4 "France") position(3)) ytitle("Tariff Revenue (% GDP)") xtitle("Domestic Tax Revenue (% GDP)") title("High Import-GDP Countries")
+graph export "fig1_high_import.pdf", replace
+
+* Low Import-GDP countries (Norway, Israel, Australia, United States)
+scatter TariffGDP DomesticTaxGDP if CountryName == "Norway", mcolor(maroon) msize(small) || scatter TariffGDP DomesticTaxGDP if CountryName == "Israel", mcolor(purple) msize(small) || scatter TariffGDP DomesticTaxGDP if CountryName == "Australia", mcolor(green) msize(small) || scatter TariffGDP DomesticTaxGDP if CountryName == "United States", mcolor(navy) msize(small) legend(order(1 "Norway" 2 "Israel" 3 "Australia" 4 "United States") position(3)) ytitle("Tariff Revenue (% GDP)") xtitle("Domestic Tax Revenue (% GDP)") title("Low Import-GDP Countries")
+graph export "fig2_low_import.pdf", replace
