@@ -67,10 +67,17 @@ label variable ImportGDPRatio "Imports(% GDP)"
 gen TradeBalance = ImportPGDP - ExportPGDP
 label variable TradeBalance "Trade Balance (% GDP)"
 
-ssc install estout 
 *Summary table for importGDP ratio variable by country
-estpost tabstat ImportGDPRatio, by(CountryName) statistics(mean sd min max) columns (statistics)
+preserve
+collapse (mean) mean=ImportGDPRatio (sd) sd=ImportGDPRatio (min) min=ImportGDPRatio (max) max=ImportGDPRatio, by(CountryName)
+gsort -mean
+format mean sd min max %9.2f
+list
 
-*export to latex 
-esttab using "Import_GDP_by_Country.tex" , cells("mean sd min max") noobs title("Import-to-GDP Ratio by Country") booktabs replace 
+outreg2 using "ImportGDP_by_country.tex", replace tex label
+restore
 
+*Correlations 
+* create high/low Import- GDP ratio groups from table 
+*High: Switzerland, Romania, Korea, France 
+*Low: Norway, Israel, Australia, United States 
