@@ -33,7 +33,15 @@ This MDF is used as a place to store and keep track of important information. In
 - [Imports of goods and services (BoP, current US$)](https://github.com/ecn310/course-project-tariffs/blob/main/Data%20files/ImportValue.xlsx)
 - [Taxes on goods and services (current LCU)](https://github.com/ecn310/course-project-tariffs/blob/main/Data%20files/DomesticTaxRev.xlsx)
 - [Taxes on international trade (current LCU)](https://github.com/ecn310/course-project-tariffs/blob/main/Data%20files/InternationalTaxRev.xlsx)
+- [ICTD-GRD](https://github.com/ecn310/course-project-tariffs/blob/main/Data%20files/UNUWIDERGRD_2023_Central.dta)
+
+**Outputs**
+- [Import_GDP_by_Country.tex](https://github.com/ecn310/course-project-tariffs/blob/main/Outputs/Import_GDP_by_Country.tex)
+- [Summary_Stats_base.tex](https://github.com/ecn310/course-project-tariffs/blob/main/Outputs/Summary_Stats_base.tex)
+- [Summary_Stats_base.txt](https://github.com/ecn310/course-project-tariffs/blob/main/Outputs/Summary_Stats_base.txt)
+- [fig1_high_import.pdf](https://github.com/ecn310/course-project-tariffs/blob/main/Outputs/fig1_high_import.pdf)
+- [fig2_low_import.pdf](https://github.com/ecn310/course-project-tariffs/blob/main/Outputs/fig2_low_import.pdf)
 
 **Do Files**
 - [Merging the raw data do file](https://github.com/ecn310/course-project-tariffs/blob/main/Do%20files/Tarrifs%20Timeseries.do): do file to import the excels into Stata, merge them and save it as an dta file and explore the data.
-- [Scatter plot do file](https://github.com/ecn310/course-project-tariffs/blob/main/Do%20files/scatterplotdofile.do)
+- [ICTD-GRD data do file](https://github.com/ecn310/course-project-tariffs/blob/main/Do%20files/ICTD-GRD%20data%20do%20file.do): merges WITS & ictd data and analysis 
