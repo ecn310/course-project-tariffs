@@ -19,8 +19,11 @@ label variable InternationalTaxGDP "International Tax Revenue (% GDP)"
 *tariff variable 
 gen TariffGDP = tax_trade
 label variable TariffGDP "Tariff Revenue(% of GDP)"
+
 *make sure names in WITS match 
 rename country CountryName 
+*fix Korea Overlapping issue 
+replace CountryName = "Korea, Rep." if CountryName == "Korea, Republic of" | CountryName == "Korea"
 *keep needed variables 
 keep CountryName year DomesticTaxGDP InternationalTaxGDP TariffGDP
 *save revamped data 
@@ -37,8 +40,7 @@ merge 1:1 CountryName year using "UNUWIDERGRD_2023_Central_new.dta"
 tab _merge
 list CountryName year _merge if _merge != 3 
 
-*fix Korea Overlapping issue 
-replace CountryName = "Korea, Rep." if CountryName == "Korea, Republic of"
+
 
 *keep successful merged observations 
 keep if _merge == 3
