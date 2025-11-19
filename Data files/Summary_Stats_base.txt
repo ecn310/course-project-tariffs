@@ -1,0 +1,13 @@
+Summary Statistics						
+		(1)	(2)	(3)	(4)	(5)
+VARIABLES	LABELS	N	mean	sd	min	max
+						
+year	year	140	2,010	5.787	2,001	2,020
+ExportPGDP	Exports (% GDP)	140	32.60	15.25	9.036	72.07
+RealGDP	Real GDP	140	3.121e+12	5.717e+12	1.079e+11	1.993e+13
+ImportPGDP	Imports (% GDP)	140	31.32	11.88	13.15	61.63
+ImportValue	Import Value	140	5.633e+11	8.165e+11	1.616e+10	3.121e+12
+DomesticTaxGDP	Domestic Tax Revenue (% GDP)	140	17.23	6.085	7.761	28.36
+InternationalTaxGDP	International Tax Revenue (% GDP)	140	0.234	0.243	-0.0130	0.979
+TariffGDP	Tariff Revenue(% of GDP)	140	0.234	0.243	-0.0130	0.979
+						
