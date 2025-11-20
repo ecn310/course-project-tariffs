@@ -9,8 +9,7 @@
    This do file imports all the excel files and saves them as dta files. Once we have transformed all of them, then we merged all data files using Stata's append command and combined into one dataset.
    After we have a combined databse, we drops all the years not included in 2001-2020 interval; after since we are only interested in a few countries, we use a command to drop all the other countries that are not United States, Australia, France, Israel, Korea, Rep., Norway, Romania, Switzerland.
 
-
-   Since our data is not in the rightformat we need it to be in, we use some Stata commands to reshape the database.
+   Since our data is not in the rightformat we need it to be in, we use some Stata commands to reshape the database. We change the variable names for the years from letters to something more descriptibe and easier. After, we transfor year into a singular variable observing the years 2001-2020. Then, we reshape the individual indicators as variables and rename them. Save the changes.
       
 4. Open this [do file](https://github.com/ecn310/course-project-tariffs/blob/main/Do%20files/ICTD-GRD%20data%20do%20file.do) to merge the data that we got from ICTD-GRD
       
