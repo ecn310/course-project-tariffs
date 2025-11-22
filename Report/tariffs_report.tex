@@ -14,6 +14,8 @@
 % load miscellaneous packages
 \usepackage{csquotes}
 \usepackage[american]{babel}
+\usepackage{booktabs}
+\usepackage{threeparttable}
 \usepackage[usenames,dvipsnames]{color}
 \usepackage{graphicx,amsbsy,amssymb, amsmath, amsthm, MnSymbol,bbding,times, verbatim,bm,pifont,pdfsync,setspace,natbib}
 
@@ -75,7 +77,7 @@ Optional--may include in intro if it's short.
 \label{sec:data}
 
 Consists of Firm-level data from \href{https://wits.worldbank.org/country-indicator.aspx?lang=en}{WITS}
-(World Integrated Trade Solution)} examined from public reports published by the WITS' TRAINS Tariff Measures and Preference Beneficiaries, UNCTAD, UN Comtrade and the WTO IDB. International Trade Indicators from the WITS were selected to focus on eight Developed countries with relatively high GDP per Capita from 2001-2020: Australia, France, Israel, Romania, South Korea, Norway, Switzerland, and the United States, for a total of one hundred sixty observations.
+(World Integrated Trade Solution) examined from public reports published by the WITS' TRAINS Tariff Measures and Preference Beneficiaries, UNCTAD, UN Comtrade and the WTO IDB. International Trade Indicators from the WITS were selected to focus on eight Developed countries with relatively high GDP per Capita from 2001-2020: Australia, France, Israel, Romania, South Korea, Norway, Switzerland, and the United States, for a total of one hundred sixty observations.
 
  The International Trade Indicators interface available on the database was accessed. Upon loading, the Trade Indicators (variables listed above) were accessed individually through the website's integrated "Search For Indicator" search bar. The selected indicators were Exports of goods and services (\% of GDP), Imports of goods and services (\% of GDP), GDP (constant 2010 USD), Taxes on goods and services (current LCU), Taxes on international trade (current LCU), Customs and other import duties (\% of tax revenue) and Imports of Goods and Services (BoP current USD). The Country Timeseries datasets were downloaded as excel files by click the gray download button with an arrow pointing downwards in the top right corner of the online table from the WITS website.
 
@@ -112,10 +114,12 @@ Import Value (Billions USD) & 160 & 552 & 766 & 16.2 & 3,120 \\
 \item \textit{Note:} Sample consists of 8 developed countries over 20 years (2001-2020): Australia, France, Israel, Korea, Norway, Romania, Switzerland, and the United States. Tax variables from ICTD Government Revenue Dataset; trade and GDP variables from World Integrated Trade Solution (WITS).
 \end{tablenotes}
 \end{table}
+
 \begin{table}[h]
 \centering
 \caption{Import-to-GDP Ratio by Country (2001-2020)}
 \label{tab:import_country}
+\begin{threeparttable}
 \begin{tabular}{lrrrr}
 \toprule
 \textbf{Country} & \textbf{Mean} & \textbf{Std. Dev.} & \textbf{Min} & \textbf{Max} \\
@@ -135,11 +139,12 @@ United States & 14.11 & 2.13 & 9.91 & 16.30 \\
 \item \textit{Note:} Import-to-GDP ratio calculated as (Import Value / Real GDP) × 100. 
 Countries sorted by mean import-to-GDP ratio (highest to lowest).  Import Value and Real GDP data from the World Integrated Trade Solution 
 \end{tablenotes}
+\end{threeparttable}
 \end{table}
-Table 1 lists the summary statistics for the variable ImportGDPRatio generated from dividing ImportValue variable observations by RealGDP variable observations, multiplied by 100. The command "sum ImportGDPRatio if CountryName" was executed for the eight developed countries analyzed. Table 1 ranks countries by mean ImportGDPRatio observed: The four countries listed with the highest mean ImportGDPRatio include Switzerland, Romania, South Korea, and France, while the four countries listed with the lowest mean ImportGDPRatio include Norway, Israel, Australia, and the United States.
-\end{tablenotes}
-\end{table}
-\begin{document}
+
+Table \ref{tab:import_country} lists the summary statistics for the variable ImportGDPRatio generated from dividing ImportValue variable observations by RealGDP variable observations, multiplied by 100. The command "sum ImportGDPRatio if CountryName" was executed for the eight developed countries analyzed. Table 1 ranks countries by mean ImportGDPRatio observed: The four countries listed with the highest mean ImportGDPRatio include Switzerland, Romania, South Korea, and France, while the four countries listed with the lowest mean ImportGDPRatio include Norway, Israel, Australia, and the United States.
+
+
 \begin{table}[h]
 \centering
 \caption{Pearson Correlations: Tariff Revenue and Domestic Tax Revenue by Import Intensity}
