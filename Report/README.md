@@ -1,5 +1,5 @@
 ## Tariffs Reproducibility Package
-### Steps Taken to Produce TAriffs Results
+### Steps Taken to Produce Tariffs Results
 
 #### Accesing the Raw data
 1. Go on the [WITS website](https://wits.worldbank.org/CountryProfile/en/Country/USA/Year/2023#section3): After accesing The International Trade Indicators interface all the indicators can be viewed individually through the website's integrated "Search For Indicator" search bar. The Indicators selected are  Customs and other import duties (% of tax revenue),Exports as a percent of GDP, Gross Domestic Product at constant 2010 prices,  Imports as a percent of GDP,  Imports of Goods and Services (BoP current USD), Taxes on goods and services (current LCU), and Taxes on international trade (current LCU). The Country Timeseries datasets were downloaded as excel files by clicking the gray download button with an arrow pointing downwards in the top right corner of the online table from the WITS website. The excel files listing the complete WITS indicator observations are recorded for 193 countries across 1988-2022.
@@ -10,6 +10,16 @@
       
 5. Open this [do file](https://github.com/ecn310/course-project-tariffs/blob/main/Do%20files/ICTD-GRD%20data%20do%20file.do) to merge the data that we got from ICTD-GRD. First, it standarizes country names to ensure consistency with WITS and saves the cleaned data set. he code then loads a prepared tariff time series dataset, removes overlapping variables, and merges it with the cleaned GRD tax data by country and year, retaining only successfully matched observations. After saving the merged dataset, the code performs descriptive analysis by labeling variables, generating [summary statistics](https://github.com/ecn310/course-project-tariffs/blob/main/Outputs/Summary_Stats_base.tex), and exporting them to LaTeX. Additional variables such as the [import-to-GDP ratio](https://github.com/ecn310/course-project-tariffs/blob/main/Outputs/Import_GDP_by_Country.tex) and trade balance are created, and country-level summary tables for import dependence are produced. The code also computes correlations between tariff revenue and domestic tax revenue overall and within high- and low-import/GDP country groups. Finally, it generates scatter plots visualizing these relationships for both groups and exports the figures as PDF files ([here](https://github.com/ecn310/course-project-tariffs/blob/main/Outputs/fig1_high_import.pdf) and [here](https://github.com/ecn310/course-project-tariffs/blob/main/Outputs/fig2_low_import.pdf)).
 
+**Link to all the raw data excel files:**
+- [Customs and other import duties (% of tax revenue)](https://github.com/ecn310/course-project-tariffs/blob/main/Data%20files/TariffPTaxRev.xlsx)
+- [Exports of goods and services (% of GDP)](https://github.com/ecn310/course-project-tariffs/blob/main/Data%20files/ExportPGDP.xlsx)
+- [GDP (constant 2010 US$)](https://github.com/ecn310/course-project-tariffs/blob/main/Data%20files/RealGDP.xlsx)
+- [Imports of goods and services (% of GDP)](https://github.com/ecn310/course-project-tariffs/blob/main/Data%20files/ImportPGDP.xlsx)
+- [Imports of goods and services (BoP, current US$)](https://github.com/ecn310/course-project-tariffs/blob/main/Data%20files/ImportValue.xlsx)
+- [Taxes on goods and services (current LCU)](https://github.com/ecn310/course-project-tariffs/blob/main/Data%20files/DomesticTaxRev.xlsx)
+- [Taxes on international trade (current LCU)](https://github.com/ecn310/course-project-tariffs/blob/main/Data%20files/InternationalTaxRev.xlsx)
+- [ICTD-GRD](https://github.com/ecn310/course-project-tariffs/blob/main/Data%20files/UNUWIDERGRD_2023_Central.dta)
+  
 6. Codebook of all the variables:
 --------------------------------------------------------------------------------
 ExportPGDP                                                       Exports (% GDP)
