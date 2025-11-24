@@ -1,14 +1,14 @@
 *Do file to merge our  data, and analysis
-* Run after running TariffTimeseries.do 
+* Run after running TariffTimeseries.do and has created TariffTimeseries_new.dta
 *First run this to change directory, where all of the raw data is
 cd "C:\Users\giova\OneDrive - Syracuse University\Documents\GitHub\course-project-tariffs\Data files"
 *import ICD-GRD data 
 use "UNUWIDERGRD_2023_Central" , clear 
-*keep the 8 countries
-keep if inlist(country, "Australia" , "France" , "Israel" , "Norway" , "Romania" , "Switzerland" , "United States") | inlist(country, "Korea, Republic of") 
+*keep the 12 countries
+keep if country == "Australia" | country == "France" | country == "Israel" | country == "Norway" | country == "Romania" | country == "Switzerland" | country == "United States" | country == "Ireland" | country == "Canada" | country == "New Zealand" | country == "Belgium" | country == "Korea, Republic of"
 *keeping years 2001-2020
 keep if year >= 2001 & year <= 2020 
-* keep relevant variables 
+*keep relevant variables 
 keep country year tax_trade tax_income tax_indirect tax_property tax_gs_general tax_gs_excises tax_other 
 *create domestic & international tax variables 
 gen DomesticTaxGDP = tax_income + tax_indirect
