@@ -81,28 +81,43 @@ restore
 * correlation between tariffs and domestic taxes 
 pwcorr TariffGDP DomesticTaxGDP ImportGDPRatio, sig star(0.05)
 
-* create high/low Import- GDP ratio groups from table 
-*High: Switzerland, Romania, Korea, France (mean > 31%)
-*Low: Norway, Israel, Australia, United States (mean < 31%)
-gen high_import = 0 
-replace high_import = 1 if inlist(CountryName, "Switzerland" , "Romania" , "Korea, Rep" , "France")
-label define import_lbl 0 "Low Import/GDP" 1 "High Import/GDP"
-label values high_import import_lbl
-* high import countries 
-display " "
-display "=========================================="
-display "HIGH IMPORT-GDP COUNTRIES"
-display "(Switzerland, Romania, Korea, France)"
-display "=========================================="
-pwcorr TariffGDP DomesticTaxGDP if high_import == 1, sig star(0.05)
+* calculate country average import ratios 
+egen country_avg_import = mean(ImportGDPRatio), by(CountryName)
 
-*low import countries 
+*determine cutoff
+*high >40% (Ireland, Belgium, Switzerland)
+*medium >26% (Romania, Korea,Canada, France, Norway, Israel)
+*low <26%(New Zealand, Australia, United States)
+gen import_group = 1 if country_avg_import < 26
+replace import_group = 2 if country_avg_import >= 26 & country_avg_import < 40
+replace import_group = 3 if country_avg_import >= 40
+
+capture label drop group_lbl 
+label define group_lbl 1 "Low Import-GDP" 2 "Medium Import-GDP" 3 "High Import-GDP"
+label values import_group group_lbl 
+
+*Display by group 
 display " "
-display "=========================================="
-display "LOW IMPORT-GDP COUNTRIES"
-display "(Norway, Israel, Australia, United States)"
-display "=========================================="
-pwcorr TariffGDP DomesticTaxGDP if high_import == 0, sig star(0.05)
+display "======="
+display "High Import-GDP Countries"
+display "(Ireland, Belgium, Switzerland)"
+display "======="
+pwcorr TariffGDP DomesticTaxGDP if inlist(CountryName, "Ireland", "Belgium", "Switzerland"), sig star(0.05)
+
+display " "
+display "======="
+display "Medium Import-GDP Countries"
+display "(Romania, Korea, Rep. , Canada, France, Norway, Israel)"
+display "======= "
+pwcorr TariffGDP DomesticTaxGDP if inlist(CountryName, "Romania", "Korea, Rep.", "Canada", "France", "Norway" , "Israel"), sig star(0.05)
+
+display " "
+display "======="
+display "Low Import-GDP Countries"
+display "(New Zealand, Australia, United States)"
+display "======="
+pwcorr TariffGDP DomesticTaxGDP if inlist(CountryName, "New Zealand", "Australia", "United States"), sig star(0.05)
+
 
 *scatter plots 
 * High Import-GDP countries (Switzerland, Romania, Korea, France)
