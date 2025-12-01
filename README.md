@@ -26,7 +26,7 @@ This MDF is used as a place to store and keep track of important information. In
 - [tariffs report](https://github.com/ecn310/course-project-tariffs/blob/main/Overleaf/tariffs_report.tex): This is going to be our final report
 - [Reproducibility Package](https://github.com/ecn310/course-project-tariffs/blob/main/Report/README.md)
 
-[**Data Files Folder**](https://github.com/ecn310/course-project-tariffs/tree/main/Data%20files”
+[**Data Files Folder**](https://github.com/ecn310/course-project-tariffs/tree/main/Data%20files)
 
 **Outputs**
 - [Import_GDP_by_Country.tex](https://github.com/ecn310/course-project-tariffs/blob/main/Outputs/Import_GDP_by_Country.tex)
@@ -34,6 +34,9 @@ This MDF is used as a place to store and keep track of important information. In
 - [Summary_Stats_base.txt](https://github.com/ecn310/course-project-tariffs/blob/main/Outputs/Summary_Stats_base.txt)
 - [fig1_high_import.pdf](https://github.com/ecn310/course-project-tariffs/blob/main/Outputs/fig1_high_import.pdf)
 - [fig2_low_import.pdf](https://github.com/ecn310/course-project-tariffs/blob/main/Outputs/fig2_low_import.pdf)
+- [high import GDP Countries >40%](https://github.com/ecn310/course-project-tariffs/blob/main/Outputs/high_import_countries.pdf)
+- [low import GDP Countries <26%](https://github.com/ecn310/course-project-tariffs/blob/main/Outputs/low_import_countries.pdf)
+- [medium import GDP Countries 26-40%](https://github.com/ecn310/course-project-tariffs/blob/main/Outputs/medium_import_countries.pdf)
 
 **Do Files**
 - [Merging the raw data do file](https://github.com/ecn310/course-project-tariffs/blob/main/Do%20files/Tarrifs%20Timeseries.do): do file to import the excels into Stata, merge them and save it as an dta file and explore the data.
