@@ -3,6 +3,7 @@
 ssc install outreg2
 *First run this to change directory, where all of the raw data is
 cd "C:\Users\giova\OneDrive - Syracuse University\Documents\GitHub\course-project-tariffs\Data files"  
+
 *run this command to import the first excel data to stata
 import excel "TariffPTaxRev.xlsx", sheet("Country-Timeseries") firstrow clear
 *to save the first data excel file as a dta
@@ -15,35 +16,32 @@ save "TariffsTimeseries2.dta"
 clear
 
 *import excel file 3
-import excel "RealGDP.xlsx", sheet("Country-Timeseries") firstrow clear
+import excel "ImportPGDP.xlsx", sheet("Country-Timeseries") firstrow clear
 *save as dta
 save "TariffsTimeseries3.dta"
 clear
 
 *import excel file 4
-import excel "ImportPGDP.xlsx", sheet("Country-Timeseries") firstrow clear
+import excel "ImportValue.xlsx", sheet("Country-Timeseries") firstrow clear
 *save as dta
 save "TariffsTimeseries4.dta"
 clear
 
 *import excel file 5
-import excel "ImportValue.xlsx", sheet("Country-Timeseries") firstrow clear
+import excel "DomesticTaxRev.xlsx", sheet("Country-Timeseries") firstrow clear
 *save as dta
 save "TariffsTimeseries5.dta"
 clear
 
 *import excel file 6
-import excel "DomesticTaxRev.xlsx", sheet("Country-Timeseries") firstrow clear
+import excel "InternationalTaxRev.xlsx", sheet("Country-Timeseries") firstrow clear
 *save as dta
 save "TariffsTimeseries6.dta"
 clear
-
 *import excel file 7
-import excel "InternationalTaxRev.xlsx", sheet("Country-Timeseries") firstrow clear
-*save as dta
+import excel "GDP(Current USD).xlsx" , sheet("Country-Timeseries") firstrow clear
+*save as dta 
 save "TariffsTimeseries7.dta"
-clear
-
 *we just finished saving the files as dta so now we can begin merging them
 *now we use the one of the dta files we just created
 use "TariffsTimeseries1.dta"
@@ -53,6 +51,7 @@ append using "TariffsTimeseries4.dta"
 append using "TariffsTimeseries5.dta"
 append using "TariffsTimeseries6.dta"
 append using "TariffsTimeseries7.dta"
+
 *we just finished merging all the excel files into the same dta file.
 save "TariffsTimeseries.dta"
 
