@@ -116,7 +116,7 @@ rename value3 ImportPGDP
 rename value4 ImportValue
 rename value5 DomesticTaxRev
 rename value6 InternationalTaxRev
-rename value7 RealGDP
+rename value7 GDPCurrent 
 
 *save new changes (needed for merging)
 save "TariffTimeseries_new.dta", replace 
