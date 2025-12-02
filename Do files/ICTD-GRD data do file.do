@@ -53,15 +53,15 @@ use "TariffTimeSeries_ICTD.dta" , clear
 
 *Label variables 
 label variable ExportPGDP "Exports (% GDP)"
-label variable RealGDP "Real GDP"
+label variable GDPCurrent "GDP (Current USD)"
 label variable ImportPGDP "Imports (% GDP)"
 label variable ImportValue "Import Value"
 *summary statistics of key variables 
-sum TariffGDP DomesticTaxGDP InternationalTaxGDP ImportPGDP ExportPGDP RealGDP ImportValue 
+sum TariffGDP DomesticTaxGDP InternationalTaxGDP ImportPGDP ExportPGDP GDPCurrent ImportValue 
 * export to Latex 
 outreg2 using "Summary_Stats_base.tex" , sum(log) replace tex title("Summary Statistics") label 
 *percentage variables 
-gen ImportGDPRatio = ImportValue/RealGDP *100
+gen ImportGDPRatio = ImportValue/GDPCurrent *100
 label variable ImportGDPRatio "Imports(% GDP)"
 
 gen TradeBalance = ImportPGDP - ExportPGDP
