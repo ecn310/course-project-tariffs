@@ -21,9 +21,9 @@ This MDF is used as a place to store and keep track of important information. In
 - [Literature Review Assignment](https://docs.google.com/document/d/1MNSkc9cLULqxWNYJ6wF_V2wmZJxr7En_rVoZMV69O14/edit?tab=t.0): where our paper summaries are.
 
 **Report**
-- [data.tex](https://github.com/ecn310/course-project-tariffs/blob/main/Overleaf/data.tex)
-- [project template.tex](https://github.com/ecn310/course-project-tariffs/blob/main/Overleaf/project_template.tex)
-- [tariffs report](https://github.com/ecn310/course-project-tariffs/blob/main/Overleaf/tariffs_report.tex): This is going to be our final report
+- [data.tex](https://github.com/ecn310/course-project-tariffs/blob/main/Report/data.tex)
+- [project template.tex](https://github.com/ecn310/course-project-tariffs/blob/main/Report/project_template.tex)
+- [tariffs report](https://github.com/ecn310/course-project-tariffs/blob/main/Report/tariffs_report.tex): This is going to be our final report
 - [Reproducibility Package](https://github.com/ecn310/course-project-tariffs/blob/main/Report/README.md)
 
 [**Data Files Folder**](https://github.com/ecn310/course-project-tariffs/tree/main/Data%20files)
