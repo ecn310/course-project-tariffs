@@ -28,11 +28,13 @@ replace CountryName = "Korea, Rep." if CountryName == "Korea, Republic of" | Cou
 keep CountryName year DomesticTaxGDP InternationalTaxGDP TariffGDP
 *save revamped data 
 save "UNUWIDERGRD_2023_Central_new.dta", replace 
+*summary check 
+summarize DomesticTaxGDP TariffGDP, detail
+tab CountryName
+
 
 *merging
 use "TariffTimeseries_new.dta" , clear
-*drop problematic variables 
-drop InternationalTaxRev DomesticTaxRev TariffPTaxRev 
 
 *merge with ICTD tax data 
 merge 1:1 CountryName year using "UNUWIDERGRD_2023_Central_new.dta"
@@ -50,22 +52,27 @@ save "TariffTimeseries_ICTD.dta" , replace
 
 *ANALYSIS 
 use "TariffTimeSeries_ICTD.dta" , clear 
-
+*Drop the problematic WITS tax variables 
+drop DomesticTaxRev InternationalTaxRev TariffPTaxRev
 *Label variables 
 label variable ExportPGDP "Exports (% GDP)"
 label variable GDPCurrent "GDP (Current USD)"
 label variable ImportPGDP "Imports (% GDP)"
 label variable ImportValue "Import Value"
-*summary statistics of key variables 
-sum TariffGDP DomesticTaxGDP InternationalTaxGDP ImportPGDP ExportPGDP GDPCurrent ImportValue 
-* export to Latex 
-outreg2 using "Summary_Stats_base.tex" , sum(log) replace tex title("Summary Statistics") label 
 *percentage variables 
 gen ImportGDPRatio = ImportValue/GDPCurrent *100
 label variable ImportGDPRatio "Imports(% GDP)"
 
 gen TradeBalance = ImportPGDP - ExportPGDP
 label variable TradeBalance "Trade Balance (% GDP)"
+
+*Save with new variables
+save "TariffsTimeseries_ICTD.dta", replace
+
+*summary statistics of key variables 
+sum TariffGDP DomesticTaxGDP InternationalTaxGDP ImportPGDP ExportPGDP GDPCurrent ImportValue 
+* export to Latex 
+outreg2 using "Summary_Stats_base.tex" , sum(log) replace tex title("Summary Statistics") label 
 
 *Summary table for importGDP ratio variable by country
 preserve
