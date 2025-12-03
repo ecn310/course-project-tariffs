@@ -7,41 +7,42 @@ cd "C:\Users\giova\OneDrive - Syracuse University\Documents\GitHub\course-projec
 *run this command to import the first excel data to stata
 import excel "TariffPTaxRev.xlsx", sheet("Country-Timeseries") firstrow clear
 *to save the first data excel file as a dta
-save "TariffsTimeseries1.dta"
+save "TariffsTimeseries1.dta",replace
 clear
 
 *import excel file 2
 import excel "ExportPGDP.xlsx", sheet("Country-Timeseries") firstrow clear
-save "TariffsTimeseries2.dta"
+save "TariffsTimeseries2.dta",replace
 clear
 
 *import excel file 3
 import excel "ImportPGDP.xlsx", sheet("Country-Timeseries") firstrow clear
 *save as dta
-save "TariffsTimeseries3.dta"
+save "TariffsTimeseries3.dta",replace
 clear
 
 *import excel file 4
 import excel "ImportValue.xlsx", sheet("Country-Timeseries") firstrow clear
 *save as dta
-save "TariffsTimeseries4.dta"
+save "TariffsTimeseries4.dta",replace
 clear
 
 *import excel file 5
 import excel "DomesticTaxRev.xlsx", sheet("Country-Timeseries") firstrow clear
 *save as dta
-save "TariffsTimeseries5.dta"
+save "TariffsTimeseries5.dta",replace
 clear
 
 *import excel file 6
 import excel "InternationalTaxRev.xlsx", sheet("Country-Timeseries") firstrow clear
 *save as dta
-save "TariffsTimeseries6.dta"
+save "TariffsTimeseries6.dta",replace
 clear
 *import excel file 7
 import excel "GDP(Current USD).xlsx" , sheet("Country-Timeseries") firstrow clear
 *save as dta 
-save "TariffsTimeseries7.dta"
+save "TariffsTimeseries7.dta",replace
+
 *we just finished saving the files as dta so now we can begin merging them
 *now we use the one of the dta files we just created
 use "TariffsTimeseries1.dta"
@@ -53,10 +54,9 @@ append using "TariffsTimeseries6.dta"
 append using "TariffsTimeseries7.dta"
 
 *we just finished merging all the excel files into the same dta file.
-save "TariffsTimeseries.dta"
+save "TariffsTimeseries.dta", replace
 
 *now use the file we just created
-use "TariffsTimeseries.dta"
 *Removing the years not included in 2001-2020
 drop C
 drop D
@@ -112,11 +112,11 @@ reshape wide value, i(year CountryName) j(IndicatorID)
 *renaming value variables
 rename value1 TariffPTaxRev
 rename value2 ExportPGDP
-rename value3 ImportPGDP
-rename value4 ImportValue
-rename value5 DomesticTaxRev
-rename value6 InternationalTaxRev
-rename value7 GDPCurrent 
+rename value3 GDPCurrent
+rename value4 ImportPGDP
+rename value5 ImportValue
+rename value6 DomesticTaxRev
+rename value7 InternationalTaxRev
 
 *save new changes (needed for merging)
 save "TariffTimeseries_new.dta", replace 
