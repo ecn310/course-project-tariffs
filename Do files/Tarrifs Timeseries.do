@@ -2,7 +2,7 @@
 * Install outreg2 
 ssc install outreg2
 *First run this to change directory, where all of the raw data is
-cd "C:\Users\giova\OneDrive - Syracuse University\Documents\GitHub\course-project-tariffs\Data files"  
+cd "C:\Users\kfrocha\OneDrive - Syracuse University\Documents\GitHub\course-project-tariffs\Data files"  
 
 *run this command to import the first excel data to stata
 import excel "TariffPTaxRev.xlsx", sheet("Country-Timeseries") firstrow clear
@@ -75,7 +75,7 @@ drop AJ
 drop AK
 
 *get rid of the countries we dont need 
-keep if CountryName == "United States" | CountryName == "Australia" | CountryName == "France" | CountryName == "Israel" | CountryName == "Korea, Rep." | CountryName == "Norway" | CountryName == "Romania" | CountryName == "Switzerland" | CountryName =="Ireland" | CountryName == "Canada" | CountryName == "New Zealand" | CountryName == "Belgium"
+keep if CountryName == "United States" | CountryName == "Australia" | CountryName == "France" | CountryName == "Israel" | CountryName == "Korea, Rep." | CountryName == "Norway" | CountryName == "Switzerland" | CountryName =="Ireland" | CountryName == "Canada" | CountryName == "New Zealand" | CountryName == "Belgium"
 
 * Remaning letter variables to years (yr)
 rename P yr01

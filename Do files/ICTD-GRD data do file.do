@@ -4,8 +4,8 @@
 cd "C:\Users\giova\OneDrive - Syracuse University\Documents\GitHub\course-project-tariffs\Data files"
 *import ICD-GRD data 
 use "UNUWIDERGRD_2023_Central" , clear 
-*keep the 12 countries
-keep if country == "Australia" | country == "France" | country == "Israel" | country == "Norway" | country == "Romania" | country == "Switzerland" | country == "United States" | country == "Ireland" | country == "Canada" | country == "New Zealand" | country == "Belgium" | country == "Korea, Republic of"
+*keep the 11 countries
+keep if country == "Australia" | country == "France" | country == "Israel" | country == "Norway" | country == "Switzerland" | country == "United States" | country == "Ireland" | country == "Canada" | country == "New Zealand" | country == "Belgium" | country == "Korea, Republic of"
 *keeping years 2001-2020
 keep if year >= 2001 & year <= 2020 
 *keep relevant variables 
@@ -22,11 +22,11 @@ rename country CountryName
 *fix Korea Overlapping issue 
 replace CountryName = "Korea, Rep." if CountryName == "Korea, Republic of" | CountryName == "Korea"
 *keep needed variables 
-keep CountryName year DomesticTaxGDP InternationalTaxGDP TariffGDP
+keep CountryName year DomesticTaxGDP InternationalTaxGDP
 *save revamped data 
 save "UNUWIDERGRD_2023_Central_new.dta", replace 
 *summary check 
-summarize DomesticTaxGDP TariffGDP, detail
+summarize DomesticTaxGDP InternationalTaxGDP, detail
 tab CountryName
 
 
