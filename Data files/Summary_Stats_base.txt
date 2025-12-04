@@ -11,4 +11,5 @@ DomesticTaxGDP	Domestic Tax Revenue (% GDP)	220	7.564	3.618	0.424	13.17
 InternationalTaxGDP	International Tax Revenue (% GDP)	220	0.291	0.307	-0.0130	1.087
 ImportGDPRatio	Imports(% GDP)	215	39.21	21.16	12.87	111.5
 TradeBalance	Trade Balance (% GDP)	220	-3.405	6.314	-28.76	5.693
+TariffGDP	Tariff Revenue (% GDP)	220	0.291	0.307	-0.0130	1.087
 						

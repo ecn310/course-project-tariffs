@@ -1,7 +1,6 @@
 *Do file to merge our  data, and analysis
 * Run after running TariffTimeseries.do and has created TariffTimeseries_new.dta
 *First run this to change directory, where all of the raw data is
-cd "C:\Users\kfrocha\OneDrive - Syracuse University\Documents\GitHub\course-project-tariffs\Data files"
 *import ICD-GRD data 
 use "UNUWIDERGRD_2023_Central" , clear 
 *keep the 11 countries
@@ -48,7 +47,7 @@ drop _merge
 save "TariffTimeseries_ICTD.dta" , replace 
 
 *ANALYSIS 
-use "TariffTimeSeries_ICTD.dta" , clear 
+use "TariffTimeseries_ICTD.dta" , clear 
 *Drop the problematic WITS tax variables 
 drop DomesticTaxRev InternationalTaxRev TariffPTaxRev
 *Label variables 
@@ -62,6 +61,9 @@ label variable ImportGDPRatio "Imports(% GDP)"
 
 gen TradeBalance = ImportPGDP - ExportPGDP
 label variable TradeBalance "Trade Balance (% GDP)"
+
+gen TariffGDP = InternationalTaxGDP
+label variable TariffGDP "Tariff Revenue (% GDP)"
 
 *Save with new variables
 save "TariffsTimeseries_ICTD.dta", replace
@@ -78,7 +80,6 @@ gsort -mean
 format mean sd min max %9.2f
 list
 
-outreg2 using "ImportGDP_by_country.tex", replace tex label
 restore
 
 *Correlations (Individual) 
@@ -152,13 +153,12 @@ scatter TariffGDP DomesticTaxGDP if CountryName == "Ireland", mcolor(orange) msi
 graph export "high_import_countries.pdf", replace
 
 *medium import countries 
-scatter TariffGDP DomesticTaxGDP if CountryName == "Romania", mcolor(maroon) msize(small) || scatter TariffGDP DomesticTaxGDP if CountryName == "Korea, Rep.", mcolor(purple) msize(small) || scatter TariffGDP DomesticTaxGDP if CountryName == "Canada", mcolor(green) msize(small) || scatter TariffGDP DomesticTaxGDP if CountryName == "France", mcolor(navy) msize(small) || scatter TariffGDP DomesticTaxGDP if CountryName == "Norway", mcolor(teal) msize(small) || scatter TariffGDP DomesticTaxGDP if CountryName == "Israel", mcolor(brown) msize(small) legend(order(1 "Romania" 2 "Korea" 3 "Canada" 4 "France" 5 "Norway" 6 "Israel") position(3) cols(2)) ytitle("Tariff Revenue (% GDP)") xtitle("Domestic Tax Revenue (% GDP)") title("Medium Import-GDP Countries (26-40%)")
+scatter TariffGDP DomesticTaxGDP if CountryName == "Korea, Rep.", mcolor(maroon) msize(small) || scatter TariffGDP DomesticTaxGDP if CountryName == "Canada", mcolor(purple) msize(small) || scatter TariffGDP DomesticTaxGDP if CountryName == "France", mcolor(green) msize(small) || scatter TariffGDP DomesticTaxGDP if CountryName == "Norway", mcolor(navy) msize(small) || scatter TariffGDP DomesticTaxGDP if CountryName == "Israel", mcolor(teal) msize(small) legend(order(1 "Korea" 2 "Canada" 3 "France" 4 "Norway" 5 "Israel") position(3) cols(2)) ytitle("Tariff Revenue (% GDP)") xtitle("Domestic Tax Revenue (% GDP)") title("Medium Import-GDP Countries (26-40%)")
 graph export "medium_import_countries.pdf" , replace 
 
-*high import countries 
+*low import countries 
 scatter TariffGDP DomesticTaxGDP if CountryName == "New Zealand", mcolor(orange) msize(small) || scatter TariffGDP DomesticTaxGDP if CountryName == "Australia", mcolor(green) msize(small) || scatter TariffGDP DomesticTaxGDP if CountryName == "United States", mcolor(navy) msize(small) legend(order(1 "New Zealand" 2 "Australia" 3 "United States") position(3)) ytitle("Tariff Revenue (% GDP)") xtitle("Domestic Tax Revenue (% GDP)") title("Low Import-GDP Countries (<26%)")
-graph export "low_import_countries.pdf" , replace 
-
+graph export "low_import_countries.pdf" , replace
 
 
 
