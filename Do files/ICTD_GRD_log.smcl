@@ -1,11 +1,11 @@
 {smcl}
 {com}{sf}{ul off}{txt}{.-}
       name:  {res}<unnamed>
-       {txt}log:  {res}C:\Users\ldepedro\OneDrive - Syracuse University\AAA JUNIOR year\ECN 310\course-project-tariffs\Do files\HOLAAAAAAAAAA.smcl
+       {txt}log:  {res}C:\Users\ldepedro\OneDrive - Syracuse University\AAA JUNIOR year\ECN 310\course-project-tariffs\Do files\ICTD_GRD_log.smcl
   {txt}log type:  {res}smcl
- {txt}opened on:  {res} 4 Dec 2025, 17:55:27
+ {txt}opened on:  {res} 4 Dec 2025, 18:04:21
 
-{com}. do "C:\Users\ldepedro\OneDrive - Syracuse University\AAA JUNIOR year\ECN 310\course-project-tariffs\Do files\ICTD-GRD data do file.do"
+{com}. do "C:\Users\ldepedro\AppData\Local\Temp\STD925c_000000.tmp"
 {txt}
 {com}. *Do file to merge our  data, and analysis
 . * Run after running TariffTimeseries.do and has created TariffTimeseries_new.dta
@@ -659,9 +659,9 @@ format
 
 {com}. log close
       {txt}name:  {res}<unnamed>
-       {txt}log:  {res}C:\Users\ldepedro\OneDrive - Syracuse University\AAA JUNIOR year\ECN 310\course-project-tariffs\Do files\HOLAAAAAAAAAA.smcl
+       {txt}log:  {res}C:\Users\ldepedro\OneDrive - Syracuse University\AAA JUNIOR year\ECN 310\course-project-tariffs\Do files\ICTD_GRD_log.smcl
   {txt}log type:  {res}smcl
- {txt}closed on:  {res} 4 Dec 2025, 17:57:40
+ {txt}closed on:  {res} 4 Dec 2025, 18:06:53
 {txt}{.-}
 {smcl}
 {txt}{sf}{ul off}
