@@ -1,0 +1,285 @@
+{smcl}
+{com}{sf}{ul off}{txt}{.-}
+      name:  {res}<unnamed>
+       {txt}log:  {res}C:\Users\ldepedro\OneDrive - Syracuse University\AAA JUNIOR year\ECN 310\course-project-tariffs\Data files\ICTDGRDlog.smcl
+  {txt}log type:  {res}smcl
+ {txt}opened on:  {res} 4 Dec 2025, 17:06:08
+
+{com}. do "C:\Users\ldepedro\AppData\Local\Temp\STD4988_000001.tmp"
+{txt}
+{com}. *Do file to merge our  data, and analysis
+. * Run after running TariffTimeseries.do and has created TariffTimeseries_new.dta
+. *First run this to change directory, where all of the raw data is
+. cd "C:\Users\ldepedro\OneDrive - Syracuse University\AAA JUNIOR year\ECN 310\course-project-tariffs\Data files"
+{res}C:\Users\ldepedro\OneDrive - Syracuse University\AAA JUNIOR year\ECN 310\course-project-tariffs\Data files
+{txt}
+{com}. *import ICD-GRD data 
+. use "UNUWIDERGRD_2023_Central" , clear 
+{txt}(UNU-WIDER GRD 2023: Central Government)
+
+{com}. *keep the 11 countries
+. keep if country == "Australia" | country == "France" | country == "Israel" | country == "Norway" | country == "Switzerland" | country == "United States" | country == "Ireland" | country == "Canada" | country == "New Zealand" | country == "Belgium" | country == "Korea, Republic of"
+{txt}(6,609 observations deleted)
+
+{com}. *keeping years 2001-2020
+. keep if year >= 2001 & year <= 2020 
+{txt}(247 observations deleted)
+
+{com}. *keep relevant variables 
+. keep country year tax_trade tax_income tax_indirect tax_property tax_gs_general tax_g_s tax_gs_excises tax_other 
+{txt}
+{com}. *create domestic & international tax variables 
+. gen DomesticTaxGDP = tax_g_s
+{txt}
+{com}. label variable DomesticTaxGDP "Domestic Tax Revenue (% GDP)"
+{txt}
+{com}. gen InternationalTaxGDP = tax_trade
+{txt}
+{com}. label variable InternationalTaxGDP "International Tax Revenue (% GDP)" 
+{txt}
+{com}. 
+. 
+. *make sure names in WITS match 
+. rename country CountryName 
+{res}{txt}
+{com}. *fix Korea Overlapping issue 
+. replace CountryName = "Korea, Rep." if CountryName == "Korea, Republic of" | CountryName == "Korea"
+{txt}(20 real changes made)
+
+{com}. *keep needed variables 
+. keep CountryName year DomesticTaxGDP InternationalTaxGDP
+{txt}
+{com}. *save revamped data 
+. save "UNUWIDERGRD_2023_Central_new.dta", replace 
+{txt}{p 0 4 2}
+file {bf}
+UNUWIDERGRD_2023_Central_new.dta{rm}
+saved
+{p_end}
+
+{com}. *summary check 
+. summarize DomesticTaxGDP InternationalTaxGDP, detail
+
+                {txt}Domestic Tax Revenue (% GDP)
+{hline 61}
+      Percentiles      Smallest
+ 1%    {res} .4530335       .4243985
+{txt} 5%    {res} .5317192       .4383558
+{txt}10%    {res} 2.371993       .4530335       {txt}Obs         {res}        220
+{txt}25%    {res} 5.547198       .4534844       {txt}Sum of wgt. {res}        220
+
+{txt}50%    {res} 7.897366                      {txt}Mean          {res} 7.564473
+                        {txt}Largest       Std. dev.     {res} 3.617744
+{txt}75%    {res} 11.02373       12.68762
+{txt}90%    {res} 11.58741       12.97548       {txt}Variance      {res} 13.08807
+{txt}95%    {res} 12.12876       13.03862       {txt}Skewness      {res}-.4785524
+{txt}99%    {res} 12.97548       13.17446       {txt}Kurtosis      {res} 2.162836
+
+              {txt}International Tax Revenue (% GDP)
+{hline 61}
+      Percentiles      Smallest
+ 1%    {res}-.0050526      -.0129828
+{txt} 5%    {res}-.0044319      -.0055605
+{txt}10%    {res}-4.40e-08      -.0050526       {txt}Obs         {res}        220
+{txt}25%    {res} .0001681      -.0049645       {txt}Sum of wgt. {res}        220
+
+{txt}50%    {res} .2032614                      {txt}Mean          {res} .2909335
+                        {txt}Largest       Std. dev.     {res}  .307369
+{txt}75%    {res} .4846556       .9924786
+{txt}90%    {res} .8492424       1.013486       {txt}Variance      {res} .0944757
+{txt}95%    {res} .9540746       1.018539       {txt}Skewness      {res} 1.053992
+{txt}99%    {res} 1.013486       1.086654       {txt}Kurtosis      {res} 2.906625
+{txt}
+{com}. tab CountryName
+
+                          {txt}country {c |}      Freq.     Percent        Cum.
+{hline 34}{c +}{hline 35}
+                        Australia {c |}{res}         20        9.09        9.09
+{txt}                          Belgium {c |}{res}         20        9.09       18.18
+{txt}                           Canada {c |}{res}         20        9.09       27.27
+{txt}                           France {c |}{res}         20        9.09       36.36
+{txt}                          Ireland {c |}{res}         20        9.09       45.45
+{txt}                           Israel {c |}{res}         20        9.09       54.55
+{txt}                      Korea, Rep. {c |}{res}         20        9.09       63.64
+{txt}                      New Zealand {c |}{res}         20        9.09       72.73
+{txt}                           Norway {c |}{res}         20        9.09       81.82
+{txt}                      Switzerland {c |}{res}         20        9.09       90.91
+{txt}                    United States {c |}{res}         20        9.09      100.00
+{txt}{hline 34}{c +}{hline 35}
+                            Total {c |}{res}        220      100.00
+{txt}
+{com}. 
+. 
+. *merging
+. use "TariffTimeseries_new.dta" , clear
+{txt}
+{com}. 
+. *merge with ICTD tax data 
+. merge 1:1 CountryName year using "UNUWIDERGRD_2023_Central_new.dta"
+{res}{txt}{p 0 7 2}
+(variable
+{bf:CountryName} was {bf:str30}, now {bf:str33} to accommodate using data's values)
+{p_end}
+
+{col 5}Result{col 33}Number of obs
+{col 5}{hline 41}
+{col 5}Not matched{col 30}{res}               0
+{txt}{col 5}Matched{col 30}{res}             220{txt}  (_merge==3)
+{col 5}{hline 41}
+
+{com}. * verify merged results 
+. tab _merge
+
+   {txt}Matching result from {c |}
+                  merge {c |}      Freq.     Percent        Cum.
+{hline 24}{c +}{hline 35}
+            Matched (3) {c |}{res}        220      100.00      100.00
+{txt}{hline 24}{c +}{hline 35}
+                  Total {c |}{res}        220      100.00
+{txt}
+{com}. list CountryName year _merge if _merge != 3 
+{txt}
+{com}. 
+. 
+. 
+. *keep successful merged observations 
+. keep if _merge == 3
+{txt}(0 observations deleted)
+
+{com}. drop _merge
+{txt}
+{com}. * save merged dataset 
+. save "TariffTimeseries_ICTD.dta" , replace 
+{txt}{p 0 4 2}
+file {bf}
+TariffTimeseries_ICTD.dta{rm}
+saved
+{p_end}
+
+{com}. 
+. *ANALYSIS 
+. use "TariffTimeSeries_ICTD.dta" , clear 
+{txt}
+{com}. *Drop the problematic WITS tax variables 
+. drop DomesticTaxRev InternationalTaxRev TariffPTaxRev
+{txt}
+{com}. *Label variables 
+. label variable ExportPGDP "Exports (% GDP)"
+{txt}
+{com}. label variable GDPCurrent "GDP (Current USD)"
+{txt}
+{com}. label variable ImportPGDP "Imports (% GDP)"
+{txt}
+{com}. label variable ImportValue "Import Value"
+{txt}
+{com}. *percentage variables 
+. gen ImportGDPRatio = ImportValue/GDPCurrent *100
+{txt}(5 missing values generated)
+
+{com}. label variable ImportGDPRatio "Imports(% GDP)"
+{txt}
+{com}. 
+. gen TradeBalance = ImportPGDP - ExportPGDP
+{txt}
+{com}. label variable TradeBalance "Trade Balance (% GDP)"
+{txt}
+{com}. 
+. *Save with new variables
+. save "TariffsTimeseries_ICTD.dta", replace
+{txt}{p 0 4 2}
+file {bf}
+TariffsTimeseries_ICTD.dta{rm}
+saved
+{p_end}
+
+{com}. 
+. *summary statistics of key variables 
+. sum DomesticTaxGDP InternationalTaxGDP ImportPGDP ExportPGDP GDPCurrent ImportValue 
+
+{txt}    Variable {c |}        Obs        Mean    Std. dev.       Min        Max
+{hline 13}{c +}{hline 57}
+DomesticTa~P {c |}{res}        220    7.564473    3.617744   .4243985   13.17446
+{txt}Internatio~P {c |}{res}        220    .2909335     .307369  -.0129828   1.086654
+{txt}{space 2}ImportPGDP {c |}{res}        220    40.08368    22.10585   13.15499   124.3699
+{txt}{space 2}ExportPGDP {c |}{res}        220    43.48837    26.23205   9.035659   133.3372
+{txt}{space 2}GDPCurrent {c |}{res}        220    2.19e+12    4.51e+12   5.39e+10   2.15e+13
+{txt}{hline 13}{c +}{hline 57}
+{space 1}ImportValue {c |}{res}        215    5.03e+11    6.70e+11   1.68e+10   3.12e+12
+{txt}
+{com}. * export to Latex 
+. outreg2 using "Summary_Stats_base.tex" , sum(log) replace tex title("Summary Statistics") label 
+
+{txt}    Variable {c |}        Obs        Mean    Std. dev.       Min        Max
+{hline 13}{c +}{hline 57}
+{space 8}year {c |}{res}        220      2010.5    5.779431       2001       2020
+{txt}{space 2}ExportPGDP {c |}{res}        220    43.48837    26.23205   9.035659   133.3372
+{txt}{space 2}GDPCurrent {c |}{res}        220    2.19e+12    4.51e+12   5.39e+10   2.15e+13
+{txt}{space 2}ImportPGDP {c |}{res}        220    40.08368    22.10585   13.15499   124.3699
+{txt}{space 1}ImportValue {c |}{res}        215    5.03e+11    6.70e+11   1.68e+10   3.12e+12
+{txt}{hline 13}{c +}{hline 57}
+DomesticTa~P {c |}{res}        220    7.564473    3.617744   .4243985   13.17446
+{txt}Internatio~P {c |}{res}        220    .2909335     .307369  -.0129828   1.086654
+{txt}ImportGDPR~o {c |}{res}        215    39.21126    21.15887   12.87169   111.5426
+{txt}TradeBalance {c |}{res}        220   -3.404687    6.314403   -28.7625   5.692505
+
+Following variable is string, not included:  
+CountryName  
+{txt}{stata `"shellout using `"Summary_Stats_base.tex"'"':Summary_Stats_base.tex}
+{browse `"C:\Users\ldepedro\OneDrive - Syracuse University\AAA JUNIOR year\ECN 310\course-project-tariffs\Data files"' :dir}{com} : {txt}{stata `"seeout using "Summary_Stats_base.txt", label"':seeout}
+
+{com}. 
+. *Summary table for importGDP ratio variable by country
+. preserve
+{txt}
+{com}. collapse (mean) mean=ImportGDPRatio (sd) sd=ImportGDPRatio (min) min=ImportGDPRatio (max) max=ImportGDPRatio, by(CountryName)
+{res}{txt}
+{com}. gsort -mean
+{txt}
+{com}. format mean sd min max %9.2f
+{txt}
+{com}. list
+{txt}
+     {c TLC}{hline 15}{c -}{hline 7}{c -}{hline 7}{c -}{hline 7}{c -}{hline 8}{c TRC}
+     {c |} {res}  CountryName    mean      sd     min      max {txt}{c |}
+     {c LT}{hline 15}{c -}{hline 7}{c -}{hline 7}{c -}{hline 7}{c -}{hline 8}{c RT}
+  1. {c |} {res}      Ireland   84.61   15.31   65.65   111.54 {txt}{c |}
+  2. {c |} {res}      Belgium   76.64    5.76   65.34    83.49 {txt}{c |}
+  3. {c |} {res}  Switzerland   53.06    5.73   42.52    61.63 {txt}{c |}
+  4. {c |} {res}  Korea, Rep.   38.82    7.21   29.24    52.81 {txt}{c |}
+  5. {c |} {res}       Canada   32.95    1.49   30.00    36.26 {txt}{c |}
+     {c LT}{hline 15}{c -}{hline 7}{c -}{hline 7}{c -}{hline 7}{c -}{hline 8}{c RT}
+  6. {c |} {res}       Israel   32.59    4.80   23.37    40.11 {txt}{c |}
+  7. {c |} {res}       France   29.57    2.77   25.15    34.08 {txt}{c |}
+  8. {c |} {res}       Norway   29.38    2.51   26.62    34.30 {txt}{c |}
+  9. {c |} {res}  New Zealand   27.76    2.14   22.59    32.75 {txt}{c |}
+ 10. {c |} {res}    Australia   21.76    1.19   18.84    24.07 {txt}{c |}
+     {c LT}{hline 15}{c -}{hline 7}{c -}{hline 7}{c -}{hline 7}{c -}{hline 8}{c RT}
+ 11. {c |} {res}United States   15.14    1.44   12.87    17.35 {txt}{c |}
+     {c BLC}{hline 15}{c -}{hline 7}{c -}{hline 7}{c -}{hline 7}{c -}{hline 8}{c BRC}
+
+{com}. 
+. *Correlations (Individual) 
+. 
+. * Australia
+. display " "
+{res} 
+{txt}
+{com}. display "AUSTRALIA:"
+{res}AUSTRALIA:
+{txt}
+{com}. pwcorr InternationalTaxGDP DomesticTaxGDP if CountryName == "Australia", sig star(0.05)
+{err}variable {bf}InternationalTaxGDP{sf} not found
+{txt}{search r(111), local:r(111);}
+
+end of do-file
+
+{search r(111), local:r(111);}
+
+{com}. log close
+      {txt}name:  {res}<unnamed>
+       {txt}log:  {res}C:\Users\ldepedro\OneDrive - Syracuse University\AAA JUNIOR year\ECN 310\course-project-tariffs\Data files\ICTDGRDlog.smcl
+  {txt}log type:  {res}smcl
+ {txt}closed on:  {res} 4 Dec 2025, 17:06:58
+{txt}{.-}
+{smcl}
+{txt}{sf}{ul off}
