@@ -1,0 +1,217 @@
+\documentclass[12pt]{article}
+
+% set margins and spacing
+\addtolength{\textwidth}{1.3in}
+\addtolength{\oddsidemargin}{-.65in} %left margin
+\addtolength{\evensidemargin}{-.65in}
+\setlength{\textheight}{9in}
+\setlength{\topmargin}{-.5in}
+\setlength{\headheight}{0.0in}
+\setlength{\footskip}{.375in}
+\renewcommand{\baselinestretch}{1.0}
+\linespread{1.0}
+
+% load miscellaneous packages
+\usepackage{csquotes}
+\usepackage[american]{babel}
+\usepackage{booktabs}
+\usepackage{threeparttable}
+\usepackage[usenames,dvipsnames]{color}
+\usepackage{graphicx,amsbsy,amssymb, amsmath, amsthm, MnSymbol,bbding,times, verbatim,bm,pifont,pdfsync,setspace,natbib}
+
+% enable hyperlinks and table of contents
+\usepackage[pdftex,
+bookmarks=true,
+bookmarksnumbered=false,
+pdfview=fitH,
+bookmarksopen=true,hyperfootnotes=false]{hyperref}
+
+% define environments
+\newtheorem{definition}{Definition}
+\newtheorem{fact}{Fact}
+\newtheorem{result}{Result}
+\newtheorem{proposition}{Proposition}
+
+
+
+\begin{document}
+\title{Insert title here}
+\author{Name 1\thanks{Syracuse University, Economics Department. Email: kbuzard@syr.edu.} \and Name 2\thanks{abc} \and Name 3\thanks{abc}}
+\date{\vskip-.1in \today}
+\maketitle
+
+\vskip.3in
+\begin{center} {\bf Abstract} \end{center}
+
+\begin{quote}
+{\small Insert abstract text here: 75-200 words, very high-level summary of your project. Look at the three most closely-related papers in your literature review to get an idea of what should be included.}
+\end{quote}
+
+\bigskip
+\section{Introduction} \label{sec:introduction}
+
+  Governments use both domestic taxes and tariffs to increase revenue.  As developed countries lower tariffs, an important question is how they replace the lost revenue from decreased tariffs.  Understanding this shift matters for trade policy and for how countries tax systems may be affected.  
+
+    This paper focuses on the relationship between domestic taxes on goods and services and tariff levels in developed countries.  The goal is to examine how domestic taxes relate to tariffs in developed countries and how this relationship depends on a country's GDP and it's import to GDP ratio.  The analysis uses data from 11 countries: Switzerland, Korea, Australia, France, Norway, Israel, the United States, Belgium, Ireland, Canada, and New Zealand.  Our hypothesis is that domestic taxes will increase in developed countries that reduce or limit tariffs and that this relationship will be stronger in those countries with high import to GDP ratios than in countries with low import to GDP ratios.  High-import countries rely more heavily on international trade, so tariff reductions create larger revenue gaps that governments offset by increasing domestic taxes.  Our null hypothesis is that there is no meaningful relationship between tariff levels and domestic taxes in developed countries.  The optimal taxation theory suggests that when tariff revenue falls, governments may raise domestic taxes in order to maintain overall revenue.  This effect should be strongest in countries that rely heavily on imports to finance federal funding.
+
+The results show that the relationship between tariffs and domestic taxes is not statistically significant in in high import and low import developed countries.  The correlations between tariff levels and domestic tax revenues are weak.  
+
+The remainder of the paper includes literature reviews, theoretical analysis, data, results, discussion, and conclusion.  The literature reviews analyze existing research on this topic,.  The data section describes the data sources, variables, and how we used the data.  The results section presents the descriptive statistics and tables.  In the discussion section, limitations of the analysis and the meaning of the data are explained.
+
+
+\section{Literature Review} \label{sec:literature}
+
+Discuss at least seven papers that are closely related to your results (more is better). Explain how they're related. Did you find something similar, or different? Did you look at a different context? Different time period? Different level of detail?
+\begin{itemize}
+    \item The most important thing to do here is to highlight how what you do compares to these other papers
+\end{itemize}
+
+\section{Theoretical Analysis}
+\label{sec:theory}
+Optional--may include in intro if it's short.
+
+
+\section{Data}
+\label{sec:data}
+The World Integrated Trade Solution (WITS) is a trade software provided by the world bank that consists of trade and tariff data. The International Centre for Tax and Development Government Revenue Dataset (ICTD-GRD). Our sample includes eleven developed countries 2001-2020: Australia, Blegium, Canada, France, Ireland, Israel, South Korea, New Zealand, Norway, Switzerland, and the United States, amounting to 220 country-year observations. We classify these countries as "developed" based on their consistently high GDP per capita. 
+
+
+We obtained four trade indicators to create our key variables from WITS: Exports of goods and services (\% of GDP) measures the value of all exported goods and services as a percentage of GDP; Imports of goods and services (\% of GDP) measures the value of all imported goods and services as a percentage of GDP, GDP (current USD) represents the gross domestic product of in current US dollars; and Import Value (Current USD) captures the total value of imports in current US dollars. 
+We also obtained two tax revenue variables from ICTD-GRD: Domestic Tax Revenue (\% of GDP) measures total taxes on goods and services; and International Tax Revenue (\% of GDP) which is taxes on international trade, primarily consisting of tariffs and customs duties on imports. 
+
+
+\section{Results}
+\label{sec:result}
+
+\setlength{\pdfpagewidth}{8.5in} \setlength{\pdfpageheight}{11in}
+\begin{document}
+\begin{tabular}{lccccc}
+\multicolumn{6}{c}{Summary Statistics} \\ \hline
+ & (1) & (2) & (3) & (4) & (5) \\
+VARIABLES & N & mean & sd & min & max \\ \hline
+ &  &  &  &  &  \\
+year & 220 & 2,010 & 5.779 & 2,001 & 2,020 \\
+Exports (\% GDP) & 220 & 43.49 & 26.23 & 9.036 & 133.3 \\
+GDP (Current USD) & 220 & 2.193e+12 & 4.505e+12 & 5.387e+10 & 2.154e+13 \\
+Imports (\% GDP) & 220 & 40.08 & 22.11 & 13.15 & 124.4 \\
+Import Value & 215 & 5.033e+11 & 6.702e+11 & 1.683e+10 & 3.121e+12 \\
+Domestic Tax Revenue (\% GDP) & 220 & 7.564 & 3.618 & 0.424 & 13.17 \\
+International Tax Revenue (\% GDP) & 220 & 0.291 & 0.307 & -0.0130 & 1.087 \\
+Imports(\% GDP) & 215 & 39.21 & 21.16 & 12.87 & 111.5 \\
+Trade Balance (\% GDP) & 220 & -3.405 & 6.314 & -28.76 & 5.693 \\
+ &  &  &  &  &  \\ \hline
+\end{tabular}
+\begin{tablenotes}[flushleft]
+\small
+\item \textit{Note:} Sample consists of 8 developed countries over 20 years (2001-2020): Australia, France, Israel, Korea, Norway, Romania, Switzerland, and the United States. Tax variables from ICTD Government Revenue Dataset; trade and GDP variables from World Integrated Trade Solution (WITS).
+\end{tablenotes}
+\end{table}
+
+\begin{table}[h]
+\centering
+\caption{Import-to-GDP Ratio by Country (2001-2020)}
+\label{tab:import_country}
+\begin{tabular}{lrrrr}
+\toprule
+\textbf{Country} & \textbf{Mean} & \textbf{Std. Dev.} & \textbf{Min} & \textbf{Max} \\
+\midrule
+Ireland & 84.61 & 15.31 & 65.65 & 111.54 \\
+Belgium & 76.64 & 5.76 & 65.34 & 83.49 \\
+Switzerland & 53.06 & 5.73 & 42.52 & 61.63 \\
+Korea, Rep. & 38.82 & 7.21 & 29.24 & 52.81 \\
+Canada & 32.95 & 1.49 & 30.00 & 36.26 \\
+\midrule
+Israel & 32.59 & 4.80 & 23.37 & 40.11 \\
+France & 29.57 & 2.77 & 25.15 & 34.08 \\
+Norway & 29.38 & 2.51 & 26.62 & 34.30 \\
+New Zealand & 27.76 & 2.14 & 22.59 & 32.75 \\
+Australia & 21.76 & 1.19 & 18.84 & 24.07 \\
+\midrule
+United States & 15.14 & 1.44 & 12.87 & 17.35 \\
+\bottomrule
+\end{tabular}
+\begin{tablenotes}[flushleft]
+\small
+\item \textit{Note:} Import-to-GDP ratio calculated as (Import Value / GDP Current USD) × 100. Countries sorted by mean import-to-GDP ratio (highest to lowest). Data from World Integrated Trade Solution (WITS), 2001-2020.
+\end{tablenotes}
+\end{table}
+
+Table \ref{tab:import_country} lists the summary statistics for the variable ImportGDPRatio generated from dividing ImportValue variable observations by RealGDP variable observations, multiplied by 100. Understanding the variation in import dependency across the countries is essential to testing whether the relationship between tariff revenue and domestic tax revenue differs based on a country's trade intensity. The hypothesis predicts that countries more dependent on imports will face greater fiscal pressure when tariff revenues decline, leading to stronger substitution towards toward domestic taxes. The Import-GDP-Ratio was needed to measure the extent to which a country's economy relies on imported goods and services. Countries with higher Import-to -GDP ratios should theoretically exhibit stronger negative correlations between tariff and domestic tax revenues. 
+
+Ireland shows the highest import intensity with an average of 84.61 percent over the 20-year period, with Belgium following closely at 76.64 percent and Switzerland had a mean import ratio of 53.06 percent. These three countries represent the most import intensive economies in the sample. 
+
+At the middle tier of import dependency, Korea, Canada, Israel, France, Norway and New Zealand demonstrate moderate import dependency. The lower end of import intensity includes Australia averaging 21.76 and the United States having the lowest import dependency at 15.14 percent. The United states being the largest economy in the sample, demonstrates economic self-sufficiency. 
+
+
+\begin{table}[h]
+\centering
+\caption{Correlations Between International Tax and Domestic Tax Revenue by Country}
+\label{tab:correlations_individual}
+\begin{tabular}{lrrr}
+\toprule
+\textbf{Country} & \textbf{Correlation} & \textbf{P-value} & \textbf{Import-GDP} \\
+\midrule
+Korea, Rep. & $0.769$ & 0.0001 & 38.82\% \\
+Switzerland & $0.740$ & 0.0002 & 53.06\% \\
+Israel & $0.432$ & 0.0574 & 32.59\% \\
+Australia & $-0.319$ & 0.1703 & 21.76\% \\
+United States & $-0.397$ & 0.0829 & 15.14\% \\
+France & $0.268$ & 0.2542 & 29.57\% \\
+Belgium & $0.261$ & 0.2662 & 76.64\% \\
+Norway & $0.187$ & 0.4302 & 29.38\% \\
+New Zealand & $-0.182$ & 0.4427 & 27.76\% \\
+Canada & $0.127$ & 0.5945 & 32.95\% \\
+Ireland & $0.088$ & 0.7124 & 84.61\% \\
+\bottomrule
+\end{tabular}
+\begin{tablenotes}[flushleft]
+\small
+\item \textit{Note:} Pearson correlations between International Tax Revenue (\% GDP) and Domestic Tax Revenue (\% GDP) for each country over 2001-2020. *** p$<$0.001. Import-GDP ratios shown for reference.
+\end{tablenotes}
+\end{table}
+The correlation results between international tax revenue and domestic tax revenue show some interesting patterns. Out of the eleven countries, only two had statistically significant correlations, and they were both positive instead of negative like the hypothesis predicted. Korea had the strongest correlation at 0.769 with a p-value of 0.0001, which means when tariff revenues go up, domestic tax revenues also go up. Switzerland was similar with a correlation of 0.740 and p-value of 0.0002. 
+
+
+
+\end{document}
+Explain what analyses you did, 
+provide evidence (like in the descriptive stats exercise, but refined and clear) and then explain what your results mean.
+
+
+
+
+\section{Discussion}
+\label{sec:discussion}
+
+Optional. This is where you would discuss any of the following if they are extensive; otherwise, this material can be put in the Results (caveats) and Conclusions (future work and next steps) sections.
+\begin{itemize}
+    \item caveats (are there problems with the data that there are no obvious ways to resolve? if so, how might this impact your results?)
+    \item future work / next steps
+    \item implications of the results: that is, how your findings -- if they were causally identified -- might inform policymaking, etc.
+\end{itemize}
+
+\section{Conclusion}
+\label{sec:conclusion}
+
+Re-state (in different words) what you did and what you learned. If your discussion (Section 6) would be short, you can just have a Conclusion section that includes your discussion (that is, leave out a separate Discussion section).
+
+\newpage
+\section*{Bibliography}
+\singlespacing
+\setlength\bibsep{0pt}
+
+You can either explicitly include your list of references, or you can learn to use BibTex so that it includes the references automatically.
+
+Either way, this list should include ONLY the papers (reports, book chatpers, etc.) that you actually cite in the text (no extra).
+
+At the same time EVERYTHING you cite in the main text must have an entry here (no references in text that don't have something here).
+
+You can choose which citation style to follow. Whichever you choose, you must follow it consistently, including the convention to always alphabetize by the first author's last name.
+
+\newpage
+\section*{Data Appendix} \label{sec:appendixa}
+\addcontentsline{toc}{section}{Appendix A}
+
+You should at least direct your reader to your replication package. You might put key elements of your replication package in this section as well.
+
+\end{document}
