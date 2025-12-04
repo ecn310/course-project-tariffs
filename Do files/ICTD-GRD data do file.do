@@ -1,7 +1,7 @@
 *Do file to merge our  data, and analysis
 * Run after running TariffTimeseries.do and has created TariffTimeseries_new.dta
 *First run this to change directory, where all of the raw data is
-cd "C:\Users\giova\OneDrive - Syracuse University\Documents\GitHub\course-project-tariffs\Data files"
+cd "C:\Users\kfrocha\OneDrive - Syracuse University\Documents\GitHub\course-project-tariffs\Data files"
 *import ICD-GRD data 
 use "UNUWIDERGRD_2023_Central" , clear 
 *keep the 11 countries
@@ -81,47 +81,70 @@ list
 outreg2 using "ImportGDP_by_country.tex", replace tex label
 restore
 
-*Correlations 
-* correlation between tariffs and domestic taxes 
-pwcorr TariffGDP DomesticTaxGDP ImportGDPRatio, sig star(0.05)
+*Correlations (Individual) 
 
-* calculate country average import ratios 
-egen country_avg_import = mean(ImportGDPRatio), by(CountryName)
-
-*determine cutoff
-*high >40% (Ireland, Belgium, Switzerland)
-*medium >26% (Romania, Korea,Canada, France, Norway, Israel)
-*low <26%(New Zealand, Australia, United States)
-gen import_group = 1 if country_avg_import < 26
-replace import_group = 2 if country_avg_import >= 26 & country_avg_import < 40
-replace import_group = 3 if country_avg_import >= 40
-
-capture label drop group_lbl 
-label define group_lbl 1 "Low Import-GDP" 2 "Medium Import-GDP" 3 "High Import-GDP"
-label values import_group group_lbl 
-
-*Display by group 
+* Australia
 display " "
-display "======="
-display "High Import-GDP Countries"
-display "(Ireland, Belgium, Switzerland)"
-display "======="
-pwcorr TariffGDP DomesticTaxGDP if inlist(CountryName, "Ireland", "Belgium", "Switzerland"), sig star(0.05)
+display "AUSTRALIA:"
+pwcorr InternationalTaxGDP DomesticTaxGDP if CountryName == "Australia", sig star(0.05)
 
+* Belgium
 display " "
-display "======="
-display "Medium Import-GDP Countries"
-display "(Romania, Korea, Rep. , Canada, France, Norway, Israel)"
-display "======= "
-pwcorr TariffGDP DomesticTaxGDP if inlist(CountryName, "Romania", "Korea, Rep.", "Canada", "France", "Norway" , "Israel"), sig star(0.05)
+display "BELGIUM:"
+pwcorr InternationalTaxGDP DomesticTaxGDP if CountryName == "Belgium", sig star(0.05)
 
+* Canada
 display " "
-display "======="
-display "Low Import-GDP Countries"
-display "(New Zealand, Australia, United States)"
-display "======="
-pwcorr TariffGDP DomesticTaxGDP if inlist(CountryName, "New Zealand", "Australia", "United States"), sig star(0.05)
+display "CANADA:"
+pwcorr InternationalTaxGDP DomesticTaxGDP if CountryName == "Canada", sig star(0.05)
 
+* France
+display " "
+display "FRANCE:"
+pwcorr InternationalTaxGDP DomesticTaxGDP if CountryName == "France", sig star(0.05)
+
+* Ireland
+display " "
+display "IRELAND:"
+pwcorr InternationalTaxGDP DomesticTaxGDP if CountryName == "Ireland", sig star(0.05)
+
+* Israel
+display " "
+display "ISRAEL:"
+pwcorr InternationalTaxGDP DomesticTaxGDP if CountryName == "Israel", sig star(0.05)
+
+* Korea
+display " "
+display "KOREA:"
+pwcorr InternationalTaxGDP DomesticTaxGDP if CountryName == "Korea, Rep.", sig star(0.05)
+
+* New Zealand
+display " "
+display "NEW ZEALAND:"
+pwcorr InternationalTaxGDP DomesticTaxGDP if CountryName == "New Zealand", sig star(0.05)
+
+* Norway
+display " "
+display "NORWAY:"
+pwcorr InternationalTaxGDP DomesticTaxGDP if CountryName == "Norway", sig star(0.05)
+
+* Switzerland
+display " "
+display "SWITZERLAND:"
+pwcorr InternationalTaxGDP DomesticTaxGDP if CountryName == "Switzerland", sig star(0.05)
+
+* United States
+display " "
+display "UNITED STATES:"
+pwcorr InternationalTaxGDP DomesticTaxGDP if CountryName == "United States", sig star(0.05)
+*display correlation at once 
+
+foreach country in "Australia" "Belgium" "Canada" "France" "Ireland" "Israel" "Korea, Rep." "New Zealand" "Norway" "Switzerland" "United States" {
+    
+    display " "
+    display "`country':"
+    pwcorr InternationalTaxGDP DomesticTaxGDP if CountryName == "`country'", sig star(0.05)
+}
 
 *scatter plots 
 *High Import Countries (Ireland, Belgium, Switzerland)
