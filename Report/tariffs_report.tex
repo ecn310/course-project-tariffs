@@ -73,39 +73,33 @@ Optional--may include in intro if it's short.
 
 \section{Data}
 \label{sec:data}
+The World Integrated Trade Solution (WITS) is a trade software provided by the world bank that consists of trade and tariff data. The International Centre for Tax and Development Government Revenue Dataset (ICTD-GRD). Our sample includes eleven developed countries 2001-2020: Australia, Blegium, Canada, France, Ireland, Israel, South Korea, New Zealand, Norway, Switzerland, and the United States, amounting to 220 country-year observations. We classify these countries as "developed" based on their consistently high GDP per capita. 
 
-Consists of Firm-level data from \href{https://wits.worldbank.org/country-indicator.aspx?lang=en}{WITS}
-(World Integrated Trade Solution) examined from public reports published by the WITS' TRAINS Tariff Measures and Preference Beneficiaries, UNCTAD, UN Comtrade and the WTO IDB. International Trade Indicators from the WITS were selected to focus on eight Developed countries with relatively high GDP per Capita from 2001-2020: Australia, France, Israel, Romania, South Korea, Norway, Switzerland, and the United States, for a total of one hundred sixty observations.
 
- The International Trade Indicators interface available on the database was accessed. Upon loading, the Trade Indicators (variables listed above) were accessed individually through the website's integrated "Search For Indicator" search bar. The selected indicators were Exports of goods and services (\% of GDP), Imports of goods and services (\% of GDP), GDP (constant 2010 USD), Taxes on goods and services (current LCU), Taxes on international trade (current LCU), Customs and other import duties (\% of tax revenue) and Imports of Goods and Services (BoP current USD). The Country Timeseries datasets were downloaded as excel files by clicking the gray download button with an arrow pointing downwards in the top right corner of the online table from the WITS website.
+We obtained four trade indicators to create our key variables from WITS: Exports of goods and services (\% of GDP) measures the value of all exported goods and services as a percentage of GDP; Imports of goods and services (\% of GDP) measures the value of all imported goods and services as a percentage of GDP, GDP (current USD) represents the gross domestic product of in current US dollars; and Import Value (Current USD) captures the total value of imports in current US dollars. 
+We also obtained two tax revenue variables from ICTD-GRD: Domestic Tax Revenue (\% of GDP) measures total taxes on goods and services; and International Tax Revenue (\% of GDP) which is taxes on international trade, primarily consisting of tariffs and customs duties on imports. 
 
-The international trade indicators were downloaded and stored on Github as individual excel files for each correspondingly: Seven excel files were downloaded and saved listing the complete WITS indicator observations recorded for 193 countries across 1988-2022. The seven excel files were each imported into Stata and saved individually as a dta file. All data files were merged using Stata's append command and combined into one dataset.
-
-Reproducibility Do-File available on Github- Click "Access Github Do-File"
-
-Artificial Intelligence was used in the process of making this work.
-
-\href{https://github.com/ecn310/course-project-tariffs/blob/main/Do%20files/Tarrifs%20Timeseries.do}
-{Access Github Do-File}
 
 \section{Results}
 \label{sec:result}
-\begin{table}[h]
-\centering
-\caption{Summary Statistics of Key Variables (2001-2020)}
-\label{tab:summary_base}
-\begin{tabular}{lrrrrr}
-\toprule
-\textbf{Variable} & \textbf{N} & \textbf{Mean} & \textbf{Std. Dev.} & \textbf{Min} & \textbf{Max} \\
-\midrule
-Tariff Revenue (\% GDP) & 160 & 0.29 & 0.28 & $-0.01$ & 0.98 \\
-Domestic Tax Revenue (\% GDP) & 160 & 16.76 & 5.82 & 7.76 & 28.36 \\
-International Tax Revenue (\% GDP) & 160 & 0.29 & 0.28 & $-0.01$ & 0.98 \\
-Exports (\% GDP) & 160 & 33.68 & 14.76 & 9.04 & 72.07 \\
-Imports (\% GDP) & 160 & 32.18 & 11.60 & 13.15 & 61.63 \\
-Real GDP (Trillions USD) & 160 & 2.89 & 5.38 & 0.11 & 19.90 \\
-Import Value (Billions USD) & 160 & 552 & 766 & 16.2 & 3,120 \\
-\bottomrule
+
+\setlength{\pdfpagewidth}{8.5in} \setlength{\pdfpageheight}{11in}
+\begin{document}
+\begin{tabular}{lccccc}
+\multicolumn{6}{c}{Summary Statistics} \\ \hline
+ & (1) & (2) & (3) & (4) & (5) \\
+VARIABLES & N & mean & sd & min & max \\ \hline
+ &  &  &  &  &  \\
+year & 220 & 2,010 & 5.779 & 2,001 & 2,020 \\
+Exports (\% GDP) & 220 & 43.49 & 26.23 & 9.036 & 133.3 \\
+GDP (Current USD) & 220 & 2.193e+12 & 4.505e+12 & 5.387e+10 & 2.154e+13 \\
+Imports (\% GDP) & 220 & 40.08 & 22.11 & 13.15 & 124.4 \\
+Import Value & 215 & 5.033e+11 & 6.702e+11 & 1.683e+10 & 3.121e+12 \\
+Domestic Tax Revenue (\% GDP) & 220 & 7.564 & 3.618 & 0.424 & 13.17 \\
+International Tax Revenue (\% GDP) & 220 & 0.291 & 0.307 & -0.0130 & 1.087 \\
+Imports(\% GDP) & 215 & 39.21 & 21.16 & 12.87 & 111.5 \\
+Trade Balance (\% GDP) & 220 & -3.405 & 6.314 & -28.76 & 5.693 \\
+ &  &  &  &  &  \\ \hline
 \end{tabular}
 \begin{tablenotes}[flushleft]
 \small
@@ -117,52 +111,65 @@ Import Value (Billions USD) & 160 & 552 & 766 & 16.2 & 3,120 \\
 \centering
 \caption{Import-to-GDP Ratio by Country (2001-2020)}
 \label{tab:import_country}
-\begin{threeparttable}
 \begin{tabular}{lrrrr}
 \toprule
 \textbf{Country} & \textbf{Mean} & \textbf{Std. Dev.} & \textbf{Min} & \textbf{Max} \\
 \midrule
-Switzerland & 47.84 & 13.22 & 24.34 & 65.41 \\
-Romania & 38.93 & 12.17 & 14.99 & 52.05 \\
-Korea, Rep. & 36.22 & 8.90 & 20.30 & 50.61 \\
-France & 31.01 & 6.08 & 17.92 & 37.17 \\
-Norway & 30.50 & 7.35 & 15.71 & 39.62 \\
-Israel & 29.49 & 3.66 & 23.17 & 35.87 \\
-Australia & 18.59 & 5.06 & 8.92 & 26.54 \\
-United States & 14.11 & 2.13 & 9.91 & 16.30 \\
+Ireland & 84.61 & 15.31 & 65.65 & 111.54 \\
+Belgium & 76.64 & 5.76 & 65.34 & 83.49 \\
+Switzerland & 53.06 & 5.73 & 42.52 & 61.63 \\
+Korea, Rep. & 38.82 & 7.21 & 29.24 & 52.81 \\
+Canada & 32.95 & 1.49 & 30.00 & 36.26 \\
+\midrule
+Israel & 32.59 & 4.80 & 23.37 & 40.11 \\
+France & 29.57 & 2.77 & 25.15 & 34.08 \\
+Norway & 29.38 & 2.51 & 26.62 & 34.30 \\
+New Zealand & 27.76 & 2.14 & 22.59 & 32.75 \\
+Australia & 21.76 & 1.19 & 18.84 & 24.07 \\
+\midrule
+United States & 15.14 & 1.44 & 12.87 & 17.35 \\
 \bottomrule
 \end{tabular}
 \begin{tablenotes}[flushleft]
 \small
-\item \textit{Note:} Import-to-GDP ratio calculated as (Import Value / Real GDP) × 100. 
-Countries sorted by mean import-to-GDP ratio (highest to lowest).  Import Value and Real GDP data from the World Integrated Trade Solution 
+\item \textit{Note:} Import-to-GDP ratio calculated as (Import Value / GDP Current USD) × 100. Countries sorted by mean import-to-GDP ratio (highest to lowest). Data from World Integrated Trade Solution (WITS), 2001-2020.
 \end{tablenotes}
-\end{threeparttable}
 \end{table}
 
-Table \ref{tab:import_country} lists the summary statistics for the variable ImportGDPRatio generated from dividing ImportValue variable observations by RealGDP variable observations, multiplied by 100. The command "sum ImportGDPRatio if CountryName" was executed for the eight developed countries analyzed. Table 1 ranks countries by mean ImportGDPRatio observed: The four countries listed with the highest mean ImportGDPRatio include Switzerland, Romania, South Korea, and France, while the four countries listed with the lowest mean ImportGDPRatio include Norway, Israel, Australia, and the United States.
+Table \ref{tab:import_country} lists the summary statistics for the variable ImportGDPRatio generated from dividing ImportValue variable observations by RealGDP variable observations, multiplied by 100. Understanding the variation in import dependency across the countries is essential to testing whether the relationship between tariff revenue and domestic tax revenue differs based on a country's trade intensity. The hypothesis predicts that countries more dependent on imports will face greater fiscal pressure when tariff revenues decline, leading to stronger substitution towards toward domestic taxes. The Import-GDP-Ratio was needed to measure the extent to which a country's economy relies on imported goods and services. Countries with higher Import-to -GDP ratios should theoretically exhibit stronger negative correlations between tariff and domestic tax revenues. 
+
+Ireland shows the highest import intensity with an average of 84.61 percent over the 20-year period, with Belgium following closely at 76.64 percent and Switzerland had a mean import ratio of 53.06 percent. These three countries represent the most import intensive economies in the sample. 
+
+At the middle tier of import dependency, Korea, Canada, Israel, France, Norway and New Zealand demonstrate moderate import dependency. The lower end of import intensity includes Australia averaging 21.76 and the United States having the lowest import dependency at 15.14 percent. The United states being the largest economy in the sample, demonstrates economic self-sufficiency. 
 
 
 \begin{table}[h]
 \centering
-\caption{Pearson Correlations: Tariff Revenue and Domestic Tax Revenue by Import Intensity}
-\label{tab:correlations}
-\begin{tabular}{lcc}
+\caption{Correlations Between International Tax and Domestic Tax Revenue by Country}
+\label{tab:correlations_individual}
+\begin{tabular}{lrrr}
 \toprule
-\textbf{Country Group} & \textbf{Correlation} & \textbf{P-value} \\
+\textbf{Country} & \textbf{Correlation} & \textbf{P-value} & \textbf{Import-GDP} \\
 \midrule
-High Import-GDP & 0.080 & 0.544 \\
-\quad (Switzerland, Romania, Korea, France) & & \\
-\addlinespace
-Low Import-GDP & $-0.125$ & 0.215 \\
-\quad (Norway, Israel, Australia, United States) & & \\
-\bottomrule\end{tabular}
+Korea, Rep. & $0.769$ & 0.0001 & 38.82\% \\
+Switzerland & $0.740$ & 0.0002 & 53.06\% \\
+Israel & $0.432$ & 0.0574 & 32.59\% \\
+Australia & $-0.319$ & 0.1703 & 21.76\% \\
+United States & $-0.397$ & 0.0829 & 15.14\% \\
+France & $0.268$ & 0.2542 & 29.57\% \\
+Belgium & $0.261$ & 0.2662 & 76.64\% \\
+Norway & $0.187$ & 0.4302 & 29.38\% \\
+New Zealand & $-0.182$ & 0.4427 & 27.76\% \\
+Canada & $0.127$ & 0.5945 & 32.95\% \\
+Ireland & $0.088$ & 0.7124 & 84.61\% \\
+\bottomrule
+\end{tabular}
 \begin{tablenotes}[flushleft]
 \small
-\item \textit{Note:} Neither correlation is statistically significant at the 0.05 level.
+\item \textit{Note:} Pearson correlations between International Tax Revenue (\% GDP) and Domestic Tax Revenue (\% GDP) for each country over 2001-2020. *** p$<$0.001. Import-GDP ratios shown for reference.
 \end{tablenotes}
 \end{table}
-
+The correlation results between international tax revenue and domestic tax revenue show some interesting patterns. Out of the eleven countries, only two had statistically significant correlations, and they were both positive instead of negative like the hypothesis predicted. Korea had the strongest correlation at 0.769 with a p-value of 0.0001, which means when tariff revenues go up, domestic tax revenues also go up. Switzerland was similar with a correlation of 0.740 and p-value of 0.0002. 
 
 
 
