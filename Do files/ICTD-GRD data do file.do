@@ -58,7 +58,7 @@ label variable ImportPGDP "Imports (% GDP)"
 label variable ImportValue "Import Value"
 *percentage variables 
 gen ImportGDPRatio = ImportValue/GDPCurrent *100
-label variable ImportGDPRatio "Imports(% GDP)"
+label variable ImportGDPRatio "Import-GDP-Ratio"
 
 gen TradeBalance = ImportPGDP - ExportPGDP
 label variable TradeBalance "Trade Balance (% GDP)"
@@ -68,11 +68,17 @@ label variable TariffGDP "Tariff Revenue (% GDP)"
 
 *Save with new variables
 save "TariffsTimeseries_ICTD.dta", replace
-
-*summary statistics of key variables 
-sum DomesticTaxGDP InternationalTaxGDP ImportPGDP ExportPGDP GDPCurrent ImportValue 
+ 
+*change GDP and ImportValue to billions 
+gen GDPCurrent_Billions = GDPCurrent / 1000000000
+label variable GDPCurrent_Billions "GDP(Current USD, Billions)"
+gen ImportValue_Billions = ImportValue / 1000000000
+label variable ImportValue_Billions "Import Value(Billions USD)"
+*drop the old GDP & ImportValue 
+drop GDPCurrent ImportValue 
+summarize DomesticTaxGDP InternationalTaxGDP ImportPGDP ExportPGDP GDPCurrent_Billions ImportValue_Billions
 * export to Latex 
-outreg2 using "Summary_Stats_base.tex" , sum(log) replace tex title("Summary Statistics") label 
+outreg2 using "Summary_Stats_final.tex", sum(log) replace tex title("Summary Statistics") label
 
 *Summary table for importGDP ratio variable by country
 preserve
@@ -81,10 +87,13 @@ gsort -mean
 format mean sd min max %9.2f
 list
 
+<<<<<<< Updated upstream
 restore
 
+=======
+>>>>>>> Stashed changes
 *Correlations (Individual) 
-
+use "TariffsTimeseries_ICTD.dta", clear 
 * Australia
 display " "
 display "AUSTRALIA:"
