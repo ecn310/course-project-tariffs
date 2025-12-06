@@ -13,6 +13,8 @@ This MDF is used as a place to store and keep track of important information. In
 - [Full project presentation](https://github.com/ecn310/course-project-tariffs/issues/17)
 - [Reproducibility package](https://github.com/ecn310/course-project-tariffs/issues/20)
 - [Section, draft hypothesis & theory (in intro)](https://github.com/ecn310/course-project-tariffs/issues/21): used to work on those specific parts of the report.
+- [intro,discussion, conclusion](https://github.com/ecn310/course-project-tariffs/issues/22)
+- [Lit Review](https://github.com/ecn310/course-project-tariffs/issues/23)
 
 **General Project Files**
 - This is where our [Team Contract](https://github.com/ecn310/course-project-tariffs/blob/main/team_contract.md) is.
