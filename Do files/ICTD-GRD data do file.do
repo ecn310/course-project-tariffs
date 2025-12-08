@@ -157,21 +157,14 @@ foreach country in "Australia" "Belgium" "Canada" "France" "Ireland" "Israel" "K
     pwcorr InternationalTaxGDP DomesticTaxGDP if CountryName == "`country'", sig star(0.05)
 }
 
-*scatter plots 
-*High Import Countries (Ireland, Belgium, Switzerland)
-scatter TariffGDP DomesticTaxGDP if CountryName == "Ireland", mcolor(orange) msize(small) || scatter TariffGDP DomesticTaxGDP if CountryName == "Belgium", mcolor(blue) msize(small) || scatter TariffGDP DomesticTaxGDP if CountryName == "Switzerland", mcolor(red) msize(small) legend(order(1 "Ireland" 2 "Belgium" 3 "Switzerland") position(3)) ytitle("Tariff Revenue (% GDP)") xtitle("Domestic Tax Revenue (% GDP)") title("High Import-GDP Countries (>40%)")
-graph export "high_import_countries.pdf", replace
+*scatter plots
+*raw scatter of all data points for internationaltaxgdp & DomesticTaxGDP   
+separate InternationalTaxGDP, by(CountryName) veryshortlabel
+twoway (scatter International~P1 DomesticTaxGDP, mcolor(orange) msize(small)) (scatter International~P2 DomesticTaxGDP, mcolor(purple) msize(small)) (scatter International~P3 DomesticTaxGDP, mcolor(teal) msize(small)) (scatter International~P4 DomesticTaxGDP, mcolor(navy) msize(small)) (scatter International~P5 DomesticTaxGDP, mcolor(orange) msize(small)) (scatter International~P6 DomesticTaxGDP, mcolor(purple) msize(small)) (scatter International~P7 DomesticTaxGDP, mcolor(navy) msize(small)) (scatter International~P8 DomesticTaxGDP, mcolor(teal) msize(small)) (scatter International~P9 DomesticTaxGDP, mcolor(purple) msize(small)) (scatter International~P10 DomesticTaxGDP, mcolor(brown) msize(small)) (scatter International~P11 DomesticTaxGDP, mcolor(olive) msize(small)), ytitle("International Tax Revenue (% GDP)") xtitle("Domestic Tax Revenue (% GDP)") title("International Tax vs Domestic Tax Revenue: All Countries") legend(order(1 "Australia" 2 "Belgium" 3 "Canada" 4 "France" 5 "Ireland" 6 "Israel" 7 "Korea, Rep." 8 "New Zealand" 9 "Norway" 10 "Switzerland" 11 "United States") size(vsmall) cols(3) position(3)) graphregion(color(white)) bgcolor(white)
 
-*medium import countries 
-scatter TariffGDP DomesticTaxGDP if CountryName == "Korea, Rep.", mcolor(maroon) msize(small) || scatter TariffGDP DomesticTaxGDP if CountryName == "Canada", mcolor(purple) msize(small) || scatter TariffGDP DomesticTaxGDP if CountryName == "France", mcolor(green) msize(small) || scatter TariffGDP DomesticTaxGDP if CountryName == "Norway", mcolor(navy) msize(small) || scatter TariffGDP DomesticTaxGDP if CountryName == "Israel", mcolor(teal) msize(small) legend(order(1 "Korea" 2 "Canada" 3 "France" 4 "Norway" 5 "Israel") position(3) cols(2)) ytitle("Tariff Revenue (% GDP)") xtitle("Domestic Tax Revenue (% GDP)") title("Medium Import-GDP Countries (26-40%)")
-graph export "medium_import_countries.pdf" , replace 
+graph export "scatter_raw_tax_relationship.pdf", replace
 
-*low import countries 
-scatter TariffGDP DomesticTaxGDP if CountryName == "New Zealand", mcolor(orange) msize(small) || scatter TariffGDP DomesticTaxGDP if CountryName == "Australia", mcolor(green) msize(small) || scatter TariffGDP DomesticTaxGDP if CountryName == "United States", mcolor(navy) msize(small) legend(order(1 "New Zealand" 2 "Australia" 3 "United States") position(3)) ytitle("Tariff Revenue (% GDP)") xtitle("Domestic Tax Revenue (% GDP)") title("Low Import-GDP Countries (<26%)")
-graph export "low_import_countries.pdf" , replace
-
-
-
+*scatter of correlation vs import intensity 
 
 
 
