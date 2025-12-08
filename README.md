@@ -15,6 +15,7 @@ This MDF is used as a place to store and keep track of important information. In
 - [Section, draft hypothesis & theory (in intro)](https://github.com/ecn310/course-project-tariffs/issues/21): used to work on those specific parts of the report.
 - [intro,discussion, conclusion](https://github.com/ecn310/course-project-tariffs/issues/22)
 - [Lit Review](https://github.com/ecn310/course-project-tariffs/issues/23)
+- [Full Project First Submission ](https://github.com/ecn310/course-project-tariffs/issues/24)
 
 **General Project Files**
 - This is where our [Team Contract](https://github.com/ecn310/course-project-tariffs/blob/main/team_contract.md) is.
