@@ -164,8 +164,25 @@ twoway (scatter International~P1 DomesticTaxGDP, mcolor(orange) msize(small)) (s
 
 graph export "scatter_raw_tax_relationship.pdf", replace
 
-*scatter of correlation vs import intensity 
+*graph of correlation vs import intensity 
+clear 
+input str20 CountryName double correlation double mean_import
 
+"Korea, Rep." 0.769 38.82
+"Switzerland" 0.740 53.06
+"Israel" 0.432 32.59
+"France" 0.268 29.57
+"Belgium" 0.261 76.64
+"Norway" 0.187 29.38
+"Canada" 0.127 32.95
+"Ireland" 0.088 84.61
+"New Zealand" -0.182 27.76
+"Australia" -0.319 21.76
+"United States" -0.397 15.14
+end
+gen country_label = CountryName
+replace country_label = "Korea" if CountryName == "Korea, Rep."
+scatter correlation mean_import, mcolor(navy%70) msize(large) mlabel(country_label) mlabsize(small) mlabposition(3) mlabcolor(black) ytitle("Correlation (International & Domestic Tax Revenue)") xtitle("Average Import-to-GDP Ratio (%)") title("Import Intensity and Tax Revenue Correlation Patterns") subtitle("Developed Countries, 2001-2020", size(small)) yline(0, lcolor(black) lpattern(dash) lwidth(medium)) legend(off) ylabel(-0.4(0.2)0.8, angle(0) format(%3.1f)) xlabel(10(10)90, format(%2.0f)) graphregion(color(white)) bgcolor(white)
 
-
+graph export "scatter_correlation_import.pdf", replace
 
