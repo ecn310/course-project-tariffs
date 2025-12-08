@@ -1,6 +1,6 @@
 *Do file to merge our  data, and analysis
 * Run after running TariffTimeseries.do and has created TariffTimeseries_new.dta
-*First run this to change directory, where all of the raw data is
+*First run this to change directory to your path, where all of the raw data is 
 cd "C:\Users\kfrocha\OneDrive - Syracuse University\Documents\GitHub\course-project-tariffs\Data files"
 *import ICD-GRD data 
 use "UNUWIDERGRD_2023_Central" , clear 
