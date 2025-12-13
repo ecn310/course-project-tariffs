@@ -78,23 +78,20 @@ The remainder of the paper includes literature reviews, data, results, discussio
 The World Integrated Trade Solution (WITS) is a trade software provided by the World Bank that consists of trade and tariff data. The International Centre for Tax and Development Government Revenue Dataset (ICTD-GRD) provides detailed tax and government revenue data for nearly all countries. Our sample includes eleven developed countries 2001-2020: Australia, Blegium, Canada, France, Ireland, Israel, South Korea, New Zealand, Norway, Switzerland, and the United States, amounting to 220 country-year observations. We classify these countries as "developed" based on their Organization for Economic Co-operation and Development (OECD) membership status, which indicates advanced economies with established institutions capable of implementing diverse revenue strategies. 
 \begin{table}[htbp]
 \centering
-\def\sym#1{\ifmmode^{#1}\else\(^{#1}\)\fi}
-\caption{Summary Statistics}
-\label{tab:sumstats}
 \begin{threeparttable}
-\begin{tabular}{l*{5}{c}}
-\hline\hline
-                    &\multicolumn{1}{c}{(1)}&\multicolumn{1}{c}{(2)}&\multicolumn{1}{c}{(3)}&\multicolumn{1}{c}{(4)}&\multicolumn{1}{c}{(5)}\\
-                    &\multicolumn{1}{c}{N}&\multicolumn{1}{c}{mean}&\multicolumn{1}{c}{sd}&\multicolumn{1}{c}{min}&\multicolumn{1}{c}{max}\\
+\caption{Summary Statistics}
+\label{tab:summary_stats}
+\begin{tabular}{lccccc}
 \hline
-year                &         220&        2010&       5.779&        2001&        2020\\
-Exports (\% GDP)    &         220&       43.49&       26.23&       9.036&       133.3\\
-Imports (\% GDP)    &         220&       40.08&       22.11&       13.15&       124.4\\
-Domestic Tax Revenue (\% GDP)&         220&       7.564&       3.618&       0.424&       13.17\\
-International Tax Revenue (\% GDP)&         220&       0.291&       0.307&      -0.013&       1.087\\
-GDP (Current USD, Billions)&         220&        2193&        4505&       53.87&       21540\\
-Import Value (Billions USD)&         215&       503.3&       670.2&       16.83&        3121\\
-\hline\hline
+VARIABLES & N & mean & sd & min & max \\ \hline
+ &  &  &  &  &  \\
+Exports (\% GDP) & 220 & 43.49 & 26.23 & 9.036 & 133.3 \\
+Imports (\% GDP) & 220 & 40.08 & 22.11 & 13.15 & 124.4 \\
+Domestic Consumption Tax Revenue (\% GDP) & 220 & 7.564 & 3.618 & 0.424 & 13.17 \\
+International Tax Revenue (\% GDP) & 220 & 0.291 & 0.307 & -0.0130 & 1.087 \\
+GDP(Current USD, Billions) & 220 & 2,193 & 4,505 & 53.87 & 21,540 \\
+Import Value(Billions USD) & 215 & 503.3 & 670.2 & 16.83 & 3,121 \\
+ &  &  &  &  &  \\ \hline
 \end{tabular}
 \begin{tablenotes}[flushleft]
 \small
@@ -122,7 +119,7 @@ We also obtained two tax revenue variables from ICTD-GRD: Domestic Tax Revenue (
     Before conducting a formal correlations analysis, we examined the relationship between international and domestic consumption tax revenue visually to asses whether the predicted substitution pattern would present itself in the aggregate data. Figure \ref{fig:scatter_all} displays the relationship between international tax revenue (primarily tariffs) and domestic  consumption tax revenue across all eleven countries. Each point represents a country-year observation, with countries distinguished by color. If our hypothesis is correct then we would expect to observe a negative relationship; as countries reduce tariffs, domestic tax revenue should increase(move right on the horizontal axis) to offset the lost tariff revenue. 
 \begin{figure}[htbp]
     \centering
-    \includegraphics[width=0.85\textwidth]{figures/scatter_raw_tax_relationship.pdf}
+    \includegraphics[width=0.85\textwidth]{figures/scatter_raw_tax_relationship_final.pdf}
     \caption{Relationship Between International and Domestic Consumption Tax Revenue Across Countries}
     \label{fig:scatter_all}
     \begin{minipage}{0.85\textwidth}
