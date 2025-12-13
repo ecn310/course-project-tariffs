@@ -16,9 +16,10 @@
 \usepackage[american]{babel}
 \usepackage{booktabs}
 \usepackage{threeparttable}
+\usepackage{float}
 \usepackage[usenames,dvipsnames]{color}
 \usepackage{graphicx,amsbsy,amssymb, amsmath, amsthm, MnSymbol,bbding,times, verbatim,bm,pifont,pdfsync,setspace,natbib}
-
+\usepackage{threeparttable}
 % enable hyperlinks and table of contents
 \usepackage[pdftex,
 bookmarks=true,
@@ -35,10 +36,10 @@ bookmarksopen=true,hyperfootnotes=false]{hyperref}
 
 
 \begin{document}
-\title{Insert title here}
-\author{Name 1\thanks{Syracuse University, Economics Department. Email: kbuzard@syr.edu.} \and Name 2\thanks{abc} \and Name 3\thanks{abc}}
+\title{Import Reliance and Government Revenue: Testing Tariff–Tax Relationships Across Developed Countries}
+\author{Betsy Anzaldua\thanks{Syracuse University, Economics Department. Email: kbuzard@syr.edu.} \and Lucia De Pedro\thanks{abc} \and Kiana Rocha\thanks{abc}}
 \date{\vskip-.1in \today}
-\maketitle
+\maketitle 
 
 \vskip.3in
 \begin{center} {\bf Abstract} \end{center}
@@ -52,13 +53,11 @@ bookmarksopen=true,hyperfootnotes=false]{hyperref}
 
   Governments use both domestic taxes and tariffs to increase revenue.  As developed countries lower tariffs, an important question is how they replace the lost revenue from decreased tariffs.  Understanding this shift matters for trade policy and for how countries tax systems may be affected.  
 
-This paper focuses on the relationship between domestic taxes on goods and services and tariff levels in developed countries.  The goal is to examine how domestic taxes relate to tariffs in developed countries and how this relationship depends on a country's GDP and it's import to GDP ratio.  
+This paper focuses on the relationship between domestic taxes on goods and services and tariff levels in developed countries.  The goal is to examine how domestic taxes relate to tariffs in developed countries and how this relationship depends on a country's GDP and it's import-to-GDP ratio.  
 
-The analysis uses data from 11 countries: Switzerland, Korea, Australia, France, Norway, Israel, the United States, Belgium, Ireland, Canada, and New Zealand.  
+Our hypothesis is that domestic taxes will increase in developed countries that  limit tariffs and that this relationship will be stronger in those countries with high import to GDP ratios than in countries with low import-to-GDP ratios.  High-import countries rely on international trade for government revenue , so tariff reductions create larger revenue gaps that governments offset by increasing domestic consumption taxes.   Optimal taxation theory suggests that when tariff revenue falls, governments may raise domestic taxes in order to maintain overall revenue (Broadway, Maital and Prachowny, 2002).  This effect should be strongest in countries that rely heavily on tariff revenue to finance federal funding.
 
-Our hypothesis is that domestic taxes will increase in developed countries that reduce or limit tariffs and that this relationship will be stronger in those countries with high import to GDP ratios than in countries with low import to GDP ratios.  High-import countries rely more heavily on international trade for a large source of government revenue , so tariff reductions create larger revenue gaps that governments offset by increasing domestic consumption taxes.   Optimal taxation theory suggests that when tariff revenue falls, governments may raise domestic taxes in order to maintain overall revenue (Broadway, Maital and Prachowny, 2002).  This effect should be strongest in countries that rely heavily on tariff revenue to finance federal funding.
-
-The results of our analysis show that the relationship between tariffs and domestic taxes is not statistically significant in in high import and low import developed countries.  The correlations between tariff levels and domestic tax revenues are weak.  Although high import countries show a slightly positive-correlation and low-import countries show a slightly negative one, neither pattern provides strong evidence that domestic taxes systemically rise when tariffs fall.  Overall, our data suggests that developed countries may not rely on domestic taxes to replace tariff revenue, or that any substitution effect is too small to detect in this sample.  
+To explore this question, we analyze data for 11 countries: Switzerland, Korea, Australia, France, Norway, Israel, the United States, Belgium, Ireland, Canada, and New Zealand over the years 2001-2020.  These countries were selected because they represent a broad range of import-to-GDP- ratios, allowing us to test whether substitution patterns differ between high trade-dependent countries and more closed ones.  The results of our analysis show that the relationship between tariffs and domestic taxes is not statistically significant in in high import and low import developed countries.  The correlations between tariff levels and domestic tax revenues are weak, and their directions are inconsistent with our hypothesis: high-import countries show a slight positive correlation, while low-import countries show a slight negative one.  Visually, our scatterplots reinforce this finding.  Some countries cluster at low levels of tariff revenue, with little variation in domestic tax revenue as tariffs change.  Countries with the highest import dependence, such as Ireland and Belgium, do now show strong substitution patterns than countries with lower import-to-GDP ratios.  Overall, our data suggests that developed countries may not rely on domestic taxes to replace tariff revenue, or that any substitution effect is too small to detect in this sample.  This challenges the expectation from the optimal taxation theory that governments would change domestic consumption taxes in order to offset the reductions in tariff revenue.
 
 The remainder of the paper includes literature reviews, data, results, discussion, and conclusion.  The literature reviews analyze existing research on this topic.  The data section describes the data sources, variables, and how we analyzed the data.  The results section presents the descriptive statistics and tables.  In the discussion section, limitations of the analysis and the meaning of the data are explained.
 
@@ -75,9 +74,14 @@ The remainder of the paper includes literature reviews, data, results, discussio
 
 \section{Data}
 \label{sec:data}
-\begin{table}[htbp]\centering
+
+The World Integrated Trade Solution (WITS) is a trade software provided by the World Bank that consists of trade and tariff data. The International Centre for Tax and Development Government Revenue Dataset (ICTD-GRD) provides detailed tax and government revenue data for nearly all countries. Our sample includes eleven developed countries 2001-2020: Australia, Blegium, Canada, France, Ireland, Israel, South Korea, New Zealand, Norway, Switzerland, and the United States, amounting to 220 country-year observations. We classify these countries as "developed" based on their Organization for Economic Co-operation and Development (OECD) membership status, which indicates advanced economies with established institutions capable of implementing diverse revenue strategies. 
+\begin{table}[htbp]
+\centering
 \def\sym#1{\ifmmode^{#1}\else\(^{#1}\)\fi}
 \caption{Summary Statistics}
+\label{tab:sumstats}
+\begin{threeparttable}
 \begin{tabular}{l*{5}{c}}
 \hline\hline
                     &\multicolumn{1}{c}{(1)}&\multicolumn{1}{c}{(2)}&\multicolumn{1}{c}{(3)}&\multicolumn{1}{c}{(4)}&\multicolumn{1}{c}{(5)}\\
@@ -92,21 +96,22 @@ GDP (Current USD, Billions)&         220&        2193&        4505&       53.87&
 Import Value (Billions USD)&         215&       503.3&       670.2&       16.83&        3121\\
 \hline\hline
 \end{tabular}
-\label{tab:sumstats}
-\end{table}
 \begin{tablenotes}[flushleft]
 \small
-\item \textit{Note:} Sample consists of 8 developed countries over 20 years (2001-2020): Australia, France, Israel, Korea, Norway, Romania, Switzerland, and the United States. Tax variables from ICTD Government Revenue Dataset; trade and GDP variables from World Integrated Trade Solution (WITS).
+\item \textit{Note:} Sample consists of 11 developed countries over 20 years (2001-2020): Australia, Belgium, Canada, France, Ireland, Israel, Korea, New Zealand, Norway, Switzerland, and the United States. Tax variables from ICTD Government Revenue Dataset; trade and GDP variables from World Integrated Trade Solution (WITS).
 \end{tablenotes}
+\end{threeparttable}
+\end{table}
 
+We obtained four trade indicators to create our key variables from WITS: Exports of goods and services (\% of GDP) measures the value of all exported goods and services as a percentage of GDP; Imports of goods and services (\% of GDP) measure the value of all imported goods and services as a percentage of GDP, GDP (current USD) represents the gross domestic product of each country in current US dollars; and Import Value (Current USD) captures the total value of imports in current US dollars. 
+We also obtained two tax revenue variables from ICTD-GRD: Domestic Tax Revenue (\% of GDP) measures total taxes on goods and services; and International Tax Revenue (\% of GDP) which is taxes on international trade, primarily consisting of tariffs and customs duties on imports.
 
-The World Integrated Trade Solution (WITS) is a trade software provided by the World Bank that consists of trade and tariff data. The International Centre for Tax and Development Government Revenue Dataset (ICTD-GRD) provides detailed tax and government revenue data for nearly all countries. Our sample includes eleven developed countries 2001-2020: Australia, Blegium, Canada, France, Ireland, Israel, South Korea, New Zealand, Norway, Switzerland, and the United States, amounting to 220 country-year observations. We classify these countries as "developed" based on their consistently high GDP per capita. 
-
-
-We obtained four trade indicators to create our key variables from WITS: Exports of goods and services (\% of GDP) measures the value of all exported goods and services as a percentage of GDP; Imports of goods and services (\% of GDP) measures the value of all imported goods and services as a percentage of GDP, GDP (current USD) represents the gross domestic product of each country in current US dollars; and Import Value (Current USD) captures the total value of imports in current US dollars. 
-We also obtained two tax revenue variables from ICTD-GRD: Domestic Tax Revenue (\% of GDP) measures total taxes on goods and services; and International Tax Revenue (\% of GDP) which is taxes on international trade, primarily consisting of tariffs and customs duties on imports. 
+        The eleven developed countries in the sample demonstrate substantial variation in both trade openness and economic size, which is crucial for testing our hypothesis that fiscal substitution patterns differ by import intensity. The wide range of Imports as a percentage of GDP, averaging 40.08\% and a minimum of 13.15 \% enables comparison between economies like the United States and heavily trade dependent countries like Ireland and Belgium. Exports show variation as well with the average of 43.49\% of GDP and ranging between 9 and 133\%. The similarity in average export and import percentages reflects the overall trade openness of these economies. This allows us to compare fiscal behavior across countries with different levels of import dependency. 
+        Economic size also varies across the sample. 
 \footnote{See the reproducibility package for more detailed instructions 
-\protect\href{https://github.com/ecn310/course-project-tariffs/tree/main/Report\#readme}{here.}}
+\protect\href{https://github.com/ecn310/course-project-tariffs/tree/main/Report\#readme}{here.}} 
+
+         
 
 \section{Results}
 \label{sec:result}
@@ -114,10 +119,26 @@ We also obtained two tax revenue variables from ICTD-GRD: Domestic Tax Revenue (
 \setlength{\pdfpagewidth}{8.5in} \setlength{\pdfpageheight}{11in}
 
 
-\begin{table}[h]
+    Before conducting a formal correlations analysis, we examined the relationship between international and domestic consumption tax revenue visually to asses whether the predicted substitution pattern would present itself in the aggregate data. Figure \ref{fig:scatter_all} displays the relationship between international tax revenue (primarily tariffs) and domestic  consumption tax revenue across all eleven countries. Each point represents a country-year observation, with countries distinguished by color. If our hypothesis is correct then we would expect to observe a negative relationship; as countries reduce tariffs, domestic tax revenue should increase(move right on the horizontal axis) to offset the lost tariff revenue. 
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.85\textwidth]{figures/scatter_raw_tax_relationship.pdf}
+    \caption{Relationship Between International and Domestic Consumption Tax Revenue Across Countries}
+    \label{fig:scatter_all}
+    \begin{minipage}{0.85\textwidth}
+        \small
+        \textit{Note:} Each point represents a country-year observation from 2001-2020. The horizontal axis shows Domestic Consumption Tax Revenue as a percentage of GDP, while the vertical axis shows International Tax Revenue (primarily tariffs) as a percentage of GDP. Countries are distinguished by color. A negative relationship would suggest fiscal substitution, where countries increase domestic consumption taxes as tariff revenues decline.
+    \end{minipage}
+\end{figure}
+
+
+        The scatter plot reveals no clear pattern of fiscal substitution. The countries cluster into distinct groups. Most observations cluster at very low levels of international tax revenue showing that tariff revenues are minimal for the countries. The absence of a clear negative slope provides preliminary evidence against fiscal substitution in developed countries. This prompts a country-by-country approach, examining each country individually to identify whether any individual cases exhibit the hypothesized relationship and to asses whether import intensity correlates with substitution patterns. 
+
+\begin{table}[h!]
 \centering
 \caption{Import-to-GDP Ratio by Country (2001-2020)}
 \label{tab:import_country}
+\begin{threeparttable}
 \begin{tabular}{lrrrr}
 \toprule
 \textbf{Country} & \textbf{Mean} & \textbf{Std. Dev.} & \textbf{Min} & \textbf{Max} \\
@@ -137,30 +158,35 @@ Australia & 21.76 & 1.19 & 18.84 & 24.07 \\
 United States & 15.14 & 1.44 & 12.87 & 17.35 \\
 \bottomrule
 \end{tabular}
-\end{table}
 \begin{tablenotes}[flushleft]
 \small
 \item \textit{Note:} Import-to-GDP ratio calculated as (Import Value / GDP Current USD) × 100. Countries sorted by mean import-to-GDP ratio (highest to lowest). Data from World Integrated Trade Solution (WITS), 2001-2020.
 \end{tablenotes}
+\end{threeparttable}
+\end{table}
+
+To test whether import intensity predicts fiscal substitution behavior, Table \ref{tab:import_country} represents the import-to-GDP ratio for each country, calculated as the ratio of import value to GDP multiplied by 100. This is important to understanding the variation in import dependency across countries allowing us to test the hypothesis that higher import countries should demonstrate stronger fiscal substitutions patterns than low import countries. These high-import countries should exhibit stronger negative correlations between international and domestic tax revenues, reflecting the systemic substitution of domestic taxes to offset lost tariff revenue. 
 
 
-Table \ref{tab:import_country} lists the summary statistics for the variable ImportGDPRatio generated from dividing ImportValue variable observations by RealGDP variable observations, multiplied by 100. Understanding the variation in import dependency across the countries is essential to testing whether the relationship between tariff revenue and domestic tax revenue differs based on a country's trade intensity. The hypothesis predicts that countries more dependent on imports will face greater fiscal pressure when tariff revenues decline, leading to stronger substitution towards toward domestic taxes. The Import-GDP-Ratio measures the extent to which a country's economy relies on imported goods and services. Countries with higher Import-to -GDP ratios should theoretically exhibit stronger negative correlations between tariff and domestic tax revenues. 
 
-Ireland shows the highest import intensity with an average of 84.61 percent over the 20-year period, with Belgium following closely at 76.64 percent and Switzerland had a mean import ratio of 53.06 percent. These three countries represent the most import intensive economies in the sample. 
+Table \ref{tab:import_country} reveals substantial variation in import dependency across the sample, with countries having a range from 15.14\% to 84.61\% of GDP. Ireland demonstrates the highest import intensity, averaging 84.61\% of GDP over the 20-year period, with substantial year-to-year variation indicated by a standard deviation of 15.31, reflecting Ireland's economy experiencing significant fluctuations in trade dependency. Belgium follows at 76.64\%  average import intensity but with a standard deviation of 5.76. Belgium's imports consistently remained between 65.34\% and 83.49\% of GDP. Switzerland averages 53.06\% showing similar stability to Belgium with imports ranging from 42.52\% to 61.63\%. These three countries represent the most import-intensive economies in the sample and, according to our hypothesis should be the most likely to substitute domestic taxes for declining tariff revenues.  
+        
+        The remaining countries display import intensities that range from 15.14\% and 38.82\%. Korea averages at 38.82\% and presents variability with a standard deviation of 7.21. Korea's imports ranging from 29.24\% and 52.81\%. The remaining six countries Canada (32.95\%), Israel (32.59\%), France (29.57\%), Norway (29.38\%), New Zealand (27.76\%), Australia (21.76\%) and the United States(15.14\%) demonstrate stability over time with standard deviations between 1.19 and 4.80. 
 
-At the middle tier of import dependency, Korea, Canada, Israel, France, Norway and New Zealand demonstrate moderate import dependency. The lower end of import intensity includes Australia averaging 21.76 and the United States having the lowest import dependency at 15.14 percent. The United states being the largest economy in the sample, demonstrates economic self-sufficiency. 
+        The wide dispersion of average import intensity is another reason for conducting individual correlation analysis for each country. This approach will reveal whether high-import countries like Ireland and Belgium demonstrate negative correlations between tariff and domestic tax revenue.
 
 
-\begin{table}[h]
+\begin{table}[!htbp]
 \centering
 \caption{Correlations Between International Tax and Domestic Tax Revenue by Country}
 \label{tab:correlations_individual}
+\begin{threeparttable}
 \begin{tabular}{lrrr}
 \toprule
 \textbf{Country} & \textbf{Correlation} & \textbf{P-value} & \textbf{Import-GDP} \\
 \midrule
-Korea, Rep. & $0.769$ & 0.0001 & 38.82\% \\
-Switzerland & $0.740$ & 0.0002 & 53.06\% \\
+Korea, Rep. & $0.769^{***}$ & 0.0001 & 38.82\% \\
+Switzerland & $0.740^{***}$ & 0.0002 & 53.06\% \\
 Israel & $0.432$ & 0.0574 & 32.59\% \\
 Australia & $-0.319$ & 0.1703 & 21.76\% \\
 United States & $-0.397$ & 0.0829 & 15.14\% \\
@@ -172,43 +198,52 @@ Canada & $0.127$ & 0.5945 & 32.95\% \\
 Ireland & $0.088$ & 0.7124 & 84.61\% \\
 \bottomrule
 \end{tabular}
-\end{table}
-\begin{tablenotes}[flushleft]
+\begin{tablenotes}
 \small
-\item \textit{Note:} Pearson correlations between International Tax Revenue (\% GDP) and Domestic Tax Revenue (\% GDP) for each country over 2001-2020. *** p$<$0.001. Import-GDP ratios shown for reference.
+\item \textit{Note:} Pearson correlations between International Tax Revenue (\% GDP) and Domestic Tax Revenue (\% GDP) for each country over 2001–2020. $^{***}$ indicates p$<$0.001. Import-GDP ratios shown for reference.
 \end{tablenotes}
-% \end{table}
-The correlation results between international tax revenue and domestic tax revenue show some interesting patterns. Out of the eleven countries, only two had statistically significant correlations, and they were both positive instead of negative like the hypothesis predicted. Korea had the strongest correlation at 0.769 with a p-value of 0.0001, which means when tariff revenues go up, domestic tax revenues also go up. Switzerland was similar with a correlation of 0.740 and p-value of 0.0002. 
+\end{threeparttable}
+\end{table}
+
+        The correlation results between international tax revenue and domestic tax revenue reveal patterns that directly contradict our hypothesis. Table \ref{tab:correlations_individual} presents the correlation coefficients for each country along with their statistical significance and corresponding Import-GDP ratios. Out of the eleven countries, only two exhibit statistically significant correlations and rather than them being negative like predicted they are positive. 
+
+        Korea is one of the countries with statistical significance with a correlation of 0.769 (p-value = 0.0001) and Switzerland is the other with a correlation of 0.740 (p-value = 0.0002). These positve relationships indicate that when tariff revenues increase in these countries, domestic tax revenue also increases rather than moving inversely. The most import intensive countries show no evidence of fiscal substitution. Ireland with the highest import-to-GDP ratio displays a correlation of only 0.088 (p-value = 0.712) suggests that changes in tariff revenues have no relationship with domestic tax policy, despite Ireland's economy being more dependent on international trade than any other country in our sample. Belgium, the second most import -intensive economy also fails to reach statistical significance with a weak positive correlation of 0.261. 
+
+        The remaining eight countries display weak statistically insignificant correlations. The united states has a correlation of -0.397, which matches our hypothesis' prediction but also fails to reach statistical significance because the p-value is 0.712. 
+
+        
 
 
-Explain what analyses you did, 
-provide evidence (like in the descriptive stats exercise, but refined and clear) and then explain what your results mean.
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.85\textwidth]{figures/scatter_correlation_import.pdf}
+    \caption{Import Intensity and Correlation Between International and Domestic Tax Revenue}
+    \label{fig:scatter_import}
+    \vspace{0.2cm}
+    {\small\textit{Note:} Each point represents one country. The horizontal axis shows the average import-to-GDP ratio (2001-2020). The vertical axis shows the correlation coefficient between international tax revenue and domestic tax revenue for that country. Negative correlations suggest fiscal substitution (taxes move inversely), while positive correlations indicate taxes move together (no substitution).}
+\end{figure}
+
+    To assess whether import dependency predicts fiscal substitution behavior, Figure \ref{fig:scatter_import} displays each country's average import-to-GDP ratio against the correlation between international tax revenue and domestic tax revenue. This visualization tests the hypothesis that more import-intensive economies should demonstrate stronger fiscal substitution (negative correlations) as they face greater revenue losses from tariff reductions. The scatter of points across the graph with high import and low import countries showing similar weak correlations and the middle import countries having the strongest relationships again further represents the failure to reject the null hypothesis. The figure makes the numerical correlations apparent on a graph: there is no downward slope and no relationship between how much a country trades and how its tax revenues move. These findings suggest that factors other than simple trade dependency explain fiscal policy choices. 
 
 
 
-
-\section{Discussion}
-\label{sec:discussion}
-
-Optional. This is where you would discuss any of the following if they are extensive; otherwise, this material can be put in the Results (caveats) and Conclusions (future work and next steps) sections.
-\begin{itemize}
-    \item caveats (are there problems with the data that there are no obvious ways to resolve? if so, how might this impact your results?)
-    \item future work / next steps
-    \item implications of the results: that is, how your findings -- if they were causally identified -- might inform policymaking, etc.
-\end{itemize}
 
 \section{Conclusion}
 \label{sec:conclusion}
 
-This paper examined how domestic consumption taxes relate to tariff levels in developed countries and whether this depends on a country's GDP and import to GDP ratio.  Using data from the 11 developed countries from 2001-2020, our analysis combined trade indicators from WITS with tax revenue variables from ICTD-GRD.  These countries were ranked according to import intensity to see whether high dependence on imported goods led to higher domestic consumption tax revenue.  
+This paper examined how domestic consumption taxes relate to tariff levels in developed countries and whether this depends on a country's GDP and import to GDP ratio.  Using data from 11 developed countries from 2001-2020, our analysis combined trade indicators from WITS with tax revenue variables from ICTD-GRD.  These countries were ranked according to import intensity to see whether high dependence on imported goods led to higher domestic consumption tax revenue.  
 
-The descriptive statistics show large variation in import to GDP ratios.  The correlation does not provide strong support for our hypothesis.  Only Korea and Switzerland show a strong relationship between international tax revenue and domestic consumption tax revenue, and both correlations were positive instead of negative like we predicted.  For the other countries, the correlations were weak.  These results suggest that even in import dependent economies, domestic taxes and tariffs do not move in opposite directions.  Overall, we found that while theory may predict substitution between tariff revenues and domestic consumption tax revenues, the evidence is mixed and does not strongly support a clear pattern across these developed countries.
+The descriptive statistics show large variation in import to GDP ratios.  Our empirical analysis shows that the correlations between international tax revenue and domestic tax revenue are overall weak and significantly insignificant.  The correlation does not provide strong support for our hypothesis.  High import countries exhibit slightly positive correlations, while low import countries exhibit slightly negative ones, but neither indicates fiscal substitution.  Only Korea and Switzerland show a strong relationship between international tax revenue and domestic consumption tax revenue, and both correlations were positive instead of negative like we predicted.  For the other countries, the correlations were weak.  These results suggest that reductions in tariff revenue do not completely influence how developed countries structure their domestic tax systems.  This outcome contrasts with our hypothesis, which predicted that high import countries would show stronger evidence of substituting domestic tax revenue for decreasing tariffs.  However, the absence of a consistent, notable relationship implies that this may not be true.  This could be due to several limitations.  Firstly,  our selected countries have small tariff revenue, which leaves little variation for identifying substitution effects.  Secondly, our analysis is restricted to 11 countries over 20 years, which limits the ability to analyze small adjustments.  Overall, we found that while theory may predict substitution between tariff revenues and domestic consumption tax revenues, the evidence is mixed and does not strongly support a clear pattern across these developed countries.
 
 \newpage
 \section*{Bibliography}
 \singlespacing
 \setlength\bibsep{0pt}
-Michael Keen, Jenny E. Ligthart, Coordinating tariff reduction and domestic tax reform, Journal of International Economics, Volume 56, Issue 2, 2002, Pages 489-507, ISSN 0022-1996
+R. Boadway, S. Maital, M. Prachowny, Optimal tariffs, optimal taxes and public goods, Journal of Public Economics, Volume 2, Issue 4,
+1973, Pages 391-403, ISSN 0047-2727
+
+    Michael Keen, Jenny E. Ligthart, Coordinating tariff reduction and domestic tax reform, Journal of International Economics, Volume 56, Issue 2, 2002, Pages 489-507, ISSN 0022-1996
+    
     Guglielmo Maria Caporale, Christophe Rault, Robert Sova, Anamaria Sova, Europe Agreements and Trade Balance: Evidence from Four New EU Members, IZA Discussion Paper No 5683, 2011 (revised 2025), 35 pages.    
  
     Waglé, Swarnim. "Coordinating tax reforms in the poorest countries: Can lost tariffs be recouped?." World Bank Policy Research Working Paper 5919 (2011). 
