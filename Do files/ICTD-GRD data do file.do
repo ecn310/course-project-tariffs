@@ -12,7 +12,7 @@ keep if year >= 2001 & year <= 2020
 keep country year tax_trade tax_income tax_indirect tax_property tax_gs_general tax_g_s tax_gs_excises tax_other 
 *create domestic & international tax variables 
 gen DomesticTaxGDP = tax_g_s
-label variable DomesticTaxGDP "Domestic Tax Revenue (% GDP)"
+label variable DomesticTaxGDP "Domestic Consumption Tax Revenue (% GDP)"
 gen InternationalTaxGDP = tax_trade
 label variable InternationalTaxGDP "International Tax Revenue (% GDP)" 
 
@@ -78,7 +78,7 @@ label variable ImportValue_Billions "Import Value(Billions USD)"
 drop GDPCurrent ImportValue 
 summarize DomesticTaxGDP InternationalTaxGDP ImportPGDP ExportPGDP GDPCurrent_Billions ImportValue_Billions
 * export to Latex 
-outreg2 using "Summary_Stats_final.tex", sum(log) replace tex title("Summary Statistics") label
+outreg2 using "Summary_Stats_final.tex", sum(log) replace tex title("Summary Statistics") label 
 
 *Summary table for importGDP ratio variable by country
 preserve
@@ -159,8 +159,7 @@ foreach country in "Australia" "Belgium" "Canada" "France" "Ireland" "Israel" "K
 
 *scatter plots
 *raw scatter of all data points for internationaltaxgdp & DomesticTaxGDP   
-separate InternationalTaxGDP, by(CountryName) veryshortlabel
-twoway (scatter International~P1 DomesticTaxGDP, mcolor(orange) msize(small)) (scatter International~P2 DomesticTaxGDP, mcolor(purple) msize(small)) (scatter International~P3 DomesticTaxGDP, mcolor(teal) msize(small)) (scatter International~P4 DomesticTaxGDP, mcolor(navy) msize(small)) (scatter International~P5 DomesticTaxGDP, mcolor(orange) msize(small)) (scatter International~P6 DomesticTaxGDP, mcolor(purple) msize(small)) (scatter International~P7 DomesticTaxGDP, mcolor(navy) msize(small)) (scatter International~P8 DomesticTaxGDP, mcolor(teal) msize(small)) (scatter International~P9 DomesticTaxGDP, mcolor(purple) msize(small)) (scatter International~P10 DomesticTaxGDP, mcolor(brown) msize(small)) (scatter International~P11 DomesticTaxGDP, mcolor(olive) msize(small)), ytitle("International Tax Revenue (% GDP)") xtitle("Domestic Tax Revenue (% GDP)") title("International Tax vs Domestic Tax Revenue: All Countries") legend(order(1 "Australia" 2 "Belgium" 3 "Canada" 4 "France" 5 "Ireland" 6 "Israel" 7 "Korea, Rep." 8 "New Zealand" 9 "Norway" 10 "Switzerland" 11 "United States") size(vsmall) cols(3) position(3)) graphregion(color(white)) bgcolor(white)
+twoway (scatter International~P1 DomesticTaxGDP, mcolor(orange) msize(small)) (scatter International~P2 DomesticTaxGDP, mcolor(purple) msize(small)) (scatter International~P3 DomesticTaxGDP, mcolor(teal) msize(small)) (scatter International~P4 DomesticTaxGDP, mcolor(navy) msize(small)) (scatter International~P5 DomesticTaxGDP, mcolor(red) msize(small)) (scatter International~P6 DomesticTaxGDP, mcolor(green) msize(small)) (scatter International~P7 DomesticTaxGDP, mcolor(blue) msize(small)) (scatter International~P8 DomesticTaxGDP, mcolor(maroon) msize(small)) (scatter International~P9 DomesticTaxGDP, mcolor(magenta) msize(small)) (scatter International~P10 DomesticTaxGDP, mcolor(brown) msize(small)) (scatter International~P11 DomesticTaxGDP, mcolor(olive) msize(small)), ytitle("International Tax Revenue (% GDP)") xtitle("Domestic Consumption Tax Revenue (% GDP)") title("International Tax vs Domestic Consumption Tax Revenue: All Countries") legend(order(1 "Australia" 2 "Belgium" 3 "Canada" 4 "France" 5 "Ireland" 6 "Israel" 7 "Korea, Rep." 8 "New Zealand" 9 "Norway" 10 "Switzerland" 11 "United States") size(vsmall) cols(3) position(3)) graphregion(color(white)) bgcolor(white)
 
 graph export "scatter_raw_tax_relationship.pdf", replace
 
