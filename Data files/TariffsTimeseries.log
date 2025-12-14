@@ -1,21 +1,15 @@
-----------------------------------------
+--------------------------------------------------------------------------------------------------------------------------
       name:  <unnamed>
-       log:  C:\Users\ldepedro\OneDrive 
-> - Syracuse University\AAA JUNIOR year\
-> ECN 310\course-project-tariffs\Data fi
-> les\TariffsTimeseries.log
+       log:  C:\Users\ldepedro\OneDrive - Syracuse University\AAA JUNIOR year\ECN 310\course-project-tariffs\Data files\Ta
+> riffsTimeseries.log
   log type:  text
- opened on:  14 Dec 2025, 14:20:53
+ opened on:  14 Dec 2025, 14:23:38
 
-. *run this command to import the first 
-> excel data to stata
-. import excel "TariffPTaxRev.xlsx", she
-> et("Country-Timeseries") firstrow clea
-> r
+. *run this command to import the first excel data to stata
+. import excel "TariffPTaxRev.xlsx", sheet("Country-Timeseries") firstrow clear
 (37 vars, 193 obs)
 
-. *to save the first data excel file as 
-> a dta
+. *to save the first data excel file as a dta
 . save "TariffsTimeseries1.dta",replace
 file TariffsTimeseries1.dta saved
 
@@ -23,8 +17,7 @@ file TariffsTimeseries1.dta saved
 
 . 
 . *import excel file 2
-. import excel "ExportPGDP.xlsx", sheet(
-> "Country-Timeseries") firstrow clear
+. import excel "ExportPGDP.xlsx", sheet("Country-Timeseries") firstrow clear
 (37 vars, 193 obs)
 
 . save "TariffsTimeseries2.dta",replace
@@ -34,8 +27,7 @@ file TariffsTimeseries2.dta saved
 
 . 
 . *import excel file 3
-. import excel "ImportPGDP.xlsx", sheet(
-> "Country-Timeseries") firstrow clear
+. import excel "ImportPGDP.xlsx", sheet("Country-Timeseries") firstrow clear
 (37 vars, 193 obs)
 
 . *save as dta
@@ -46,8 +38,7 @@ file TariffsTimeseries3.dta saved
 
 . 
 . *import excel file 4
-. import excel "ImportValue.xlsx", sheet
-> ("Country-Timeseries") firstrow clear
+. import excel "ImportValue.xlsx", sheet("Country-Timeseries") firstrow clear
 (37 vars, 193 obs)
 
 . *save as dta
@@ -58,9 +49,7 @@ file TariffsTimeseries4.dta saved
 
 . 
 . *import excel file 5
-. import excel "DomesticTaxRev.xlsx", sh
-> eet("Country-Timeseries") firstrow cle
-> ar
+. import excel "DomesticTaxRev.xlsx", sheet("Country-Timeseries") firstrow clear
 (37 vars, 193 obs)
 
 . *save as dta
@@ -71,9 +60,7 @@ file TariffsTimeseries5.dta saved
 
 . 
 . *import excel file 6
-. import excel "InternationalTaxRev.xlsx
-> ", sheet("Country-Timeseries") firstro
-> w clear
+. import excel "InternationalTaxRev.xlsx", sheet("Country-Timeseries") firstrow clear
 (37 vars, 193 obs)
 
 . *save as dta
@@ -83,9 +70,7 @@ file TariffsTimeseries6.dta saved
 . clear
 
 . *import excel file 7
-. import excel "GDP(Current USD).xlsx" ,
->  sheet("Country-Timeseries") firstrow 
-> clear
+. import excel "GDP(Current USD).xlsx" , sheet("Country-Timeseries") firstrow clear
 (37 vars, 190 obs)
 
 . *save as dta 
@@ -93,16 +78,12 @@ file TariffsTimeseries6.dta saved
 file TariffsTimeseries7.dta saved
 
 . 
-. *we just finished saving the files as 
-> dta so now we can begin merging them
-. *now we use the one of the dta files w
-> e just created
+. *we just finished saving the files as dta so now we can begin merging them
+. *now we use the one of the dta files we just created
 . use "TariffsTimeseries1.dta"
 
 . append using "TariffsTimeseries2.dta"
-(variable AK was byte, now double to
-       accommodate using data's
-       values)
+(variable AK was byte, now double to accommodate using data's values)
 
 . append using "TariffsTimeseries3.dta"
 
@@ -115,15 +96,13 @@ file TariffsTimeseries7.dta saved
 . append using "TariffsTimeseries7.dta"
 
 . 
-. *we just finished merging all the exce
-> l files into the same dta file.
+. *we just finished merging all the excel files into the same dta file.
 . save "TariffsTimeseries.dta", replace
 file TariffsTimeseries.dta saved
 
 . 
 . *now use the file we just created
-. *Removing the years not included in 20
-> 01-2020
+. *Removing the years not included in 2001-2020
 . drop C
 
 . drop D
@@ -155,22 +134,14 @@ file TariffsTimeseries.dta saved
 . drop AK
 
 . 
-. *get rid of the countries we dont need
->  
-. keep if CountryName == "United States"
->  | CountryName == "Australia" | Countr
-> yName == "France" | CountryName == "Is
-> rael" | CountryName == "Korea, Rep." |
->  CountryName == "Norway" | CountryName
->  == "Switzerland" | CountryName =="Ire
-> land" | CountryName == "Canada" | Coun
-> tryName == "New Zealand" | CountryName
->  == "Belgium"
+. *get rid of the countries we dont need 
+. keep if CountryName == "United States" | CountryName == "Australia" | CountryName == "France" | CountryName == "Israel" 
+> | CountryName == "Korea, Rep." | CountryName == "Norway" | CountryName == "Switzerland" | CountryName =="Ireland" | Coun
+> tryName == "Canada" | CountryName == "New Zealand" | CountryName == "Belgium"
 (1,271 observations deleted)
 
 . 
-. * Remaning letter variables to years (
-> yr)
+. * Remaning letter variables to years (yr)
 . rename P yr01
 
 . rename Q yr02
@@ -212,29 +183,18 @@ file TariffsTimeseries.dta saved
 . rename AI yr020
 
 . 
-. *transforming "year" into a singular v
-> ariable observing the years 2001-2020
-. reshape long yr0, i(CountryName Indica
-> torName) j(year)
-(j = 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15
->  16 17 18 19 20)
+. *transforming "year" into a singular variable observing the years 2001-2020
+. reshape long yr0, i(CountryName IndicatorName) j(year)
+(j = 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20)
 
-Data                               Wide 
->   ->                                  
->        Long
-----------------------------------------
-> -------------------------------------
-Number of observations               77 
->   ->   1,540       
-Number of variables                  22 
->   ->   4           
-j variable (20 values)                  
->   ->   year
+Data                               Wide   ->   Long
+-----------------------------------------------------------------------------
+Number of observations               77   ->   1,540       
+Number of variables                  22   ->   4           
+j variable (20 values)                    ->   year
 xij variables:
-                    yr01 yr02 ... yr020 
->   ->   yr0
-----------------------------------------
-> -------------------------------------
+                    yr01 yr02 ... yr020   ->   yr0
+-----------------------------------------------------------------------------
 
 . rename yr0 value
 
@@ -243,32 +203,22 @@ variable year was byte now int
 (1,540 real changes made)
 
 . 
-. *reshaping individual indicators as va
-> riables 
+. *reshaping individual indicators as variables 
 . encode IndicatorName, gen(IndicatorID)
 
 . drop IndicatorName
 
-. reshape wide value, i(year CountryName
-> ) j(IndicatorID)
+. reshape wide value, i(year CountryName) j(IndicatorID)
 (j = 1 2 3 4 5 6 7)
 
-Data                               Long 
->   ->                                  
->        Wide
-----------------------------------------
-> -------------------------------------
-Number of observations            1,540 
->   ->   220         
-Number of variables                   4 
->   ->   9           
-j variable (7 values)       IndicatorID 
->   ->   (dropped)
+Data                               Long   ->   Wide
+-----------------------------------------------------------------------------
+Number of observations            1,540   ->   220         
+Number of variables                   4   ->   9           
+j variable (7 values)       IndicatorID   ->   (dropped)
 xij variables:
-                                  value 
->   ->   value1 value2 ... value7
-----------------------------------------
-> -------------------------------------
+                                  value   ->   value1 value2 ... value7
+-----------------------------------------------------------------------------
 
 . 
 . *renaming value variables
@@ -288,18 +238,15 @@ xij variables:
 
 . 
 . *save new changes (needed for merging)
-. save "TariffTimeseries_new.dta", repla
-> ce 
+. save "TariffTimeseries_new.dta", replace 
 file TariffTimeseries_new.dta saved
 
 . 
 . *close log
 . log close
       name:  <unnamed>
-       log:  C:\Users\ldepedro\OneDrive 
-> - Syracuse University\AAA JUNIOR year\
-> ECN 310\course-project-tariffs\Data fi
-> les\TariffsTimeseries.log
+       log:  C:\Users\ldepedro\OneDrive - Syracuse University\AAA JUNIOR year\ECN 310\course-project-tariffs\Data files\Ta
+> riffsTimeseries.log
   log type:  text
- closed on:  14 Dec 2025, 14:20:53
-----------------------------------------
+ closed on:  14 Dec 2025, 14:23:38
+--------------------------------------------------------------------------------------------------------------------------
