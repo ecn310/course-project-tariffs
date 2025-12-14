@@ -16,6 +16,7 @@ This MDF is used as a place to store and keep track of important information. In
 - [intro,discussion, conclusion](https://github.com/ecn310/course-project-tariffs/issues/22)
 - [Lit Review](https://github.com/ecn310/course-project-tariffs/issues/23)
 - [Full Project First Submission ](https://github.com/ecn310/course-project-tariffs/issues/24)
+- [Full Project First Submission ](https://github.com/ecn310/course-project-tariffs/issues/25)
 
 **General Project Files**
 - This is where our [Team Contract](https://github.com/ecn310/course-project-tariffs/blob/main/team_contract.md) is.
@@ -33,16 +34,10 @@ This MDF is used as a place to store and keep track of important information. In
 
 [**Data Files Folder**](https://github.com/ecn310/course-project-tariffs/tree/main/Data%20files)
 
-**Outputs**
-- [Import_GDP_by_Country.tex](https://github.com/ecn310/course-project-tariffs/blob/main/Outputs/Import_GDP_by_Country.tex)
-- [Summary_Stats_base.tex](https://github.com/ecn310/course-project-tariffs/blob/main/Outputs/Summary_Stats_base.tex)
-- [Summary_Stats_base.txt](https://github.com/ecn310/course-project-tariffs/blob/main/Outputs/Summary_Stats_base.txt)
-- [high import GDP Countries >40%](https://github.com/ecn310/course-project-tariffs/blob/main/Outputs/high_import_countries.pdf)
-- [low import GDP Countries <26%](https://github.com/ecn310/course-project-tariffs/blob/main/Outputs/low_import_countries.pdf)
-- [medium import GDP Countries 26-40%](https://github.com/ecn310/course-project-tariffs/blob/main/Outputs/medium_import_countries.pdf)
+[**Output Folder**](https://github.com/ecn310/course-project-tariffs/tree/main/Outputs)
 
 **Do Files**
 - [Merging the raw data do file](https://github.com/ecn310/course-project-tariffs/blob/main/Do%20files/Tarrifs%20Timeseries.do): do file to import the excels into Stata, merge them and save it as an dta file and explore the data.
 - [ICTD-GRD data do file](https://github.com/ecn310/course-project-tariffs/blob/main/Do%20files/ICTD-GRD%20data%20do%20file.do): merges WITS & ictd data and analysis
-- [TariffsTimeseries do file log](https://github.com/ecn310/course-project-tariffs/blob/main/Do%20files/TariffsTimeserieslog.smcl)
-- [ICTD-GRD do file log](https://github.com/ecn310/course-project-tariffs/blob/main/Do%20files/ICTD_GRD_log.smcl) 
+- [TariffsTimeseries do file log](https://github.com/ecn310/course-project-tariffs/blob/main/Do%20files/TariffsTimeseries.log)
+- [ICTD-GRD do file log](https://github.com/ecn310/course-project-tariffs/blob/main/Do%20files/ICTD-GRD.log) 
