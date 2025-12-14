@@ -5,8 +5,314 @@
 > ECN 310\course-project-tariffs\Do file
 > s\TariffsTimeseries.log
   log type:  text
- opened on:  14 Dec 2025, 14:16:10
+ opened on:  14 Dec 2025, 14:32:47
 
+. * Install outreg2 
+. ssc install outreg2
+checking outreg2 consistency and verifyi
+> ng not already installed...
+all files already exist and are up to da
+> te.
+
+. *First run this to change directory to
+>  your path, where all of the raw data 
+> is
+. cd "C:\Users\ldepedro\OneDrive - Syrac
+> use University\AAA JUNIOR year\ECN 310
+> \course-project-tariffs\Data files"  
+C:\Users\ldepedro\OneDrive - Syracuse Un
+> iversity\AAA JUNIOR year\ECN 310\cours
+> e-project-tariffs\Data files
+
+. 
+. *run this command to import the first 
+> excel data to stata
+. import excel "TariffPTaxRev.xlsx", she
+> et("Country-Timeseries") firstrow clea
+> r
+(37 vars, 193 obs)
+
+. *to save the first data excel file as 
+> a dta
+. save "TariffsTimeseries1.dta",replace
+file TariffsTimeseries1.dta saved
+
+. clear
+
+. 
+. *import excel file 2
+. import excel "ExportPGDP.xlsx", sheet(
+> "Country-Timeseries") firstrow clear
+(37 vars, 193 obs)
+
+. save "TariffsTimeseries2.dta",replace
+file TariffsTimeseries2.dta saved
+
+. clear
+
+. 
+. *import excel file 3
+. import excel "ImportPGDP.xlsx", sheet(
+> "Country-Timeseries") firstrow clear
+(37 vars, 193 obs)
+
+. *save as dta
+. save "TariffsTimeseries3.dta",replace
+file TariffsTimeseries3.dta saved
+
+. clear
+
+. 
+. *import excel file 4
+. import excel "ImportValue.xlsx", sheet
+> ("Country-Timeseries") firstrow clear
+(37 vars, 193 obs)
+
+. *save as dta
+. save "TariffsTimeseries4.dta",replace
+file TariffsTimeseries4.dta saved
+
+. clear
+
+. 
+. *import excel file 5
+. import excel "DomesticTaxRev.xlsx", sh
+> eet("Country-Timeseries") firstrow cle
+> ar
+(37 vars, 193 obs)
+
+. *save as dta
+. save "TariffsTimeseries5.dta",replace
+file TariffsTimeseries5.dta saved
+
+. clear
+
+. 
+. *import excel file 6
+. import excel "InternationalTaxRev.xlsx
+> ", sheet("Country-Timeseries") firstro
+> w clear
+(37 vars, 193 obs)
+
+. *save as dta
+. save "TariffsTimeseries6.dta",replace
+file TariffsTimeseries6.dta saved
+
+. clear
+
+. *import excel file 7
+. import excel "GDP(Current USD).xlsx" ,
+>  sheet("Country-Timeseries") firstrow 
+> clear
+(37 vars, 190 obs)
+
+. *save as dta 
+. save "TariffsTimeseries7.dta",replace
+file TariffsTimeseries7.dta saved
+
+. 
+. *we just finished saving the files as 
+> dta so now we can begin merging them
+. *now we use the one of the dta files w
+> e just created
+. use "TariffsTimeseries1.dta"
+
+. append using "TariffsTimeseries2.dta"
+(variable AK was byte, now double to
+       accommodate using data's
+       values)
+
+. append using "TariffsTimeseries3.dta"
+
+. append using "TariffsTimeseries4.dta"
+
+. append using "TariffsTimeseries5.dta"
+
+. append using "TariffsTimeseries6.dta"
+
+. append using "TariffsTimeseries7.dta"
+
+. 
+. *we just finished merging all the exce
+> l files into the same dta file.
+. save "TariffsTimeseries.dta", replace
+(file TariffsTimeseries.dta not found)
+file TariffsTimeseries.dta saved
+
+. 
+. *now use the file we just created
+. *Removing the years not included in 20
+> 01-2020
+. drop C
+
+. drop D
+
+. drop E
+
+. drop F
+
+. drop G
+
+. drop H
+
+. drop I
+
+. drop J
+
+. drop K
+
+. drop L
+
+. drop M
+
+. drop N
+
+. drop O
+
+. drop AJ
+
+. drop AK
+
+. 
+. *get rid of the countries we dont need
+>  
+. keep if CountryName == "United States"
+>  | CountryName == "Australia" | Countr
+> yName == "France" | CountryName == "Is
+> rael" | CountryName == "Korea, Rep." |
+>  CountryName == "Norway" | CountryName
+>  == "Switzerland" | CountryName =="Ire
+> land" | CountryName == "Canada" | Coun
+> tryName == "New Zealand" | CountryName
+>  == "Belgium"
+(1,271 observations deleted)
+
+. 
+. * Remaning letter variables to years (
+> yr)
+. rename P yr01
+
+. rename Q yr02
+
+. rename R yr03
+
+. rename S yr04
+
+. rename T yr05
+
+. rename U yr06
+
+. rename V yr07
+
+. rename W yr08
+
+. rename X yr09
+
+. rename Y yr010
+
+. rename Z yr011
+
+. rename AA yr012
+
+. rename AB yr013
+
+. rename AC yr014
+
+. rename AD yr015
+
+. rename AE yr016
+
+. rename AF yr017
+
+. rename AG yr018
+
+. rename AH yr019
+
+. rename AI yr020
+
+. 
+. *transforming "year" into a singular v
+> ariable observing the years 2001-2020
+. reshape long yr0, i(CountryName Indica
+> torName) j(year)
+(j = 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15
+>  16 17 18 19 20)
+
+Data                               Wide 
+>   ->                                  
+>        Long
+----------------------------------------
+> -------------------------------------
+Number of observations               77 
+>   ->   1,540       
+Number of variables                  22 
+>   ->   4           
+j variable (20 values)                  
+>   ->   year
+xij variables:
+                    yr01 yr02 ... yr020 
+>   ->   yr0
+----------------------------------------
+> -------------------------------------
+
+. rename yr0 value
+
+. replace year = year + 2000
+variable year was byte now int
+(1,540 real changes made)
+
+. 
+. *reshaping individual indicators as va
+> riables 
+. encode IndicatorName, gen(IndicatorID)
+
+. drop IndicatorName
+
+. reshape wide value, i(year CountryName
+> ) j(IndicatorID)
+(j = 1 2 3 4 5 6 7)
+
+Data                               Long 
+>   ->                                  
+>        Wide
+----------------------------------------
+> -------------------------------------
+Number of observations            1,540 
+>   ->   220         
+Number of variables                   4 
+>   ->   9           
+j variable (7 values)       IndicatorID 
+>   ->   (dropped)
+xij variables:
+                                  value 
+>   ->   value1 value2 ... value7
+----------------------------------------
+> -------------------------------------
+
+. 
+. *renaming value variables
+. rename value1 TariffPTaxRev
+
+. rename value2 ExportPGDP
+
+. rename value3 GDPCurrent
+
+. rename value4 ImportPGDP
+
+. rename value5 ImportValue
+
+. rename value6 DomesticTaxRev
+
+. rename value7 InternationalTaxRev
+
+. 
+. *save new changes (needed for merging)
+. save "TariffTimeseries_new.dta", repla
+> ce 
+file TariffTimeseries_new.dta saved
+
+. 
+. *close log
 . log close
       name:  <unnamed>
        log:  C:\Users\ldepedro\OneDrive 
@@ -14,5 +320,5 @@
 > ECN 310\course-project-tariffs\Do file
 > s\TariffsTimeseries.log
   log type:  text
- closed on:  14 Dec 2025, 14:18:28
+ closed on:  14 Dec 2025, 14:32:55
 ----------------------------------------
