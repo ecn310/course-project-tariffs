@@ -1,3 +1,4 @@
+*Stata 18 version
 *Do file to merge our raw data, and explore it
 * Install outreg2 
 ssc install outreg2
