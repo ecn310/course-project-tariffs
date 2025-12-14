@@ -161,7 +161,94 @@ foreach country in "Australia" "Belgium" "Canada" "France" "Ireland" "Israel" "K
 *raw scatter of all data points for internationaltaxgdp & DomesticTaxGDP   
 twoway (scatter International~P1 DomesticTaxGDP, mcolor(orange) msize(small)) (scatter International~P2 DomesticTaxGDP, mcolor(purple) msize(small)) (scatter International~P3 DomesticTaxGDP, mcolor(teal) msize(small)) (scatter International~P4 DomesticTaxGDP, mcolor(navy) msize(small)) (scatter International~P5 DomesticTaxGDP, mcolor(red) msize(small)) (scatter International~P6 DomesticTaxGDP, mcolor(green) msize(small)) (scatter International~P7 DomesticTaxGDP, mcolor(blue) msize(small)) (scatter International~P8 DomesticTaxGDP, mcolor(maroon) msize(small)) (scatter International~P9 DomesticTaxGDP, mcolor(magenta) msize(small)) (scatter International~P10 DomesticTaxGDP, mcolor(brown) msize(small)) (scatter International~P11 DomesticTaxGDP, mcolor(olive) msize(small)), ytitle("International Tax Revenue (% GDP)") xtitle("Domestic Consumption Tax Revenue (% GDP)") title("International Tax vs Domestic Consumption Tax Revenue: All Countries") legend(order(1 "Australia" 2 "Belgium" 3 "Canada" 4 "France" 5 "Ireland" 6 "Israel" 7 "Korea, Rep." 8 "New Zealand" 9 "Norway" 10 "Switzerland" 11 "United States") size(vsmall) cols(3) position(3)) graphregion(color(white)) bgcolor(white)
 
-graph export "scatter_raw_tax_relationship.pdf", replace
+graph export "scatter_raw_tax_relationship_final.pdf", replace
+
+* regression analysis 
+use "TariffsTimeseries_ICTD.dta", clear
+* Create an empty dataset to store results
+clear
+set obs 11
+gen str20 country = ""
+gen correlation = .
+gen pvalue = .
+gen import_gdp = .
+
+* Fill in country names
+replace country = "Australia" in 1
+replace country = "Belgium" in 2
+replace country = "Canada" in 3
+replace country = "France" in 4
+replace country = "Ireland" in 5
+replace country = "Israel" in 6
+replace country = "Korea" in 7
+replace country = "New Zealand" in 8
+replace country = "Norway" in 9
+replace country = "Switzerland" in 10
+replace country = "United States" in 11
+
+* Fill in import-GDP ratios 
+replace import_gdp = 21.76 in 1  
+replace import_gdp = 76.64 in 2 
+replace import_gdp = 32.95 in 3  
+replace import_gdp = 29.57 in 4  
+replace import_gdp = 84.61 in 5  
+replace import_gdp = 32.59 in 6  
+replace import_gdp = 38.82 in 7 
+replace import_gdp = 27.76 in 8  
+replace import_gdp = 29.38 in 9  
+replace import_gdp = 53.06 in 10 
+replace import_gdp = 15.14 in 11 
+
+* Fill in correlations 
+replace correlation = -0.319 in 1 
+replace correlation = 0.261 in 2  
+replace correlation = 0.127 in 3   
+replace correlation = 0.268 in 4  
+replace correlation = 0.088 in 5   
+replace correlation = 0.432 in 6   
+replace correlation = 0.769 in 7   
+replace correlation = -0.182 in 8 
+replace correlation = 0.187 in 9  
+replace correlation = 0.740 in 10  
+replace correlation = -0.397 in 11
+
+* Fill in p-values
+replace pvalue = 0.1703 in 1  
+replace pvalue = 0.2662 in 2  
+replace pvalue = 0.5945 in 3  
+replace pvalue = 0.2542 in 4 
+replace pvalue = 0.7124 in 5  
+replace pvalue = 0.0574 in 6 
+replace pvalue = 0.0001 in 7  
+replace pvalue = 0.4427 in 8  
+replace pvalue = 0.4302 in 9  
+replace pvalue = 0.0002 in 10 
+replace pvalue = 0.0829 in 11 
+
+* Label variables
+label variable country "Country"
+label variable correlation "Correlation Coefficient"
+label variable import_gdp "Import-to-GDP Ratio (%)"
+label variable pvalue "P-value"
+
+* Save this dataset
+save "correlation_data.dta", replace
+
+* Run regression
+use "correlation_data.dta", clear
+regress correlation import_gdp
+
+* Create scatter plot
+twoway (scatter correlation import_gdp, mlabel(country) mlabsize(small)) ///
+       (lfit correlation import_gdp), ///
+       xlabel(0(20)100) ylabel(-0.5(0.25)1) ///
+       xtitle("Average Import-to-GDP Ratio (%)") ///
+       ytitle("Correlation Coefficient") ///
+       title("Import Intensity and Tax Revenue Correlation") ///
+       legend(off) ///
+       note("Note: Each point represents one country. Line shows linear fit.")
+       
+graph export "figure3.png", replace
 
 *graph of correlation vs import intensity 
 clear 
