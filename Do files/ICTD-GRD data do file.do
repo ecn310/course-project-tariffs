@@ -3,6 +3,8 @@
 * Run after running TariffTimeseries.do and has created TariffTimeseries_new.dta
 *First run this to change directory to your path, where all of the raw data is 
 cd "C:\Users\kfrocha\OneDrive - Syracuse University\Documents\GitHub\course-project-tariffs\Data files"
+*open a log file
+log using ICTD-GRD.log, replace
 *import ICD-GRD data 
 use "UNUWIDERGRD_2023_Central" , clear 
 *keep the 11 countries
@@ -283,4 +285,8 @@ scatter correlation mean_import, mcolor(navy%70) msize(large) mlabel(country_lab
 *change the directory to save outputs in a different folder
 cd "C:\Users\kfrocha\OneDrive - Syracuse University\Documents\GitHub\course-project-tariffs\Data files"
 graph export "scatter_correlation_import.pdf", replace
+*change directory back to data file
+cd "C:\Users\kfrocha\OneDrive - Syracuse University\Documents\GitHub\course-project-tariffs\Data files"
 
+*close log
+log close
