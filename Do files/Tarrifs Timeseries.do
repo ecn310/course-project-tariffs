@@ -6,7 +6,7 @@ ssc install outreg2
 *First run this to change directory to your path, where all of the raw data is
 cd "C:\Users\kfrocha\OneDrive - Syracuse University\Documents\GitHub\course-project-tariffs\Data files"  
 *start a log
-log using TariffsTimeseries.log
+log using TariffsTimeseries.log, replace
 *run this command to import the first excel data to stata
 import excel "TariffPTaxRev.xlsx", sheet("Country-Timeseries") firstrow clear
 *to save the first data excel file as a dta
