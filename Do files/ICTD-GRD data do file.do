@@ -1,5 +1,8 @@
+*Stata Version: Stata 18
 *Do file to merge our  data, and analysis
 * Run after running TariffTimeseries.do and has created TariffTimeseries_new.dta
+*open a log file
+log using ICTD-GRD.log, replace
 *First run this to change directory to your path, where all of the raw data is 
 cd "C:\Users\kfrocha\OneDrive - Syracuse University\Documents\GitHub\course-project-tariffs\Data files"
 *import ICD-GRD data 
@@ -78,7 +81,11 @@ label variable ImportValue_Billions "Import Value(Billions USD)"
 drop GDPCurrent ImportValue 
 summarize DomesticTaxGDP InternationalTaxGDP ImportPGDP ExportPGDP GDPCurrent_Billions ImportValue_Billions
 * export to Latex 
+*change directory to outputs folder
+cd "C:\Users\kfrocha\OneDrive - Syracuse University\Documents\GitHub\course-project-tariffs\Outputs"
 outreg2 using "Summary_Stats_final.tex", sum(log) replace tex title("Summary Statistics") label 
+*change it back to data folder
+cd "C:\Users\kfrocha\OneDrive - Syracuse University\Documents\GitHub\course-project-tariffs\Data files"
 
 *Summary table for importGDP ratio variable by country
 preserve
@@ -87,11 +94,8 @@ gsort -mean
 format mean sd min max %9.2f
 list
 
-<<<<<<< Updated upstream
 restore
 
-=======
->>>>>>> Stashed changes
 *Correlations (Individual) 
 use "TariffsTimeseries_ICTD.dta", clear 
 * Australia
@@ -161,8 +165,13 @@ foreach country in "Australia" "Belgium" "Canada" "France" "Ireland" "Israel" "K
 *raw scatter of all data points for internationaltaxgdp & DomesticTaxGDP   
 twoway (scatter International~P1 DomesticTaxGDP, mcolor(orange) msize(small)) (scatter International~P2 DomesticTaxGDP, mcolor(purple) msize(small)) (scatter International~P3 DomesticTaxGDP, mcolor(teal) msize(small)) (scatter International~P4 DomesticTaxGDP, mcolor(navy) msize(small)) (scatter International~P5 DomesticTaxGDP, mcolor(red) msize(small)) (scatter International~P6 DomesticTaxGDP, mcolor(green) msize(small)) (scatter International~P7 DomesticTaxGDP, mcolor(blue) msize(small)) (scatter International~P8 DomesticTaxGDP, mcolor(maroon) msize(small)) (scatter International~P9 DomesticTaxGDP, mcolor(magenta) msize(small)) (scatter International~P10 DomesticTaxGDP, mcolor(brown) msize(small)) (scatter International~P11 DomesticTaxGDP, mcolor(olive) msize(small)), ytitle("International Tax Revenue (% GDP)") xtitle("Domestic Consumption Tax Revenue (% GDP)") title("International Tax vs Domestic Consumption Tax Revenue: All Countries") legend(order(1 "Australia" 2 "Belgium" 3 "Canada" 4 "France" 5 "Ireland" 6 "Israel" 7 "Korea, Rep." 8 "New Zealand" 9 "Norway" 10 "Switzerland" 11 "United States") size(vsmall) cols(3) position(3)) graphregion(color(white)) bgcolor(white)
 
+*change directory to outputs
+cd "C:\Users\kfrocha\OneDrive - Syracuse University\Documents\GitHub\course-project-tariffs\Outputs"
 graph export "scatter_raw_tax_relationship_final.pdf", replace
+*change directory back to data file
+cd "C:\Users\kfrocha\OneDrive - Syracuse University\Documents\GitHub\course-project-tariffs\Data files"
 
+<<<<<<< Updated upstream
 * regression analysis 
 use "TariffsTimeseries_ICTD.dta", clear
 * Create an empty dataset to store results
@@ -247,9 +256,15 @@ twoway (scatter correlation import_gdp, mlabel(country) mlabsize(small)) ///
        title("Import Intensity and Tax Revenue Correlation") ///
        legend(off) ///
        note("Note: Each point represents one country. Line shows linear fit.")
-       
-graph export "figure3.png", replace
 
+*change the directory to save outputs in a different folder
+cd "C:\Users\kfrocha\OneDrive - Syracuse University\Documents\GitHub\course-project-tariffs\Outputs"       
+graph export "figure3.png", replace
+*change directory back to data files
+cd "C:\Users\kfrocha\OneDrive - Syracuse University\Documents\GitHub\course-project-tariffs\Data files"
+
+=======
+>>>>>>> Stashed changes
 *graph of correlation vs import intensity 
 clear 
 input str20 CountryName double correlation double mean_import
@@ -270,5 +285,11 @@ gen country_label = CountryName
 replace country_label = "Korea" if CountryName == "Korea, Rep."
 scatter correlation mean_import, mcolor(navy%70) msize(large) mlabel(country_label) mlabsize(small) mlabposition(3) mlabcolor(black) ytitle("Correlation (International & Domestic Tax Revenue)") xtitle("Average Import-to-GDP Ratio (%)") title("Import Intensity and Tax Revenue Correlation Patterns") subtitle("Developed Countries, 2001-2020", size(small)) yline(0, lcolor(black) lpattern(dash) lwidth(medium)) legend(off) ylabel(-0.4(0.2)0.8, angle(0) format(%3.1f)) xlabel(10(10)90, format(%2.0f)) graphregion(color(white)) bgcolor(white)
 
+*change the directory to save outputs in a different folder
+cd "C:\Users\kfrocha\OneDrive - Syracuse University\Documents\GitHub\course-project-tariffs\Data files"
 graph export "scatter_correlation_import.pdf", replace
+*change directory back to data file
+cd "C:\Users\kfrocha\OneDrive - Syracuse University\Documents\GitHub\course-project-tariffs\Data files"
 
+*close log
+log close
