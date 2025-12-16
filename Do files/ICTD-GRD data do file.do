@@ -199,5 +199,25 @@ graph export "scatter_correlation_import.pdf", replace
 *change directory back to data file
 cd "C:\Users\kfrocha\OneDrive - Syracuse University\Documents\GitHub\course-project-tariffs\Data files"
 
+*scatter plot graph of high import countries vs rest of the countries in the data set 
+use "TariffsTimeseries_ICTD.dta", clear
+
+bysort CountryName: egen avg_import_gdp = mean(ImportGDPRatio)
+bysort CountryName: egen avg_international_tax = mean(InternationalTaxGDP)
+bysort CountryName: egen avg_domestic_tax = mean(DomesticTaxGDP)
+
+gen import_group2 = .
+replace import_group2 = 0 if avg_import_gdp < 40
+replace import_group2 = 1 if avg_import_gdp >= 40
+
+label define group2_labels 0 "Low/Medium Import (<40%)" 1 "High Import (≥40%)"
+label values import_group2 group2_labels
+
+duplicates drop CountryName, force
+
+twoway (scatter avg_domestic_tax avg_international_tax if import_group2==0, mcolor(orange) msymbol(circle) msize(large) mlabel(CountryName) mlabposition(3) mlabsize(small)) (scatter avg_domestic_tax avg_international_tax if import_group2==1, mcolor(navy) msymbol(circle) msize(large) mlabel(CountryName) mlabposition(3) mlabsize(small)), xlabel(0(1)6) ylabel(0(2)14) xtitle("Average International Tax Revenue (% GDP)") ytitle("Average Domestic Consumption Tax Revenue (% GDP)") title("Tax Revenue Relationship: High Import vs. All Other Countries") subtitle("Country Averages, 2001-2020") legend(order(1 "Low/Medium Import (<40%)" 2 "High Import (≥40%)") rows(1) size(small) position(6)) note("Each point = one country's 20-year average. Low/Medium: Australia, Canada, France, Israel, New Zealand, Norway, US. High: Belgium, Ireland, Korea, Switzerland.", size(vsmall))
+
+graph export "figure3_averages_high_vs_rest_clean.png", replace width(2000)
+
 *close log
 log close
