@@ -16,7 +16,6 @@ This MDF is used as a place to store and keep track of important information. In
 - [intro,discussion, conclusion](https://github.com/ecn310/course-project-tariffs/issues/22)
 - [Lit Review](https://github.com/ecn310/course-project-tariffs/issues/23)
 - [Full Project First Submission ](https://github.com/ecn310/course-project-tariffs/issues/24)
-- [Full Project First Submission ](https://github.com/ecn310/course-project-tariffs/issues/25)
 
 **General Project Files**
 - This is where our [Team Contract](https://github.com/ecn310/course-project-tariffs/blob/main/team_contract.md) is.
@@ -30,7 +29,7 @@ This MDF is used as a place to store and keep track of important information. In
 - [project template.tex](https://github.com/ecn310/course-project-tariffs/blob/main/Report/project_template.tex)
 - [tariffs report](https://github.com/ecn310/course-project-tariffs/blob/main/Report/tariffs_report.tex): This is going to be our final report
 - [Reproducibility Package](https://github.com/ecn310/course-project-tariffs/blob/main/Report/README.md)
-- [Results Section, draft hypothesis & theory (in intro)](https://github.com/ecn310/course-project-tariffs/issues/21)
+- [Tariffs report.pdf](https://github.com/ecn310/course-project-tariffs/blob/main/Report/tariffs_report.pdf)
 
 [**Data Files Folder**](https://github.com/ecn310/course-project-tariffs/tree/main/Data%20files)
 
@@ -38,6 +37,6 @@ This MDF is used as a place to store and keep track of important information. In
 
 **Do Files**
 - [Merging the raw data do file](https://github.com/ecn310/course-project-tariffs/blob/main/Do%20files/Tarrifs%20Timeseries.do): do file to import the excels into Stata, merge them and save it as an dta file and explore the data.
-- [ICTD-GRD data do file](https://github.com/ecn310/course-project-tariffs/blob/main/Do%20files/ICTD-GRD%20data%20do%20file.do): merges WITS & ictd data and analysis
+- [ICTD-GRD data do file](https://github.com/ecn310/course-project-tariffs/blob/main/Do%20files/ICTD-GRD.log): merges WITS & ictd data and analysis
 - [TariffsTimeseries do file log](https://github.com/ecn310/course-project-tariffs/blob/main/Do%20files/TariffsTimeseries.log)
 - [ICTD-GRD do file log](https://github.com/ecn310/course-project-tariffs/blob/main/Do%20files/ICTD-GRD.log) 
