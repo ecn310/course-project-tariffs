@@ -2,10 +2,14 @@ Summary Statistics
 		(1)	(2)	(3)	(4)	(5)
 VARIABLES	LABELS	N	mean	sd	min	max
 						
+year	year	220	2,010	5.779	2,001	2,020
 ExportPGDP	Exports (% GDP)	220	43.49	26.23	9.036	133.3
 ImportPGDP	Imports (% GDP)	220	40.08	22.11	13.15	124.4
 DomesticTaxGDP	Domestic Consumption Tax Revenue (% GDP)	220	7.564	3.618	0.424	13.17
 InternationalTaxGDP	International Tax Revenue (% GDP)	220	0.291	0.307	-0.0130	1.087
+ImportGDPRatio	Import-GDP-Ratio	215	39.21	21.16	12.87	111.5
+TradeBalance	Trade Balance (% GDP)	220	-3.405	6.314	-28.76	5.693
+TariffGDP	Tariff Revenue (% GDP)	220	0.291	0.307	-0.0130	1.087
 GDPCurrent_Billions	GDP(Current USD, Billions)	220	2,193	4,505	53.87	21,540
 ImportValue_Billions	Import Value(Billions USD)	215	503.3	670.2	16.83	3,121
 						
