@@ -80,6 +80,7 @@ label variable ImportValue_Billions "Import Value(Billions USD)"
 *drop the old GDP & ImportValue 
 drop GDPCurrent ImportValue 
 summarize DomesticTaxGDP InternationalTaxGDP ImportPGDP ExportPGDP GDPCurrent_Billions ImportValue_Billions
+
 * export to Latex 
 *change directory to outputs folder
 cd "C:\Users\kfrocha\OneDrive - Syracuse University\Documents\GitHub\course-project-tariffs\Outputs"
@@ -194,7 +195,7 @@ replace country_label = "Korea" if CountryName == "Korea, Rep."
 scatter correlation mean_import, mcolor(navy%70) msize(large) mlabel(country_label) mlabsize(small) mlabposition(3) mlabcolor(black) ytitle("Correlation (International & Domestic Tax Revenue)") xtitle("Average Import-to-GDP Ratio (%)") title("Import Intensity and Tax Revenue Correlation Patterns") subtitle("Developed Countries, 2001-2020", size(small)) yline(0, lcolor(black) lpattern(dash) lwidth(medium)) legend(off) ylabel(-0.4(0.2)0.8, angle(0) format(%3.1f)) xlabel(10(10)90, format(%2.0f)) graphregion(color(white)) bgcolor(white)
 
 *change the directory to save outputs in a different folder
-cd "C:\Users\kfrocha\OneDrive - Syracuse University\Documents\GitHub\course-project-tariffs\Data files"
+cd "C:\Users\kfrocha\OneDrive - Syracuse University\Documents\GitHub\course-project-tariffs\Outputs"
 graph export "scatter_correlation_import.pdf", replace
 *change directory back to data file
 cd "C:\Users\kfrocha\OneDrive - Syracuse University\Documents\GitHub\course-project-tariffs\Data files"
@@ -218,8 +219,11 @@ duplicates drop CountryName, force
 
 twoway (scatter avg_domestic_tax avg_international_tax if import_group2==0, mcolor(orange) msymbol(circle) msize(large) mlabel(CountryName) mlabposition(3) mlabsize(small)) (scatter avg_domestic_tax avg_international_tax if import_group2==1, mcolor(navy) msymbol(circle) msize(large) mlabel(CountryName) mlabposition(3) mlabsize(small)), xlabel(0(1)6) ylabel(0(2)14) xtitle("Average International Tax Revenue (% GDP)") ytitle("Average Domestic Consumption Tax Revenue (% GDP)") title("Tax Revenue Relationship: High Import vs. All Other Countries") subtitle("Country Averages, 2001-2020") legend(order(1 "Low/Medium Import (<40%)" 2 "High Import (≥40%)") rows(1) size(small) position(6)) note("Each point = one country's 20-year average. Low/Medium: Australia, Canada, France, Israel, New Zealand, Norway, US. High: Belgium, Ireland, Korea, Switzerland.", size(vsmall))
 
+*change directory to output folder
+cd "C:\Users\kfrocha\OneDrive - Syracuse University\Documents\GitHub\course-project-tariffs\Outputs"
 graph export "figure3_averages_high_vs_rest_clean.png", replace width(2000)
-
+*change back to data folder
+cd "C:\Users\kfrocha\OneDrive - Syracuse University\Documents\GitHub\course-project-tariffs\Data files"
 
 *close log
 log close
