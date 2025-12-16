@@ -1,39 +1,27 @@
-----------------------------------------
+------------------------------------------------------------------------------------------------------------------------
       name:  <unnamed>
-       log:  C:\Users\ldepedro\OneDrive 
-> - Syracuse University\AAA JUNIOR year\
-> ECN 310\course-project-tariffs\Do file
-> s\TariffsTimeseries.log
+       log:  C:\Users\krist\OneDrive - Syracuse University\Documents\GitHub\course-project-tariffs\Do files\TariffsTimes
+> eries.log
   log type:  text
- opened on:  14 Dec 2025, 14:32:47
-
-. * Install outreg2 
-. ssc install outreg2
-checking outreg2 consistency and verifyi
-> ng not already installed...
-all files already exist and are up to da
-> te.
-
-. *First run this to change directory to
->  your path, where all of the raw data 
-> is
-. cd "C:\Users\ldepedro\OneDrive - Syrac
-> use University\AAA JUNIOR year\ECN 310
-> \course-project-tariffs\Data files"  
-C:\Users\ldepedro\OneDrive - Syracuse Un
-> iversity\AAA JUNIOR year\ECN 310\cours
-> e-project-tariffs\Data files
+ opened on:  16 Dec 2025, 16:25:45
 
 . 
-. *run this command to import the first 
-> excel data to stata
-. import excel "TariffPTaxRev.xlsx", she
-> et("Country-Timeseries") firstrow clea
-> r
-(37 vars, 193 obs)
+end of do-file
 
-. *to save the first data excel file as 
-> a dta
+. do "C:\Users\krist\AppData\Local\Temp\STD5acc_000000.tmp"
+
+. cd "C:\Users\krist\OneDrive - Syracuse University\Documents\GitHub\course-project-tariffs\Data files"  
+C:\Users\krist\OneDrive - Syracuse University\Documents\GitHub\course-project-tariffs\Data files
+
+. 
+end of do-file
+
+. do "C:\Users\krist\AppData\Local\Temp\STD5acc_000000.tmp"
+
+. *run this command to import the first excel data to stata
+. import excel "TariffPTaxRev.xlsx", sheet("Country-Timeseries") firstrow clear
+
+. *to save the first data excel file as a dta
 . save "TariffsTimeseries1.dta",replace
 file TariffsTimeseries1.dta saved
 
@@ -41,9 +29,7 @@ file TariffsTimeseries1.dta saved
 
 . 
 . *import excel file 2
-. import excel "ExportPGDP.xlsx", sheet(
-> "Country-Timeseries") firstrow clear
-(37 vars, 193 obs)
+. import excel "ExportPGDP.xlsx", sheet("Country-Timeseries") firstrow clear
 
 . save "TariffsTimeseries2.dta",replace
 file TariffsTimeseries2.dta saved
@@ -52,9 +38,7 @@ file TariffsTimeseries2.dta saved
 
 . 
 . *import excel file 3
-. import excel "ImportPGDP.xlsx", sheet(
-> "Country-Timeseries") firstrow clear
-(37 vars, 193 obs)
+. import excel "ImportPGDP.xlsx", sheet("Country-Timeseries") firstrow clear
 
 . *save as dta
 . save "TariffsTimeseries3.dta",replace
@@ -64,9 +48,7 @@ file TariffsTimeseries3.dta saved
 
 . 
 . *import excel file 4
-. import excel "ImportValue.xlsx", sheet
-> ("Country-Timeseries") firstrow clear
-(37 vars, 193 obs)
+. import excel "ImportValue.xlsx", sheet("Country-Timeseries") firstrow clear
 
 . *save as dta
 . save "TariffsTimeseries4.dta",replace
@@ -76,10 +58,7 @@ file TariffsTimeseries4.dta saved
 
 . 
 . *import excel file 5
-. import excel "DomesticTaxRev.xlsx", sh
-> eet("Country-Timeseries") firstrow cle
-> ar
-(37 vars, 193 obs)
+. import excel "DomesticTaxRev.xlsx", sheet("Country-Timeseries") firstrow clear
 
 . *save as dta
 . save "TariffsTimeseries5.dta",replace
@@ -89,10 +68,7 @@ file TariffsTimeseries5.dta saved
 
 . 
 . *import excel file 6
-. import excel "InternationalTaxRev.xlsx
-> ", sheet("Country-Timeseries") firstro
-> w clear
-(37 vars, 193 obs)
+. import excel "InternationalTaxRev.xlsx", sheet("Country-Timeseries") firstrow clear
 
 . *save as dta
 . save "TariffsTimeseries6.dta",replace
@@ -101,26 +77,18 @@ file TariffsTimeseries6.dta saved
 . clear
 
 . *import excel file 7
-. import excel "GDP(Current USD).xlsx" ,
->  sheet("Country-Timeseries") firstrow 
-> clear
-(37 vars, 190 obs)
+. import excel "GDP(Current USD).xlsx" , sheet("Country-Timeseries") firstrow clear
 
 . *save as dta 
 . save "TariffsTimeseries7.dta",replace
 file TariffsTimeseries7.dta saved
 
 . 
-. *we just finished saving the files as 
-> dta so now we can begin merging them
-. *now we use the one of the dta files w
-> e just created
+. *we just finished saving the files as dta so now we can begin merging them
+. *now we use the one of the dta files we just created
 . use "TariffsTimeseries1.dta"
 
 . append using "TariffsTimeseries2.dta"
-(variable AK was byte, now double to
-       accommodate using data's
-       values)
 
 . append using "TariffsTimeseries3.dta"
 
@@ -133,16 +101,13 @@ file TariffsTimeseries7.dta saved
 . append using "TariffsTimeseries7.dta"
 
 . 
-. *we just finished merging all the exce
-> l files into the same dta file.
+. *we just finished merging all the excel files into the same dta file.
 . save "TariffsTimeseries.dta", replace
-(file TariffsTimeseries.dta not found)
 file TariffsTimeseries.dta saved
 
 . 
 . *now use the file we just created
-. *Removing the years not included in 20
-> 01-2020
+. *Removing the years not included in 2001-2020
 . drop C
 
 . drop D
@@ -174,22 +139,14 @@ file TariffsTimeseries.dta saved
 . drop AK
 
 . 
-. *get rid of the countries we dont need
->  
-. keep if CountryName == "United States"
->  | CountryName == "Australia" | Countr
-> yName == "France" | CountryName == "Is
-> rael" | CountryName == "Korea, Rep." |
->  CountryName == "Norway" | CountryName
->  == "Switzerland" | CountryName =="Ire
-> land" | CountryName == "Canada" | Coun
-> tryName == "New Zealand" | CountryName
->  == "Belgium"
-(1,271 observations deleted)
+. *get rid of the countries we dont need 
+. keep if CountryName == "United States" | CountryName == "Australia" | CountryName == "France" | CountryName == "Israel
+> " | CountryName == "Korea, Rep." | CountryName == "Norway" | CountryName == "Switzerland" | CountryName =="Ireland" | 
+> CountryName == "Canada" | CountryName == "New Zealand" | CountryName == "Belgium"
+(0 observations deleted)
 
 . 
-. * Remaning letter variables to years (
-> yr)
+. * Remaning letter variables to years (yr)
 . rename P yr01
 
 . rename Q yr02
@@ -231,94 +188,56 @@ file TariffsTimeseries.dta saved
 . rename AI yr020
 
 . 
-. *transforming "year" into a singular v
-> ariable observing the years 2001-2020
-. reshape long yr0, i(CountryName Indica
-> torName) j(year)
-(j = 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15
->  16 17 18 19 20)
+. *transforming "year" into a singular variable observing the years 2001-2020
+. reshape long yr0, i(CountryName IndicatorName) j(year)
+(note: j = 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20)
 
-Data                               Wide 
->   ->                                  
->        Long
-----------------------------------------
-> -------------------------------------
-Number of observations               77 
->   ->   1,540       
-Number of variables                  22 
->   ->   4           
-j variable (20 values)                  
->   ->   year
+Data                               wide   ->   long
+-----------------------------------------------------------------------------
+Number of obs.                        7   ->     140
+Number of variables                  23   ->       5
+j variable (20 values)                    ->   year
 xij variables:
-                    yr01 yr02 ... yr020 
->   ->   yr0
-----------------------------------------
-> -------------------------------------
+                    yr01 yr02 ... yr020   ->   yr0
+-----------------------------------------------------------------------------
 
 . rename yr0 value
 
 . replace year = year + 2000
 variable year was byte now int
-(1,540 real changes made)
+(140 real changes made)
 
 . 
-. *reshaping individual indicators as va
-> riables 
+. *reshaping individual indicators as variables 
 . encode IndicatorName, gen(IndicatorID)
 
 . drop IndicatorName
 
-. reshape wide value, i(year CountryName
-> ) j(IndicatorID)
-(j = 1 2 3 4 5 6 7)
+. reshape wide value, i(year CountryName) j(IndicatorID)
+(note: j = 1 2 3 4 5 6 7)
+variable AL not constant within year CountryName
+    Your data are currently long.  You are performing a reshape wide.  You typed something like
 
-Data                               Long 
->   ->                                  
->        Wide
-----------------------------------------
-> -------------------------------------
-Number of observations            1,540 
->   ->   220         
-Number of variables                   4 
->   ->   9           
-j variable (7 values)       IndicatorID 
->   ->   (dropped)
-xij variables:
-                                  value 
->   ->   value1 value2 ... value7
-----------------------------------------
-> -------------------------------------
+        . reshape wide a b, i(year CountryName) j(IndicatorID)
 
-. 
-. *renaming value variables
-. rename value1 TariffPTaxRev
+    There are variables other than a, b, year CountryName, IndicatorID in your data.  They must be constant within
+    year CountryName because that is the only way they can fit into wide data without loss of information.
 
-. rename value2 ExportPGDP
+    The variable or variables listed above are not constant within year CountryName.  Perhaps the values are in error.
+    Type reshape error for a list of the problem observations.
 
-. rename value3 GDPCurrent
+    Either that, or the values vary because they should vary, in which case you must either add the variables to the
+    list of xij variables to be reshaped, or drop them.
+r(9);
 
-. rename value4 ImportPGDP
+end of do-file
 
-. rename value5 ImportValue
+r(9);
 
-. rename value6 DomesticTaxRev
-
-. rename value7 InternationalTaxRev
-
-. 
-. *save new changes (needed for merging)
-. save "TariffTimeseries_new.dta", repla
-> ce 
-file TariffTimeseries_new.dta saved
-
-. 
-. *close log
 . log close
       name:  <unnamed>
-       log:  C:\Users\ldepedro\OneDrive 
-> - Syracuse University\AAA JUNIOR year\
-> ECN 310\course-project-tariffs\Do file
-> s\TariffsTimeseries.log
+       log:  C:\Users\krist\OneDrive - Syracuse University\Documents\GitHub\course-project-tariffs\Do files\TariffsTimes
+> eries.log
   log type:  text
- closed on:  14 Dec 2025, 14:32:55
-----------------------------------------
+ closed on:  16 Dec 2025, 16:30:01
+------------------------------------------------------------------------------------------------------------------------
