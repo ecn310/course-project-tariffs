@@ -24,15 +24,14 @@
    - The purpose of this first do file is to import all WITS Excel files (DomesticTaxRev.xlsx, ExportPGDP.xlsx, GDP(Current USD).xlsx, ImportPGDP.xlsx, ImportValue.xlsx, InternationalTaxRev.xlsx, RealGDP.xlsx, TariffPTaxRev.xlsx), merges them into a single dataset, filter for years 2001-2020 and the countries of interest (United States, Australia, France, Israel, Korea (Rep.), Norway, Romania, and Switzerland), reshapes the data and saves it as [TariffTimeseries_new.dta](https://github.com/ecn310/course-project-tariffs/blob/main/Data%20files/TariffsTimeseries.dta).
    - It should produce something that looks like this [TariffsTimeseries.log](https://github.com/ecn310/course-project-tariffs/blob/main/Do%20files/TariffsTimeseries.log) stored inside the Do files folder.
 5.  Open ICTD-GRD data do file.do [do file](https://github.com/ecn310/course-project-tariffs/blob/main/Do%20files/ICTD-GRD%20data%20do%20file.do)
-   - Locate the cd commands that can be located using Crtl+F in the do file and make it to match your local repository. 
-   - the purpose of this do file is to merge the prepared WITS dataset with ICTD-GRD data, filtering for 11 countries (Australia, Belgium, Canada, France, Ireland, Israel, Korea Rep., New Zealand, Norway, Switzerland, United States) during the same years (2001-2020)
-   - Generates Summary_Stats_final.tex and exports it to LaTeX format, [summary statistics](https://github.com/ecn310/course-project-tariffs/blob/main/Outputs/Import_GDP_by_Country.tex), can be found in the Outputs folder
+    - Locate the cd commands that can be located using Crtl+F in the do file and make it to match your local repository. 
+    - The purpose of this do file is to merge the prepared WITS dataset with ICTD-GRD data, filtering for 11 countries (Australia, Belgium, Canada, France, Ireland, Israel, Korea Rep., New Zealand, Norway, Switzerland, United States) during the same years (2001-2020)
+    - Generates Summary_Stats_final.tex and exports it to LaTeX format, [summary statistics](https://github.com/ecn310/course-project-tariffs/blob/main/Outputs/Import_GDP_by_Country.tex), can be found in the Outputs folder
    - Calculates country by country correlations between interntional and domestic tax.
    - Produces four graph files. All of them inside the Outputs folder.
       - scatter_raw_tax_relationship_final.pdf: scatter plot showing international vs domestic tax revenue for all countries. 
       - scatter_correlation_import.pdf: scatter plot of correlation coefficient vs import-GDP ratio (with regression line).
       - figure3.png same as above but PNG version
-      - scatter_correlation_sorted.pdf: correlation vs import intensity.
   - This do file's log is called [ICTD-GRD.log](https://github.com/ecn310/course-project-tariffs/blob/main/Do%20files/ICTD-GRD.log) and it's inside the Do file's folder
 
 ### Repository Structure
@@ -48,17 +47,21 @@
   - TarrifsTimeseries.do
   - TarrifsTimeseries log of do file
   - ICTD-GRD data do file
-  - ICTD-GRD log
+  - ICTD-GRD do file log
+- Master Documentation File
 - Outputs
   - Import GDP by Country
-  - Hight import Countries scatter plots
-  - Medium import Countries scatter plots
-  - Low import Countries scatter plots
+  - summary stats final tex
+  - summary stats final txt
+  - figure3 avarages high vs al other countries
+  - scatter correlation import
+  - scater raw tax relationship final
 - Report
   - README.md - REPRODUCIBILITY PACKAGE
   - data.tex
   - project template.tex
   - tarrifs report.tex
+  - tariffs report. pdf
 - README.md - Master Documentation File
 
 
