@@ -1,4 +1,4 @@
-# Import Reliance and Government Revenue: Testing
+# Import Reliance and Government Revenue: Testing Tariff–Tax Relationships Across Developed Countries
 ## Abstract
 This paper investigates the relationship between domestic consumption taxes and tariffs in devel-
 oped countries, with a focus on how this relationship is influenced by a country’s import-to-GDP
