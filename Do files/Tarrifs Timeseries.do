@@ -1,4 +1,4 @@
-*Stata 18 version
+version 18
 
 *Do file to merge our raw data, and explore it
 *start a log
