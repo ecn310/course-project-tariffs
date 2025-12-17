@@ -34,10 +34,10 @@ tab CountryName
 
 
 *merging
-use "TariffTimeseries_new.dta" , clear
+use "Data files\TariffTimeseries_new.dta" , clear
 
 *merge with ICTD tax data 
-merge 1:1 CountryName year using "UNUWIDERGRD_2023_Central_new.dta"
+merge 1:1 CountryName year using "Data Files\UNUWIDERGRD_2023_Central_new.dta"
 * verify merged results 
 tab _merge
 list CountryName year _merge if _merge != 3 
