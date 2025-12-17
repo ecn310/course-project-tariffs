@@ -21,7 +21,7 @@
 2. Open Tarrifs Timeseries.do, that can be found the Do file folder in our Github repository, this is the [link](https://github.com/ecn310/course-project-tariffs/blob/main/Do%20files/Tarrifs%20Timeseries.do) to it.
 3. Before running any code, the file paths need to be changed specifically for your computer.
    - Locate the cd command at the top of the do file and change it to match your local repository.
-     **cd "change.this.link.to.your.own.path"**
+     **cd "change.this.link.to.your.own.Tariffs.folder"** make sure this change of directory points towards your Tariffs folder.
    - Run the do file in order (Cr+D or click execute)
    - The purpose of this first do file is to import all WITS Excel files (DomesticTaxRev.xlsx, ExportPGDP.xlsx, GDP(Current USD).xlsx, ImportPGDP.xlsx, ImportValue.xlsx, InternationalTaxRev.xlsx, RealGDP.xlsx, TariffPTaxRev.xlsx), merges them into a single dataset, filter for years 2001-2020 and the countries of interest (United States, Australia, France, Israel, Korea (Rep.), Norway, Romania, and Switzerland), reshapes the data and saves it as [TariffTimeseries_new.dta](https://github.com/ecn310/course-project-tariffs/blob/main/Data%20files/TariffsTimeseries.dta).
    - It should produce something that looks like this [TariffsTimeseries.log](https://github.com/ecn310/course-project-tariffs/blob/main/Do%20files/TariffsTimeseries.log) stored inside the Do files folder.
