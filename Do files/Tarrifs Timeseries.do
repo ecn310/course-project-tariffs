@@ -76,7 +76,7 @@ drop N
 drop O
 drop AJ
 drop AK
-drop AL 
+
 *get rid of the countries we dont need 
 keep if CountryName == "United States" | CountryName == "Australia" | CountryName == "France" | CountryName == "Israel" | CountryName == "Korea, Rep." | CountryName == "Norway" | CountryName == "Switzerland" | CountryName =="Ireland" | CountryName == "Canada" | CountryName == "New Zealand" | CountryName == "Belgium"
 
