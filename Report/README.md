@@ -13,6 +13,8 @@
     - [Taxes on international trade (current LCU)](https://github.com/ecn310/course-project-tariffs/blob/main/Data%20files/InternationalTaxRev.xlsx): measures the taxes imposed on international trade transactions expresed in the local currency. Name it **InternationalTaxRev.xlsx.**
     - [GDP (Current US$)](https://github.com/ecn310/course-project-tariffs/blob/main/Data%20files/GDP(Current%20USD).xlsx): measures the total monetary value of all finished goods and services produced within a country over a specific period of time. Name it **GDP(CurrentUSD).xlsx.**
 3. Go to [ICTD-GRD UNU WIDER Government Revenue Dataset](https://www2.wider.unu.edu/content/grd-data-download) website, create an account, then choose to download the Stata file [**UNUWIDERGRD 2023 Central Government.dta_.zip (2.44 MB)**](https://github.com/ecn310/course-project-tariffs/blob/main/Data%20files/UNUWIDERGRD_2023_Central.dta). It needs to be unzipped, it contains Domestic Tax Revenue (\% of GDP) that measures total taxes on goods and services; and International Tax Revenue (\% of GDP) which is taxes on international trade, primarily consisting of tariffs and customs duties on imports. The Data Coverage is: 193 countries from 2001-2020. When unzipped make sure the file is inside the Data Folder and named **UNUWIDERGRD_2023_Central.dta** (if different, change it).
+4. All of the files should be downloaded and save inside the **Data files** folder of your repository.
+
  #### Working with the Data  
 1. Clone or download this repository to your personal computer. All of our files are in GitHub.
 2. Stata version used: Stata 18.0
@@ -43,8 +45,6 @@
   - The combined WITS dataset
   - The ICTD-GRD raw dta file
   - The processed final dataset with both the WITS and ICTD-GRD data
-  - Summary stats base.tex
-  - Summary stats base.txt
 - Do files contains the following:
   - TarrifsTimeseries.do
   - TarrifsTimeseries log of do file
