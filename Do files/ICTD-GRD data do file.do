@@ -192,22 +192,16 @@ graph export "Outputs\scatter_correlation_import.pdf", replace
 
 *scatter plot graph of high import countries vs rest of the countries in the data set 
 use "Data files\TariffsTimeseries_ICTD.dta", clear
-
 bysort CountryName: egen avg_import_gdp = mean(ImportGDPRatio)
 bysort CountryName: egen avg_international_tax = mean(InternationalTaxGDP)
 bysort CountryName: egen avg_domestic_tax = mean(DomesticTaxGDP)
-
 gen import_group2 = .
 replace import_group2 = 0 if avg_import_gdp < 40
 replace import_group2 = 1 if avg_import_gdp >= 40
-
 label define group2_labels 0 "Low/Medium Import (<40%)" 1 "High Import (≥40%)"
 label values import_group2 group2_labels
-
 duplicates drop CountryName, force
-
-twoway (scatter avg_domestic_tax avg_international_tax if import_group2==0, mcolor(orange) msymbol(circle) msize(large) mlabel(CountryName) mlabposition(3) mlabsize(small)) (scatter avg_domestic_tax avg_international_tax if import_group2==1, mcolor(navy) msymbol(circle) msize(large) mlabel(CountryName) mlabposition(3) mlabsize(small)), xlabel(0(1)6) ylabel(0(2)14) xtitle("Average International Tax Revenue (% GDP)") ytitle("Avg. Domestic Consumption Tax Revenue (% GDP)") legend(order(1 "Low/Medium Import (<35%)" 2 "High Import (≥35%)") rows(1) size(small) position(6)) note("Each point = one country's 20-year average. Low/Medium: Australia, Canada, France, Israel, New Zealand, Norway, US. High: Belgium, Ireland, Korea, Switzerland.", size(vsmall))
-
+twoway (scatter avg_domestic_tax avg_international_tax if import_group2==0, mcolor(orange) msymbol(circle) msize(large) mlabel(CountryName) mlabposition(3) mlabsize(small)) (scatter avg_domestic_tax avg_international_tax if import_group2==1, mcolor(navy) msymbol(circle) msize(large) mlabel(CountryName) mlabposition(3) mlabsize(small)), xlabel(0(0.2)1) ylabel(0(2)14) xtitle("Average International Tax Revenue (% GDP)") ytitle("Avg. Domestic Consumption Tax Revenue (% GDP)") legend(order(1 "Low/Medium Import (<35%)" 2 "High Import (≥35%)") rows(1) size(small) position(6)) note("Each point = one country's 20-year average. Low/Medium: Australia, Canada, France, Israel, New Zealand, Norway, US. High: Belgium, Ireland, Korea, Switzerland.", size(vsmall)) graphregion(margin(l=2 r=2 t=2 b=5))
 graph export "Outputs\figure3_averages_high_vs_rest_clean.png", replace width(2000)
 
 *close log
