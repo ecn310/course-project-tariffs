@@ -196,8 +196,8 @@ bysort CountryName: egen avg_import_gdp = mean(ImportGDPRatio)
 bysort CountryName: egen avg_international_tax = mean(InternationalTaxGDP)
 bysort CountryName: egen avg_domestic_tax = mean(DomesticTaxGDP)
 gen import_group2 = .
-replace import_group2 = 0 if avg_import_gdp < 40
-replace import_group2 = 1 if avg_import_gdp >= 40
+replace import_group2 = 0 if avg_import_gdp < 35
+replace import_group2 = 1 if avg_import_gdp >= 35
 label define group2_labels 0 "Low/Medium Import (<40%)" 1 "High Import (≥40%)"
 label values import_group2 group2_labels
 duplicates drop CountryName, force
