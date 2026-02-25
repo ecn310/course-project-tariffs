@@ -3,6 +3,7 @@ version 18
 * Run after running TariffTimeseries.do and has created TariffTimeseries_new.dta
 *open a log file
 log using ICTD-GRD.log, replace
+ssc install estout, replace
 *First run this to change directory to your path, where all of the raw data is 
 cd "C:\Users\kfrocha\OneDrive - Syracuse University\Documents\GitHub\course-project-tariffs"
 *import ICD-GRD data 
@@ -82,16 +83,20 @@ drop GDPCurrent ImportValue
 summarize DomesticTaxGDP InternationalTaxGDP ImportPGDP ExportPGDP GDPCurrent_Billions ImportValue_Billions
 
 * export to Latex 
-outreg2 using "Outputs\Summary_Stats_final.tex", sum(log) replace tex title("Summary Statistics") label 
+estpost summarize DomesticTaxGDP InternationalTaxGDP ImportPGDP ExportPGDP GDPCurrent_Billions ImportValue_Billions
+esttab using "table_summary.tex", replace booktabs cells("mean(fmt(3)) sd(fmt(3)) min(fmt(3)) max(fmt(3))") label nonumber nomtitle title("Summary Statistics \label{tab:sumstat}") collabels("Mean" "Std. Dev." "Min" "Max")
+
 *change it back to data folder
 
 *Summary table for importGDP ratio variable by country
+ssc install dataout, replace 
 preserve
 collapse (mean) mean=ImportGDPRatio (sd) sd=ImportGDPRatio (min) min=ImportGDPRatio (max) max=ImportGDPRatio, by(CountryName)
 gsort -mean
 format mean sd min max %9.2f
 list
-
+*export to latex 
+dataout, save("table_importGDP.tex") tex replace dec(2)
 restore
 
 *Correlations (Individual) 
