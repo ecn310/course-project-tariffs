@@ -85,7 +85,7 @@ drop GDPCurrent ImportValue
 * export summary statistics to Latex 
 estpost summarize DomesticTaxGDP InternationalTaxGDP ImportPGDP ExportPGDP GDPCurrent_Billions ImportValue_Billions
 
-esttab using "table_summary.tex", replace booktabs cells("mean(fmt(2)) sd(fmt(2)) min(fmt(2)) max(fmt(2)) count(fmt(0))") label nonumber nomtitle title("Summary Statistics \label{tab:sumstat}") collabels("Mean" "Std. Dev." "Min" "Max" "N") varwidth(30) modelwidth(10)
+esttab using "table_summary.tex", replace booktabs cells("mean(fmt(2)) sd(fmt(2)) min(fmt(2)) max(fmt(2)) count(fmt(0))") label nonumber nomtitle title("Summary Statistics \label{tab:sumstat}") collabels("Mean" "SD" "Min" "Max" "N") varwidth(25) modelwidth(8)
 *change it back to data folder
 
 *Summary table for importGDP ratio variable by country
