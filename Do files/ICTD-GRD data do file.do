@@ -80,23 +80,21 @@ gen ImportValue_Billions = ImportValue / 1000000000
 label variable ImportValue_Billions "Import Value(Billions USD)"
 *drop the old GDP & ImportValue 
 drop GDPCurrent ImportValue 
-summarize DomesticTaxGDP InternationalTaxGDP ImportPGDP ExportPGDP GDPCurrent_Billions ImportValue_Billions
 
-* export to Latex 
+
+* export summary statistics to Latex 
 estpost summarize DomesticTaxGDP InternationalTaxGDP ImportPGDP ExportPGDP GDPCurrent_Billions ImportValue_Billions
-esttab using "table_summary.tex", replace booktabs cells("mean(fmt(3)) sd(fmt(3)) min(fmt(3)) max(fmt(3))") label nonumber nomtitle title("Summary Statistics \label{tab:sumstat}") collabels("Mean" "Std. Dev." "Min" "Max")
 
+esttab using "table_summary.tex", replace booktabs cells("mean(fmt(2)) sd(fmt(2)) min(fmt(2)) max(fmt(2)) count(fmt(0))") label nonumber nomtitle title("Summary Statistics \label{tab:sumstat}") collabels("Mean" "Std. Dev." "Min" "Max" "N") varwidth(30) modelwidth(10)
 *change it back to data folder
 
 *Summary table for importGDP ratio variable by country
-ssc install dataout, replace 
+ssc install listtex, replace
 preserve
 collapse (mean) mean=ImportGDPRatio (sd) sd=ImportGDPRatio (min) min=ImportGDPRatio (max) max=ImportGDPRatio, by(CountryName)
 gsort -mean
 format mean sd min max %9.2f
-list
-*export to latex 
-dataout, save("table_importGDP.tex") tex replace dec(2)
+listtex CountryName mean sd min max using "table_importGDP.tex", replace rstyle(tabular) head("\begin{table}[H]\centering\caption{Import-to-GDP Ratio by Country (2001-2020) \label{tab:importGDP}}\begin{tabular}{lcccc}\toprule Country & Mean & Std. Dev. & Min & Max \\ \midrule") foot("\bottomrule\end{tabular}")
 restore
 
 *Correlations (Individual) 
