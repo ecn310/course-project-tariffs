@@ -15,6 +15,7 @@
 \usepackage{csquotes}
 \usepackage[american]{babel}
 \usepackage{booktabs}
+\usepackage{adjustbox}
 \usepackage{threeparttable}
 \usepackage{float}
 \usepackage[usenames,dvipsnames]{color}
@@ -84,7 +85,9 @@ The remainder of the paper includes literature reviews, data, results, and concl
 
 Trade and tariff data was made available from the World Bank's World Integrated Trade Solution \href{https://wits.worldbank.org/}{(WITS)} database. The International Centre for Tax and Development Government Revenue Dataset \href{https://www2.wider.unu.edu/content/grd-data-download}{(ICTD-GRD)} provides detailed tax and government revenue data for nearly all countries. Our sample includes eleven developed countries 2001-2020: Australia, Belgium, Canada, France, Ireland, Israel, South Korea, New Zealand, Norway, Switzerland, and the United States, amounting to 220 country-year observations. We classify these countries as "developed" based on their Organization for Economic Co-operation and Development (OECD) membership status, which indicates advanced economies with established institutions capable of implementing diverse revenue strategies. 
 
-\input{table_summary}
+\resizebox{\linewidth}{!}{%
+\input{table_summary}%
+}
 
 We obtained four trade indicators to create our key variables from WITS: Exports of goods and services (\% of GDP) measures the value of all exported goods and services as a percentage of GDP; Imports of goods and services (\% of GDP) measure the value of all imported goods and services as a percentage of GDP; GDP (current USD) represents the gross domestic product of each country in current US dollars; and Import Value (Current USD) captures the total value of imports in current US dollars. 
 We also obtained two tax revenue variables from ICTD-GRD: Domestic Consumption Tax Revenue (\% of GDP) measures total taxes on goods and services; and International Tax Revenue (\% of GDP) which is taxes on international trade, primarily consisting of tariffs and customs duties on imports.
@@ -119,12 +122,15 @@ We also obtained two tax revenue variables from ICTD-GRD: Domestic Consumption T
         The scatter plot reveals no clear pattern of fiscal substitution. The countries cluster into distinct groups. Most observations cluster at very low levels of international tax revenue showing that tariff revenues are minimal for the countries. The absence of a clear negative slope provides preliminary evidence against fiscal substitution in developed countries. This prompts a country-by-country approach, examining each country individually to identify whether any individual cases exhibit the hypothesized relationship and to assess whether import intensity correlates with substitution patterns. 
 
 \input{table_importGDP}
+\vspace{-1em}
+{\small\textit{Note:} Import-to-GDP ratio calculated as (Import Value / GDP Current USD) $\times$ 100. Countries sorted by mean import-to-GDP ratio (highest to lowest). Data from World Integrated Trade Solution (WITS), 2001-2020.}
 
-To examine whether import intensity predicts fiscal substitution behavior, Table \ref{tab:import_country} represents the import-to-GDP ratio for each country, calculated as the ratio of import value to GDP multiplied by 100. This is important to understanding the variation in import dependency across countries allowing us to test the hypothesis that higher import countries should demonstrate stronger fiscal substitutions patterns than low import countries. These high-import countries should exhibit stronger negative correlations between international and domestic tax revenues, reflecting the systemic substitution of domestic taxes to offset lost tariff revenue. 
+\medskip
+To examine whether import intensity predicts fiscal substitution behavior, Table \ref{tab:importGDP} represents the import-to-GDP ratio for each country, calculated as the ratio of import value to GDP multiplied by 100. This is important to understanding the variation in import dependency across countries allowing us to test the hypothesis that higher import countries should demonstrate stronger fiscal substitutions patterns than low import countries. These high-import countries should exhibit stronger negative correlations between international and domestic tax revenues, reflecting the systemic substitution of domestic taxes to offset lost tariff revenue. 
 
 
 
-Table \ref{tab:import_country} reveals substantial variation in import dependency across the sample, with countries having a range from 15.14\% to 84.61\% of GDP. Ireland demonstrates the highest import intensity, averaging 84.61\% of GDP over the 20-year period, with substantial year-to-year variation indicated by a standard deviation of 15.31, reflecting Ireland's economy experiencing significant fluctuations in trade dependency. Belgium follows at 76.64\%  average import intensity but with a standard deviation of 5.76. Belgium's imports consistently remained between 65.34\% and 83.49\% of GDP. Switzerland averages 53.06\% showing similar stability to Belgium with imports ranging from 42.52\% to 61.63\%. These three countries represent the most import-intensive economies in the sample and, according to our hypothesis, should be the most likely to substitute domestic taxes for declining tariff revenues.  
+Table \ref{tab:importGDP} reveals substantial variation in import dependency across the sample, with countries having a range from 15.14\% to 84.61\% of GDP. Ireland demonstrates the highest import intensity, averaging 84.61\% of GDP over the 20-year period, with substantial year-to-year variation indicated by a standard deviation of 15.31, reflecting Ireland's economy experiencing significant fluctuations in trade dependency. Belgium follows at 76.64\%  average import intensity but with a standard deviation of 5.76. Belgium's imports consistently remained between 65.34\% and 83.49\% of GDP. Switzerland averages 53.06\% showing similar stability to Belgium with imports ranging from 42.52\% to 61.63\%. These three countries represent the most import-intensive economies in the sample and, according to our hypothesis, should be the most likely to substitute domestic taxes for declining tariff revenues.  
         
         The remaining countries display import intensities that range from 15.14\% and 38.82\%. Korea averages at 38.82\% and presents variability with a standard deviation of 7.21. Korea's imports ranging from 29.24\% and 52.81\%. The remaining countries Canada (32.95\%), Israel (32.59\%), France (29.57\%), Norway (29.38\%), New Zealand (27.76\%), Australia (21.76\%) and the United States (15.14\%) demonstrate stability over time with standard deviations between 1.19 and 4.80. 
 
