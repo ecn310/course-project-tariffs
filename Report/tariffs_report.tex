@@ -83,29 +83,8 @@ The remainder of the paper includes literature reviews, data, results, and concl
 \label{sec:data}
 
 Trade and tariff data was made available from the World Bank's World Integrated Trade Solution \href{https://wits.worldbank.org/}{(WITS)} database. The International Centre for Tax and Development Government Revenue Dataset \href{https://www2.wider.unu.edu/content/grd-data-download}{(ICTD-GRD)} provides detailed tax and government revenue data for nearly all countries. Our sample includes eleven developed countries 2001-2020: Australia, Belgium, Canada, France, Ireland, Israel, South Korea, New Zealand, Norway, Switzerland, and the United States, amounting to 220 country-year observations. We classify these countries as "developed" based on their Organization for Economic Co-operation and Development (OECD) membership status, which indicates advanced economies with established institutions capable of implementing diverse revenue strategies. 
-\begin{table}[htbp]
-\centering
-\begin{threeparttable}
-\caption{Summary Statistics}
-\label{tab:summary_stats}
-\begin{tabular}{lccccc}
-\hline
-VARIABLES & N & mean & sd & min & max \\ \hline
- &  &  &  &  &  \\
-Exports (\% GDP) & 220 & 43.49 & 26.23 & 9.036 & 133.3 \\
-Imports (\% GDP) & 220 & 40.08 & 22.11 & 13.15 & 124.4 \\
-Domestic Consumption Tax Revenue (\% GDP) & 220 & 7.564 & 3.618 & 0.424 & 13.17 \\
-International Tax Revenue (\% GDP) & 220 & 0.291 & 0.307 & -0.0130 & 1.087 \\
-GDP (Current USD, Billions) & 220 & 2,193 & 4,505 & 53.87 & 21,540 \\
-Import Value (Billions USD) & 215 & 503.3 & 670.2 & 16.83 & 3,121 \\
- &  &  &  &  &  \\ \hline
-\end{tabular}
-\begin{tablenotes}[flushleft]
-\small
-\item \textit{Note:} Sample consists of 11 developed countries over 20 years (2001-2020): Australia, Belgium, Canada, France, Ireland, Israel, Korea, New Zealand, Norway, Switzerland, and the United States. Tax variables from ICTD Government Revenue Dataset; trade and GDP variables from World Integrated Trade Solution (WITS).
-\end{tablenotes}
-\end{threeparttable}
-\end{table}
+
+\input{table_summary}
 
 We obtained four trade indicators to create our key variables from WITS: Exports of goods and services (\% of GDP) measures the value of all exported goods and services as a percentage of GDP; Imports of goods and services (\% of GDP) measure the value of all imported goods and services as a percentage of GDP; GDP (current USD) represents the gross domestic product of each country in current US dollars; and Import Value (Current USD) captures the total value of imports in current US dollars. 
 We also obtained two tax revenue variables from ICTD-GRD: Domestic Consumption Tax Revenue (\% of GDP) measures total taxes on goods and services; and International Tax Revenue (\% of GDP) which is taxes on international trade, primarily consisting of tariffs and customs duties on imports.
@@ -139,36 +118,7 @@ We also obtained two tax revenue variables from ICTD-GRD: Domestic Consumption T
 
         The scatter plot reveals no clear pattern of fiscal substitution. The countries cluster into distinct groups. Most observations cluster at very low levels of international tax revenue showing that tariff revenues are minimal for the countries. The absence of a clear negative slope provides preliminary evidence against fiscal substitution in developed countries. This prompts a country-by-country approach, examining each country individually to identify whether any individual cases exhibit the hypothesized relationship and to assess whether import intensity correlates with substitution patterns. 
 
-\begin{table}[h!]
-\centering
-\caption{Import-to-GDP Ratio by Country (2001-2020)}
-\label{tab:import_country}
-\begin{threeparttable}
-\begin{tabular}{lrrrr}
-\toprule
-\textbf{Country} & \textbf{Mean} & \textbf{Std. Dev.} & \textbf{Min} & \textbf{Max} \\
-\midrule
-Ireland & 84.61 & 15.31 & 65.65 & 111.54 \\
-Belgium & 76.64 & 5.76 & 65.34 & 83.49 \\
-Switzerland & 53.06 & 5.73 & 42.52 & 61.63 \\
-Korea, Rep. & 38.82 & 7.21 & 29.24 & 52.81 \\
-Canada & 32.95 & 1.49 & 30.00 & 36.26 \\
-\midrule
-Israel & 32.59 & 4.80 & 23.37 & 40.11 \\
-France & 29.57 & 2.77 & 25.15 & 34.08 \\
-Norway & 29.38 & 2.51 & 26.62 & 34.30 \\
-New Zealand & 27.76 & 2.14 & 22.59 & 32.75 \\
-Australia & 21.76 & 1.19 & 18.84 & 24.07 \\
-\midrule
-United States & 15.14 & 1.44 & 12.87 & 17.35 \\
-\bottomrule
-\end{tabular}
-\begin{tablenotes}[flushleft]
-\small
-\item \textit{Note:} Import-to-GDP ratio calculated as (Import Value / GDP Current USD) × 100. Countries sorted by mean import-to-GDP ratio (highest to lowest). Data from World Integrated Trade Solution (WITS), 2001-2020.
-\end{tablenotes}
-\end{threeparttable}
-\end{table}
+\input{table_importGDP}
 
 To examine whether import intensity predicts fiscal substitution behavior, Table \ref{tab:import_country} represents the import-to-GDP ratio for each country, calculated as the ratio of import value to GDP multiplied by 100. This is important to understanding the variation in import dependency across countries allowing us to test the hypothesis that higher import countries should demonstrate stronger fiscal substitutions patterns than low import countries. These high-import countries should exhibit stronger negative correlations between international and domestic tax revenues, reflecting the systemic substitution of domestic taxes to offset lost tariff revenue. 
 
