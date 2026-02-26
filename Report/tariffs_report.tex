@@ -18,6 +18,7 @@
 \usepackage{adjustbox}
 \usepackage{threeparttable}
 \usepackage{float}
+\usepackage{lscape}
 \usepackage[usenames,dvipsnames]{color}
 \usepackage{graphicx,amsbsy,amssymb, amsmath, amsthm, MnSymbol,bbding,times, verbatim,bm,pifont,pdfsync,setspace,natbib}
 \usepackage{threeparttable}
@@ -85,9 +86,9 @@ The remainder of the paper includes literature reviews, data, results, and concl
 
 Trade and tariff data was made available from the World Bank's World Integrated Trade Solution \href{https://wits.worldbank.org/}{(WITS)} database. The International Centre for Tax and Development Government Revenue Dataset \href{https://www2.wider.unu.edu/content/grd-data-download}{(ICTD-GRD)} provides detailed tax and government revenue data for nearly all countries. Our sample includes eleven developed countries 2001-2020: Australia, Belgium, Canada, France, Ireland, Israel, South Korea, New Zealand, Norway, Switzerland, and the United States, amounting to 220 country-year observations. We classify these countries as "developed" based on their Organization for Economic Co-operation and Development (OECD) membership status, which indicates advanced economies with established institutions capable of implementing diverse revenue strategies. 
 
-\resizebox{\linewidth}{!}{%
-\input{table_summary}%
-}
+\begin{landscape}
+\input{table_summary}
+\end{landscape}
 
 We obtained four trade indicators to create our key variables from WITS: Exports of goods and services (\% of GDP) measures the value of all exported goods and services as a percentage of GDP; Imports of goods and services (\% of GDP) measure the value of all imported goods and services as a percentage of GDP; GDP (current USD) represents the gross domestic product of each country in current US dollars; and Import Value (Current USD) captures the total value of imports in current US dollars. 
 We also obtained two tax revenue variables from ICTD-GRD: Domestic Consumption Tax Revenue (\% of GDP) measures total taxes on goods and services; and International Tax Revenue (\% of GDP) which is taxes on international trade, primarily consisting of tariffs and customs duties on imports.
