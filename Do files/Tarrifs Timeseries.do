@@ -42,7 +42,7 @@ import excel "InternationalTaxRev.xlsx", sheet("Country-Timeseries") firstrow cl
 save "TariffsTimeseries6.dta",replace
 clear
 *import excel file 7
-import excel "GDP(Current USD).xlsx" , sheet("Country-Timeseries") firstrow clear
+import excel "GDP(CurrentUSD).xlsx" , sheet("Country-Timeseries") firstrow clear
 *save as dta 
 save "TariffsTimeseries7.dta",replace
 
