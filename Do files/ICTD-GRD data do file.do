@@ -7,7 +7,7 @@ ssc install estout, replace
 *First run this to change directory to your path, where all of the raw data is 
 cd "C:\Users\kfrocha\OneDrive - Syracuse University\Documents\GitHub\course-project-tariffs"
 *import ICD-GRD data 
-use "Data files\UNU-WIDER GRD Central Government 2025" , clear 
+use "Data files\UNUWIDERGRD_2023_Central" , clear 
 *keep the 11 countries
 keep if country == "Australia" | country == "France" | country == "Israel" | country == "Norway" | country == "Switzerland" | country == "United States" | country == "Ireland" | country == "Canada" | country == "New Zealand" | country == "Belgium" | country == "Korea, Republic of"
 *keeping years 2001-2020
@@ -28,7 +28,7 @@ replace CountryName = "Korea, Rep." if CountryName == "Korea, Republic of" | Cou
 *keep needed variables 
 keep CountryName year DomesticTaxGDP InternationalTaxGDP
 *save revamped data 
-save "Data files\UNUWIDERGRD_2025_Central_new.dta", replace 
+save "Data files\UNUWIDERGRD_2023_Central_new.dta", replace 
 *summary check 
 summarize DomesticTaxGDP InternationalTaxGDP, detail
 tab CountryName
@@ -38,7 +38,7 @@ tab CountryName
 use "Data files\TariffTimeseries_new.dta" , clear
 
 *merge with ICTD tax data 
-merge 1:1 CountryName year using "Data files\UNUWIDERGRD_2025_Central_new.dta"
+merge 1:1 CountryName year using "Data files\UNUWIDERGRD_2023_Central_new.dta"
 * verify merged results 
 tab _merge
 list CountryName year _merge if _merge != 3 
@@ -85,7 +85,7 @@ summarize DomesticTaxGDP InternationalTaxGDP ImportPGDP ExportPGDP GDPCurrent_Bi
 * export to Latex 
 preserve
 keep CountryName year ExportPGDP ImportPGDP DomesticTaxGDP InternationalTaxGDP ImportValue_Billions GDPCurrent_Billions
-outreg2 using "Outputs\Summary_Stats_final.tex", sum(log) replace tex title("Summary Statistics") label
+outreg2 using "Outputs\Summary_Stats_final.tex", sum(log) replace tex title("Summary Statistics") label 
 restore
 
 *change it back to data folder
