@@ -1,0 +1,653 @@
+-------------------------------------------------------------------------------------------------------
+      name:  <unnamed>
+       log:  C:\Users\ldepedro\OneDrive - Syracuse University\AAA JUNIOR year\ECN 310\course-project-ta
+> riffs\Do files\ICTD-GRD.log
+  log type:  text
+ opened on:  14 Dec 2025, 15:06:05
+
+. cd "C:\Users\ldepedro\OneDrive - Syracuse University\AAA JUNIOR year\ECN 310\course-project-tariffs\D
+> ata files"
+C:\Users\ldepedro\OneDrive - Syracuse University\AAA JUNIOR year\ECN 310\course-project-tariffs\Data fi
+> les
+
+. 
+. *import ICD-GRD data 
+. use "UNUWIDERGRD_2023_Central" , clear 
+(UNU-WIDER GRD 2023: Central Government)
+
+. *keep the 11 countries
+. keep if country == "Australia" | country == "France" | country == "Israel" | country == "Norway" | co
+> untry == "Switzerland" | country == "United States" | country == "Ireland" | country == "Canada" | co
+> untry == "New Zealand" | country == "Belgium" | country == "Korea, Republic of"
+(6,609 observations deleted)
+
+. *keeping years 2001-2020
+. keep if year >= 2001 & year <= 2020 
+(247 observations deleted)
+
+. *keep relevant variables 
+. keep country year tax_trade tax_income tax_indirect tax_property tax_gs_general tax_g_s tax_gs_excise
+> s tax_other 
+
+. *create domestic & international tax variables 
+. gen DomesticTaxGDP = tax_g_s
+
+. label variable DomesticTaxGDP "Domestic Consumption Tax Revenue (% GDP)"
+
+. gen InternationalTaxGDP = tax_trade
+
+. label variable InternationalTaxGDP "International Tax Revenue (% GDP)" 
+
+. 
+. 
+. *make sure names in WITS match 
+. rename country CountryName 
+
+. *fix Korea Overlapping issue 
+. replace CountryName = "Korea, Rep." if CountryName == "Korea, Republic of" | CountryName == "Korea"
+(20 real changes made)
+
+. *keep needed variables 
+. keep CountryName year DomesticTaxGDP InternationalTaxGDP
+
+. *save revamped data 
+. save "UNUWIDERGRD_2023_Central_new.dta", replace 
+file UNUWIDERGRD_2023_Central_new.dta saved
+
+. *summary check 
+. summarize DomesticTaxGDP InternationalTaxGDP, detail
+
+          Domestic Consumption Tax Revenue (% GDP)
+-------------------------------------------------------------
+      Percentiles      Smallest
+ 1%     .4530335       .4243985
+ 5%     .5317192       .4383558
+10%     2.371993       .4530335       Obs                 220
+25%     5.547198       .4534844       Sum of wgt.         220
+
+50%     7.897366                      Mean           7.564473
+                        Largest       Std. dev.      3.617744
+75%     11.02373       12.68762
+90%     11.58741       12.97548       Variance       13.08807
+95%     12.12876       13.03862       Skewness      -.4785524
+99%     12.97548       13.17446       Kurtosis       2.162836
+
+              International Tax Revenue (% GDP)
+-------------------------------------------------------------
+      Percentiles      Smallest
+ 1%    -.0050526      -.0129828
+ 5%    -.0044319      -.0055605
+10%    -4.40e-08      -.0050526       Obs                 220
+25%     .0001681      -.0049645       Sum of wgt.         220
+
+50%     .2032614                      Mean           .2909335
+                        Largest       Std. dev.       .307369
+75%     .4846556       .9924786
+90%     .8492424       1.013486       Variance       .0944757
+95%     .9540746       1.018539       Skewness       1.053992
+99%     1.013486       1.086654       Kurtosis       2.906625
+
+. tab CountryName
+
+                          country |      Freq.     Percent        Cum.
+----------------------------------+-----------------------------------
+                        Australia |         20        9.09        9.09
+                          Belgium |         20        9.09       18.18
+                           Canada |         20        9.09       27.27
+                           France |         20        9.09       36.36
+                          Ireland |         20        9.09       45.45
+                           Israel |         20        9.09       54.55
+                      Korea, Rep. |         20        9.09       63.64
+                      New Zealand |         20        9.09       72.73
+                           Norway |         20        9.09       81.82
+                      Switzerland |         20        9.09       90.91
+                    United States |         20        9.09      100.00
+----------------------------------+-----------------------------------
+                            Total |        220      100.00
+
+. 
+. 
+. *merging
+. use "TariffTimeseries_new.dta" , clear
+
+. 
+. *merge with ICTD tax data 
+. merge 1:1 CountryName year using "UNUWIDERGRD_2023_Central_new.dta"
+(variable CountryName was str30, now str33 to accommodate using data's values)
+
+    Result                      Number of obs
+    -----------------------------------------
+    Not matched                             0
+    Matched                               220  (_merge==3)
+    -----------------------------------------
+
+. * verify merged results 
+. tab _merge
+
+   Matching result from |
+                  merge |      Freq.     Percent        Cum.
+------------------------+-----------------------------------
+            Matched (3) |        220      100.00      100.00
+------------------------+-----------------------------------
+                  Total |        220      100.00
+
+. list CountryName year _merge if _merge != 3 
+
+. 
+. 
+. 
+. *keep successful merged observations 
+. keep if _merge == 3
+(0 observations deleted)
+
+. drop _merge
+
+. * save merged dataset 
+. save "TariffTimeseries_ICTD.dta" , replace 
+file TariffTimeseries_ICTD.dta saved
+
+. 
+. *ANALYSIS 
+. use "TariffTimeseries_ICTD.dta" , clear 
+
+. *Drop the problematic WITS tax variables 
+. drop DomesticTaxRev InternationalTaxRev TariffPTaxRev
+
+. *Label variables 
+. label variable ExportPGDP "Exports (% GDP)"
+
+. label variable GDPCurrent "GDP (Current USD)"
+
+. label variable ImportPGDP "Imports (% GDP)"
+
+. label variable ImportValue "Import Value"
+
+. *percentage variables 
+. gen ImportGDPRatio = ImportValue/GDPCurrent *100
+(5 missing values generated)
+
+. label variable ImportGDPRatio "Import-GDP-Ratio"
+
+. 
+. gen TradeBalance = ImportPGDP - ExportPGDP
+
+. label variable TradeBalance "Trade Balance (% GDP)"
+
+. 
+. gen TariffGDP = InternationalTaxGDP
+
+. label variable TariffGDP "Tariff Revenue (% GDP)"
+
+. 
+. *Save with new variables
+. save "TariffsTimeseries_ICTD.dta", replace
+file TariffsTimeseries_ICTD.dta saved
+
+.  
+. *change GDP and ImportValue to billions 
+. gen GDPCurrent_Billions = GDPCurrent / 1000000000
+
+. label variable GDPCurrent_Billions "GDP(Current USD, Billions)"
+
+. gen ImportValue_Billions = ImportValue / 1000000000
+(5 missing values generated)
+
+. label variable ImportValue_Billions "Import Value(Billions USD)"
+
+. *drop the old GDP & ImportValue 
+. drop GDPCurrent ImportValue 
+
+. summarize DomesticTaxGDP InternationalTaxGDP ImportPGDP ExportPGDP GDPCurrent_Billions ImportValue_Bi
+> llions
+
+    Variable |        Obs        Mean    Std. dev.       Min        Max
+-------------+---------------------------------------------------------
+DomesticTa~P |        220    7.564473    3.617744   .4243985   13.17446
+Internatio~P |        220    .2909335     .307369  -.0129828   1.086654
+  ImportPGDP |        220    40.08368    22.10585   13.15499   124.3699
+  ExportPGDP |        220    43.48837    26.23205   9.035659   133.3372
+GDPCurrent~s |        220    2192.601    4505.255   53.87243   21539.98
+-------------+---------------------------------------------------------
+ImportValu~s |        215    503.2736    670.1692   16.82986   3121.059
+
+. * export to Latex 
+. *change directory to outputs folder
+. cd "C:\Users\ldepedro\OneDrive - Syracuse University\AAA JUNIOR year\ECN 310\course-project-tariffs\O
+> utputs"
+C:\Users\ldepedro\OneDrive - Syracuse University\AAA JUNIOR year\ECN 310\course-project-tariffs\Outputs
+
+. outreg2 using "Summary_Stats_final.tex", sum(log) replace tex title("Summary Statistics") label 
+
+    Variable |        Obs        Mean    Std. dev.       Min        Max
+-------------+---------------------------------------------------------
+        year |        220      2010.5    5.779431       2001       2020
+  ExportPGDP |        220    43.48837    26.23205   9.035659   133.3372
+  ImportPGDP |        220    40.08368    22.10585   13.15499   124.3699
+DomesticTa~P |        220    7.564473    3.617744   .4243985   13.17446
+Internatio~P |        220    .2909335     .307369  -.0129828   1.086654
+-------------+---------------------------------------------------------
+ImportGDPR~o |        215    39.21126    21.15887   12.87169   111.5426
+TradeBalance |        220   -3.404687    6.314403   -28.7625   5.692505
+   TariffGDP |        220    .2909335     .307369  -.0129828   1.086654
+GDPCurrent~s |        220    2192.601    4505.255   53.87243   21539.98
+ImportValu~s |        215    503.2736    670.1692   16.82986   3121.059
+
+Following variable is string, not included:  
+CountryName  
+Summary_Stats_final.tex
+dir : seeout
+
+. *change it back to data folder
+. cd "C:\Users\ldepedro\OneDrive - Syracuse University\AAA JUNIOR year\ECN 310\course-project-tariffs\D
+> ata files"
+C:\Users\ldepedro\OneDrive - Syracuse University\AAA JUNIOR year\ECN 310\course-project-tariffs\Data fi
+> les
+
+. 
+. *Summary table for importGDP ratio variable by country
+. preserve
+
+. collapse (mean) mean=ImportGDPRatio (sd) sd=ImportGDPRatio (min) min=ImportGDPRatio (max) max=ImportG
+> DPRatio, by(CountryName)
+
+. gsort -mean
+
+. format mean sd min max %9.2f
+
+. list
+
+     +------------------------------------------------+
+     |   CountryName    mean      sd     min      max |
+     |------------------------------------------------|
+  1. |       Ireland   84.61   15.31   65.65   111.54 |
+  2. |       Belgium   76.64    5.76   65.34    83.49 |
+  3. |   Switzerland   53.06    5.73   42.52    61.63 |
+  4. |   Korea, Rep.   38.82    7.21   29.24    52.81 |
+  5. |        Canada   32.95    1.49   30.00    36.26 |
+     |------------------------------------------------|
+  6. |        Israel   32.59    4.80   23.37    40.11 |
+  7. |        France   29.57    2.77   25.15    34.08 |
+  8. |        Norway   29.38    2.51   26.62    34.30 |
+  9. |   New Zealand   27.76    2.14   22.59    32.75 |
+ 10. |     Australia   21.76    1.19   18.84    24.07 |
+     |------------------------------------------------|
+ 11. | United States   15.14    1.44   12.87    17.35 |
+     +------------------------------------------------+
+
+. 
+. restore
+
+. 
+. *Correlations (Individual) 
+. use "TariffsTimeseries_ICTD.dta", clear 
+
+. * Australia
+. display " "
+ 
+
+. display "AUSTRALIA:"
+AUSTRALIA:
+
+. pwcorr InternationalTaxGDP DomesticTaxGDP if CountryName == "Australia", sig star(0.05)
+
+             | Intern~P Domest~P
+-------------+------------------
+Internatio~P |   1.0000 
+             |
+             |
+DomesticTa~P |  -0.3191   1.0000 
+             |   0.1703
+             |
+
+. 
+. * Belgium
+. display " "
+ 
+
+. display "BELGIUM:"
+BELGIUM:
+
+. pwcorr InternationalTaxGDP DomesticTaxGDP if CountryName == "Belgium", sig star(0.05)
+
+             | Intern~P Domest~P
+-------------+------------------
+Internatio~P |   1.0000 
+             |
+             |
+DomesticTa~P |   0.2611   1.0000 
+             |   0.2662
+             |
+
+. 
+. * Canada
+. display " "
+ 
+
+. display "CANADA:"
+CANADA:
+
+. pwcorr InternationalTaxGDP DomesticTaxGDP if CountryName == "Canada", sig star(0.05)
+
+             | Intern~P Domest~P
+-------------+------------------
+Internatio~P |   1.0000 
+             |
+             |
+DomesticTa~P |   0.1267   1.0000 
+             |   0.5945
+             |
+
+. 
+. * France
+. display " "
+ 
+
+. display "FRANCE:"
+FRANCE:
+
+. pwcorr InternationalTaxGDP DomesticTaxGDP if CountryName == "France", sig star(0.05)
+
+             | Intern~P Domest~P
+-------------+------------------
+Internatio~P |   1.0000 
+             |
+             |
+DomesticTa~P |   0.2675   1.0000 
+             |   0.2542
+             |
+
+. 
+. * Ireland
+. display " "
+ 
+
+. display "IRELAND:"
+IRELAND:
+
+. pwcorr InternationalTaxGDP DomesticTaxGDP if CountryName == "Ireland", sig star(0.05)
+
+             | Intern~P Domest~P
+-------------+------------------
+Internatio~P |   1.0000 
+             |
+             |
+DomesticTa~P |   0.0879   1.0000 
+             |   0.7124
+             |
+
+. 
+. * Israel
+. display " "
+ 
+
+. display "ISRAEL:"
+ISRAEL:
+
+. pwcorr InternationalTaxGDP DomesticTaxGDP if CountryName == "Israel", sig star(0.05)
+
+             | Intern~P Domest~P
+-------------+------------------
+Internatio~P |   1.0000 
+             |
+             |
+DomesticTa~P |   0.4316   1.0000 
+             |   0.0574
+             |
+
+. 
+. * Korea
+. display " "
+ 
+
+. display "KOREA:"
+KOREA:
+
+. pwcorr InternationalTaxGDP DomesticTaxGDP if CountryName == "Korea, Rep.", sig star(0.05)
+
+             | Intern~P Domest~P
+-------------+------------------
+Internatio~P |   1.0000 
+             |
+             |
+DomesticTa~P |   0.7688*  1.0000 
+             |   0.0001
+             |
+
+. 
+. * New Zealand
+. display " "
+ 
+
+. display "NEW ZEALAND:"
+NEW ZEALAND:
+
+. pwcorr InternationalTaxGDP DomesticTaxGDP if CountryName == "New Zealand", sig star(0.05)
+
+             | Intern~P Domest~P
+-------------+------------------
+Internatio~P |   1.0000 
+             |
+             |
+DomesticTa~P |  -0.1819   1.0000 
+             |   0.4427
+             |
+
+. 
+. * Norway
+. display " "
+ 
+
+. display "NORWAY:"
+NORWAY:
+
+. pwcorr InternationalTaxGDP DomesticTaxGDP if CountryName == "Norway", sig star(0.05)
+
+             | Intern~P Domest~P
+-------------+------------------
+Internatio~P |   1.0000 
+             |
+             |
+DomesticTa~P |   0.1869   1.0000 
+             |   0.4302
+             |
+
+. 
+. * Switzerland
+. display " "
+ 
+
+. display "SWITZERLAND:"
+SWITZERLAND:
+
+. pwcorr InternationalTaxGDP DomesticTaxGDP if CountryName == "Switzerland", sig star(0.05)
+
+             | Intern~P Domest~P
+-------------+------------------
+Internatio~P |   1.0000 
+             |
+             |
+DomesticTa~P |   0.7403*  1.0000 
+             |   0.0002
+             |
+
+. 
+. * United States
+. display " "
+ 
+
+. display "UNITED STATES:"
+UNITED STATES:
+
+. pwcorr InternationalTaxGDP DomesticTaxGDP if CountryName == "United States", sig star(0.05)
+
+             | Intern~P Domest~P
+-------------+------------------
+Internatio~P |   1.0000 
+             |
+             |
+DomesticTa~P |  -0.3971   1.0000 
+             |   0.0829
+             |
+
+. *display correlation at once 
+. 
+. foreach country in "Australia" "Belgium" "Canada" "France" "Ireland" "Israel" "Korea, Rep." "New Zeal
+> and" "Norway" "Switzerland" "United States" {
+  2.     
+.     display " "
+  3.     display "`country':"
+  4.     pwcorr InternationalTaxGDP DomesticTaxGDP if CountryName == "`country'", sig star(0.05)
+  5. }
+ 
+Australia:
+
+             | Intern~P Domest~P
+-------------+------------------
+Internatio~P |   1.0000 
+             |
+             |
+DomesticTa~P |  -0.3191   1.0000 
+             |   0.1703
+             |
+ 
+Belgium:
+
+             | Intern~P Domest~P
+-------------+------------------
+Internatio~P |   1.0000 
+             |
+             |
+DomesticTa~P |   0.2611   1.0000 
+             |   0.2662
+             |
+ 
+Canada:
+
+             | Intern~P Domest~P
+-------------+------------------
+Internatio~P |   1.0000 
+             |
+             |
+DomesticTa~P |   0.1267   1.0000 
+             |   0.5945
+             |
+ 
+France:
+
+             | Intern~P Domest~P
+-------------+------------------
+Internatio~P |   1.0000 
+             |
+             |
+DomesticTa~P |   0.2675   1.0000 
+             |   0.2542
+             |
+ 
+Ireland:
+
+             | Intern~P Domest~P
+-------------+------------------
+Internatio~P |   1.0000 
+             |
+             |
+DomesticTa~P |   0.0879   1.0000 
+             |   0.7124
+             |
+ 
+Israel:
+
+             | Intern~P Domest~P
+-------------+------------------
+Internatio~P |   1.0000 
+             |
+             |
+DomesticTa~P |   0.4316   1.0000 
+             |   0.0574
+             |
+ 
+Korea, Rep.:
+
+             | Intern~P Domest~P
+-------------+------------------
+Internatio~P |   1.0000 
+             |
+             |
+DomesticTa~P |   0.7688*  1.0000 
+             |   0.0001
+             |
+ 
+New Zealand:
+
+             | Intern~P Domest~P
+-------------+------------------
+Internatio~P |   1.0000 
+             |
+             |
+DomesticTa~P |  -0.1819   1.0000 
+             |   0.4427
+             |
+ 
+Norway:
+
+             | Intern~P Domest~P
+-------------+------------------
+Internatio~P |   1.0000 
+             |
+             |
+DomesticTa~P |   0.1869   1.0000 
+             |   0.4302
+             |
+ 
+Switzerland:
+
+             | Intern~P Domest~P
+-------------+------------------
+Internatio~P |   1.0000 
+             |
+             |
+DomesticTa~P |   0.7403*  1.0000 
+             |   0.0002
+             |
+ 
+United States:
+
+             | Intern~P Domest~P
+-------------+------------------
+Internatio~P |   1.0000 
+             |
+             |
+DomesticTa~P |  -0.3971   1.0000 
+             |   0.0829
+             |
+
+. 
+. *scatter plots
+. *raw scatter of all data points for internationaltaxgdp & DomesticTaxGDP   
+. twoway (scatter International~P1 DomesticTaxGDP, mcolor(orange) msize(small)) (scatter International~
+> P2 DomesticTaxGDP, mcolor(purple) msize(small)) (scatter International~P3 DomesticTaxGDP, mcolor(teal
+> ) msize(small)) (scatter International~P4 DomesticTaxGDP, mcolor(navy) msize(small)) (scatter Interna
+> tional~P5 DomesticTaxGDP, mcolor(red) msize(small)) (scatter International~P6 DomesticTaxGDP, mcolor(
+> green) msize(small)) (scatter International~P7 DomesticTaxGDP, mcolor(blue) msize(small)) (scatter In
+> ternational~P8 DomesticTaxGDP, mcolor(maroon) msize(small)) (scatter International~P9 DomesticTaxGDP,
+>  mcolor(magenta) msize(small)) (scatter International~P10 DomesticTaxGDP, mcolor(brown) msize(small))
+>  (scatter International~P11 DomesticTaxGDP, mcolor(olive) msize(small)), ytitle("International Tax Re
+> venue (% GDP)") xtitle("Domestic Consumption Tax Revenue (% GDP)") title("International Tax vs Domest
+> ic Consumption Tax Revenue: All Countries") legend(order(1 "Australia" 2 "Belgium" 3 "Canada" 4 "Fran
+> ce" 5 "Ireland" 6 "Israel" 7 "Korea, Rep." 8 "New Zealand" 9 "Norway" 10 "Switzerland" 11 "United Sta
+> tes") size(vsmall) cols(3) position(3)) graphregion(color(white)) bgcolor(white)
+variable International~P1 not found
+r(111);
+
+end of do-file
+
+r(111);
+
+. log close
+      name:  <unnamed>
+       log:  C:\Users\ldepedro\OneDrive 
+> - Syracuse University\AAA JUNIOR year\
+> ECN 310\course-project-tariffs\Do file
+> s\ICTD-GRD.log
+  log type:  text
+ closed on:  14 Dec 2025, 15:10:51
+----------------------------------------

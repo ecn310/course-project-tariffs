@@ -1,0 +1,119 @@
+\documentclass[12pt]{article}
+
+% set margins and spacing
+\addtolength{\textwidth}{1.3in}
+\addtolength{\oddsidemargin}{-.65in} %left margin
+\addtolength{\evensidemargin}{-.65in}
+\setlength{\textheight}{9in}
+\setlength{\topmargin}{-.5in}
+\setlength{\headheight}{0.0in}
+\setlength{\footskip}{.375in}
+\renewcommand{\baselinestretch}{1.0}
+\linespread{1.0}
+
+% load miscellaneous packages
+\usepackage{csquotes}
+\usepackage[american]{babel}
+\usepackage[usenames,dvipsnames]{color}
+\usepackage{graphicx,amsbsy,amssymb, amsmath, amsthm, MnSymbol,bbding,times, verbatim,bm,pifont,pdfsync,setspace,natbib}
+
+% enable hyperlinks and table of contents
+\usepackage[pdftex,
+bookmarks=true,
+bookmarksnumbered=false,
+pdfview=fitH,
+bookmarksopen=true,hyperfootnotes=false]{hyperref}
+
+
+
+\begin{document}
+\title{Tariffs}
+% add a fourth name if you have four team members; fill in at least first names below
+\author{Kiana\thanks{Syracuse University, Economics Department. Email: } \and Betsy\thanks{abc} \and Giovanni\thanks{abc}\and Lucia\thanks{abc}}
+\date{\vskip-.1in \today}
+\maketitle
+
+\vskip.3in
+
+\section {Research Question}\label{sec:question}
+
+
+
+{How do taxes on goods and services relate to tariffs in developed countries? How does the relationship depend on a developed country’s GDP and its trade policies?}
+\section{Data Overview}  \label{sec:literature}
+
+    Firm-level data from \href{https://wits.worldbank.org}{WITS}
+(World Integrated Trade Solution)
+
+\subsection{Data Set 1: Trade relationship between taxes on consumption and international taxes (tariffs) of developed countries}
+\begin{itemize}
+  \item Public reports compiled by the following organizations: WITS' TRAINS Tariff Measures and Preference Beneficiaries, UNCTAD, UN Comtrade and WTO IDB
+  \item Focusing on 8 Developed countries with relatively high GDP per Capita from 2001-2020
+  \item 8 countries: Australia, France, Israel, Romania, South Korea, Norway, Switzerland, and the United States.
+  \item 6 Economic Variables: Trade Balance, GDP, Consumption Tax Revenue, International Tax Revenue, Import Duties, and Import Values
+  \item Total of 160 observations
+\end{itemize}
+
+\section{Data Acquisition}
+\label{sec:theory}
+
+    The Country Timeseries datasets were downloaded as excel files from the WITS website. The International Trade Indicators interface available on the database was accessed. Upon loading, the Trade Indicators (variables listed above) were accessed individually through the website's integrated "Search For Indicator" search bar. The selected indicators were Exports of goods and services (\% of GDP), Imports of goods and services (\% of GDP), GDP (constant 2010 USD), Taxes on goods and services (current LCU), Taxes on international trade (current LCU), Customs and other import duties (\% of tax revenue) and Imports of Goods and Services (BoP current USD).
+     
+
+\begin{itemize}
+
+\item The international trade indicators were downloaded as individual excel files for each correspondingly: 7 excel files were downloaded and saved listing the complete WITS indicator observations recorded for 193 countries across 1988-2022.
+
+\item The 7 excel files were each imported into Stata and saved individually as a dta file. All data files were merged using Stata's append command and combined into one dataset.
+
+\end{itemize}
+
+\subsection{WITS Country TimeSeries Data for Australia, Canada, France, Israel, Romania, South Korea, Norway, Switzerland, and the United States from 2001-2020}
+
+ Access Data Through Github- Click "Access Github Data File"
+
+\href{https://github.com/ecn310/course-project-tariffs/blob/main/Data%20files/TariffsTimeseriesDataFile.dta}
+{Access Github Data File}
+
+\section{Data Manipulation}
+\label{sec:data}
+    
+\begin{itemize}
+
+\item Removing the years not included in 2001-2020: The variables "C, D, E, F, G, H, I, J, K, L, M, N, O, AJ, AK" were removed using Stata's drop command.
+
+\item Removing the additional countries included: The "CountryName" observations were manipulated to only keep the countries of "Australia, France, Israel, Korea, Rep., Norway, Romania, Switzerland, and the United States" using Stata's keep if command.
+
+\item Renaming letter variables: The variables "P, Q, R, S, T, U, V, W, X, Y, Z, AA, AB, AC, AD, AE, AF, AG, AH, AI" were manipulated to be labeled as "yr01, yr02, yr03, yr04, yr05, yr06, yr07, yr08, yr09, yr010, yr 011, yr012, yr013, yr014, yr015, yr016, yr017, yr018, yr019, yr020" using Stata's rename command.
+
+\item Transforming "year" into a singular variable observing the years 2001-2020: The variables observing years were reshaped "long yr0" and "yr0" was renamed "value" before using Stata's replace command to replace "year" values with "year + 200".
+
+\item Reshaping individual countries as variables: The variable "CountryName" was encoded using Stata's encode and generate command to generate a variable labeled "CountryID". The "CountryName" variable was dropped and Stata's reshape wide command was used to reshape "year" and "IndicatorName" as i and "CountryID" as j.
+
+\item Renaming value variables: The variables "value1, value2, value3, value4, value5, value6, value7, value8" were manipulated to be labeled as "Australia, France, Israel, Korea, Rep., Norway, Romania, Switzerland, USA".
+
+\end{itemize}
+
+\section{Key Variables}
+\label{sec:result}
+
+    Variable Type: Ratio-Scale (Continous Variables)
+    
+    Summary Stats: Scatter-Plot and Histogram
+    
+\begin{itemize}
+    \item Exports of goods and services (\% of GDP)
+    \item Imports of goods and services (\% of GDP)
+    \item GDP (Gross Domestic Product in current LCU)
+    \item Consumption Tax Revenue (in current LCU)
+    \item International Tax Revenue (in current LCU)
+    \item Import Duties (\% of Tax Revenue)
+    \item Imports of goods and services (BoP, in current USD)
+\end{itemize}
+
+
+
+
+
+
+\end{document}

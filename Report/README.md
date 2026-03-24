@@ -1,0 +1,90 @@
+## Tariffs Reproducibility Package
+### Steps Taken to Produce Tariffs Results
+
+#### Data Sources
+0. To start, create a folder on your device labeled “Tariffs”. Then, within it, create three subfolders: Do files, Data files, and Outputs. All data will be saved to the Data file. All do-files will be saved to the Do files folder and all outputs will be saved to the Outputs folder. Or you can sync our GitHub to your own local GitHub desktop and access the Data files, Do files, and Outputs from there.
+1. Go on the [WITS International Trade Indicators website](https://wits.worldbank.org/CountryProfile/en/Country/USA/Year/2023#section3)
+2. Once on the WITS website, click on the Country/Region tab on the top left and click on the drop-down. Change the search to "By Indicator", change the Country/ Region drop-down to "By Country and Region" under the ALL section, and keep the Year Range to 1988-2022. To download the files to excel click the gray download button with an arrow pointing downwards in the top right corner of the online table, and click Excel. Data files to look for and download into the Tariffs folder and then the Data files subfolder: 
+    - [Customs and other import duties (% of tax revenue)](https://github.com/ecn310/course-project-tariffs/blob/main/Data%20files/TariffPTaxRev.xlsx): measures the percentage of revenue generated from tariffs imposed in Import Duties. **Name it TariffPTaxRev.xlsx.**
+     - [Exports of goods and services (% of GDP)](https://github.com/ecn310/course-project-tariffs/blob/main/Data%20files/ExportPGDP.xlsx): measures the percentage of total production of goods and services that is provided to the rest of the world (exports).** Name it ExportPGDP.xlsx.**
+    - [GDP (constant 2010 US$)](https://github.com/ecn310/course-project-tariffs/blob/main/Data%20files/RealGDP.xlsx): measures countries GDP in constant 2010 US dollars. **Name it RealGDP.xlsx.**
+    - [Imports of goods and services (% of GDP)](https://github.com/ecn310/course-project-tariffs/blob/main/Data%20files/ImportPGDP.xlsx): measures the percentage of total production of goods and services that the rest of the world provides (imports) in percentage of GDP. **Name it ImportPGDP.xlsx.**
+    - [Imports of goods and services (BoP, current US$)](https://github.com/ecn310/course-project-tariffs/blob/main/Data%20files/ImportValue.xlsx): measures the Balance of Payments (BOP) reflected in the economic transactions between a country and the rest of the world. It includes the net flow of goods and services, as well as income and expenditures resulting from international transactions. **Name it ImportValue.xlsx.**
+    - [Taxes on goods and services (current LCU)](https://github.com/ecn310/course-project-tariffs/blob/main/Data%20files/DomesticTaxRev.xlsx): measures the total amount of taxes paid by individuals, businesses, and other entities on the purchase and consumption of goods and services within a country. LCU means it's in the local currency of the Country. Name it **DomesticTaxRev.xlsx**
+    - [Taxes on international trade (current LCU)](https://github.com/ecn310/course-project-tariffs/blob/main/Data%20files/InternationalTaxRev.xlsx): measures the taxes imposed on international trade transactions expresed in the local currency. Name it **InternationalTaxRev.xlsx.**
+    - [GDP (Current US$)](https://github.com/ecn310/course-project-tariffs/blob/main/Data%20files/GDP(Current%20USD).xlsx): measures the total monetary value of all finished goods and services produced within a country over a specific period of time. Name it **GDP(CurrentUSD).xlsx.**
+3. We downloaded **UNU-WIDER GRD Central Government 2023.dta** from [ICTD-GRD UNU WIDER Government Revenue Dataset](https://www2.wider.unu.edu/content/grd-data-download) and saved it in the Data files folder. This file contains Domestic Tax Revenue (\% of GDP) that measures total taxes on goods and services; and International Tax Revenue (\% of GDP) which is taxes on international trade, primarily consisting of tariffs and customs duties on imports. The Data Coverage is 193 countries from 2001-2020. 
+   - This file is not currently reproducible from first principles because the 2023 data is no longer available on the ICTD GRD website
+   - The 2025 data is available, but in it observations are missing for both Belgium and Ireland, so we stay with the 2023 data.
+   - Instructions for downloading the data if there's a desire to update to the 2025 data: Go to the website by clicking on the link above, create an account, then choose to download the Stata file. When downloaded, make sure the file is inside the Data Folder and named **UNU-WIDER GRD Central Government 2023** (can change to 2025, but then need to adjust the name in the do-file below). 
+
+
+ #### Working with the Data  
+1. Stata version used: Stata 18.0
+2. Open Tarrifs Timeseries.do, that can be found the Do file folder in our Github repository, this is the [link](https://github.com/ecn310/course-project-tariffs/blob/main/Do%20files/Tarrifs%20Timeseries.do) to it.
+3. Before running any code, the file paths need to be changed specifically for your computer.
+   - Locate the cd command at the top of the do file and change it to match your local repository.
+     **cd "change.this.link.to.your.own.Tariffs.folder"** make sure this change of directory points towards your Tariffs folder.
+   - Run the do file in order (Cr+D or click execute)
+   - The purpose of this first do file is to import all WITS Excel files (DomesticTaxRev.xlsx, ExportPGDP.xlsx, GDP(Current USD).xlsx, ImportPGDP.xlsx, ImportValue.xlsx, InternationalTaxRev.xlsx, RealGDP.xlsx, TariffPTaxRev.xlsx), merges them into a single dataset, filter for years 2001-2020 and the countries of interest (United States, Australia, France, Israel, Korea (Rep.), Norway, Romania, and Switzerland), reshapes the data and saves it as [TariffTimeseries_new.dta](https://github.com/ecn310/course-project-tariffs/blob/main/Data%20files/TariffsTimeseries.dta).
+   - It should produce something that looks like this [TariffsTimeseries.log](https://github.com/ecn310/course-project-tariffs/blob/main/Do%20files/TariffsTimeseries.log) stored inside the Do files folder.
+4.  Open ICTD-GRD data do file.do [do file](https://github.com/ecn310/course-project-tariffs/blob/main/Do%20files/ICTD-GRD%20data%20do%20file.do)
+    - Locate the cd command at the top of the do file and change it to match your local repository
+      **cd "change.this.link.to.your.own.path"**
+   - Run the do file in order (Cr+D or click execute) 
+    - The purpose of this do file is to merge the prepared WITS dataset with ICTD-GRD data, filtering for 11 countries (Australia, Belgium, Canada, France, Ireland, Israel, Korea Rep., New Zealand, Norway, Switzerland, United States) during the same years (2001-2020)
+    - Generates Summary_Stats_final.tex and exports it to LaTeX format, [summary statistics](https://github.com/ecn310/course-project-tariffs/blob/main/Outputs/Import_GDP_by_Country.tex), can be found in the Outputs folder
+    - Calculates country by country correlations between interntional and domestic tax.
+    - Produces four graph files. All of them inside the Outputs folder.
+      - **scatter_raw_tax_relationship_final.pdf**: scatter plot showing international vs domestic tax revenue for all countries. 
+      - **scatter_correlation_import.pdf**: scatter plot of correlation coefficient vs import-GDP ratio (with regression line).
+      - **ffigure3_averages_high_vs_rest_clean.png** same as above but PNG version
+  - This do file's log is called [ICTD-GRD.log](https://github.com/ecn310/course-project-tariffs/blob/main/Do%20files/ICTD-GRD.log) and it's inside the Do file's folder
+
+### Codebook 
+|Variable name| Description|
+|---|---|
+|CountryName|Name of the country (limited to: United States, Australia, France, Israel, Korea Rep., Norway, Switzerland, Ireland, Canada, New Zealand, Belgium)|
+| year | Year of observation (2001-2020) |
+| TariffPTaxRev | Tariffs as a percentage of tax revenue |
+| ExportPGDP | Exports as a percentage of GDP |
+|GDPCurrent|Gross Domestic Product in current US$|
+|ImportPGDP|Imports as a percentage of GDP|
+|ImportValue|Value of imports in USD|
+|DomesticTaxRev|Domestic tax revenue|
+|InternationalTaxRev|International tax revenue (includes tariffs and other trade-related taxes)|
+
+
+### Repository Structure
+- Data files: contains the following
+  - All the raw excel files downloaded from the WITS
+  - All the intermediate dta files produced from the excel files
+  - The combined WITS dataset
+  - The ICTD-GRD raw dta file
+  - The processed final dataset with both the WITS and ICTD-GRD data
+- Do files contains the following:
+  - TarrifsTimeseries.do
+  - TarrifsTimeseries log of do file
+  - ICTD-GRD data do file
+  - ICTD-GRD do file log
+- Master Documentation File
+- Outputs
+  - Import GDP by Country
+  - summary stats final tex
+  - summary stats final txt
+  - figure3 avarages high vs al other countries
+  - scatter correlation import
+  - scater raw tax relationship final
+- Report
+  - README.md - REPRODUCIBILITY PACKAGE
+  - data.tex
+  - project template.tex
+  - tarrifs report.tex
+  - tariffs report. pdf
+- README.md - Master Documentation File
+
+
+
+  
+
+
