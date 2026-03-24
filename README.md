@@ -13,6 +13,6 @@ substitution behavior, and other factors may influence how governments adjust th
 in response to changes in tariff revenue.
 
 ### Quick Links
-- [Full Report](https://github.com/ecn310/course-project-tariffs/tree/main/Report)
+- [Full Report](https://github.com/ecn310/course-project-tariffs/blob/main/Report/tariffs_report.pdf)
 - [Master Documentation File](https://github.com/ecn310/course-project-tariffs/tree/main/Master%20Documentation%20file)
 - [Reproducibility package (inside of report folder)](https://github.com/ecn310/course-project-tariffs/blob/main/Report/README.md)
